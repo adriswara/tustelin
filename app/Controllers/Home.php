@@ -7,17 +7,17 @@ class Home extends BaseController
 	public function index()
 	{
 		// return view('welcome_message');
-		return view('home_page');
+		return view('pages/home_page');
 		// echo "Hello World!";
 	}
 
 	public function profile()
 	{
-		return view('profile_page');
+		return view('pages/profile_page');
 	}
 
 	public function marketplace()
 	{
-		return view('marketplace_page');
+		return view('pages/marketplace_page');
 	}
 }
