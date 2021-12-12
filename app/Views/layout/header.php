@@ -13,20 +13,43 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        /* carousel */
+
+
+
+
+
+        /* carousel 
+        .main-banner {
+            height: 70vh;
+
+        }
+
+        .main-banner__inner {
+            height: 70vh;
+
+        } */
+
+
+        /* carousel profile
         .main-banner {
             height: 52vh;
             width: 100vh;
+
         }
 
         .main-banner__inner {
             height: 52vh;
-            width: 100vh;
-        }
+            width: 100vh
+        } */
+
+
 
         .main-banner__inner .carousel-item {
             height: 100%;
         }
+
+
+
 
         /* Full-width input fields */
         input[type="text"],

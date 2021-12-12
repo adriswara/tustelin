@@ -1,5 +1,5 @@
 <!-- Carousel -->
-<div id="demo" class="carousel slide main-banner" data-bs-ride="carousel">
+<div id="demo" class="carousel slide main-banner" style="height: 70vh" data-bs-ride="carousel">
   <!-- Indicators/dots -->
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
@@ -8,7 +8,7 @@
   </div>
 
   <!-- The slideshow/carousel -->
-  <div class="carousel-inner main-banner__inner" style="width: 100%">
+  <div class="carousel-inner main-banner__inner" style="height: 70vh;width: 100%">
     <div class="carousel-item active">
       <center>
         <img src="/pribadi.jpg" alt="Pribadi" class="d-block" style="width: 100%" />
