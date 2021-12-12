@@ -1,3 +1,8 @@
+<?= $this->extend('layout/page_layout'); ?>
+<!--PAGE CONTENT-->
+<?= $this->section('pageContent'); ?>
+<!---->
+
 <div class="bg-secondary" style="margin-top: -1rem; margin-bottom: 1rem">
   <!-- Card -->
   <div class="bg-light py-5">
@@ -265,3 +270,4 @@
     </div>
   </div>
 </div>
+<?= $this->endSection(); ?>

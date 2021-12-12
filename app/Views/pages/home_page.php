@@ -1,3 +1,6 @@
+<?= $this->extend('layout/page_layout'); ?>
+<!--START CONTENT-->
+<?= $this->section('pageContent'); ?>
 <!-- Carousel -->
 <div id="demo" class="carousel slide main-banner" style="height: 70vh" data-bs-ride="carousel">
   <!-- Indicators/dots -->
@@ -55,3 +58,4 @@
     <span class="carousel-control-next-icon"></span>
   </button>
 </div>
+<?= $this->endSection(); ?>

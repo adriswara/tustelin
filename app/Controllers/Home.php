@@ -13,9 +13,8 @@ class Home extends BaseController
 			'title' => 'Home | Web Fotografi'
 		];
 
-		echo view('layout/header', $data);
-		echo view('pages/home_page');
-		echo view('layout/footer');
+
+		echo view('pages/home_page', $data);
 	}
 
 	public function profile()
@@ -25,9 +24,7 @@ class Home extends BaseController
 			'title' => 'Profile |'
 		];
 
-		echo view('layout/header', $data);
-		echo view('pages/profile_page');
-		echo view('layout/footer');
+		echo view('pages/profile_page', $data);
 	}
 
 	public function marketplace()
@@ -37,8 +34,6 @@ class Home extends BaseController
 			'title' => 'Marketplace |'
 		];
 
-		echo view('layout/header', $data);
-		echo view('pages/marketplace_page');
-		echo view('layout/footer');
+		echo view('pages/marketplace_page', $data);
 	}
 }
