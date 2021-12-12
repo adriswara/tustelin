@@ -8,21 +8,36 @@ class Home extends BaseController
 	{
 		// return view('welcome_message');
 		// echo "Hello World!";
-		echo view('layout/header');
+
+		$data = [
+			'title' => 'Home | Web Fotografi'
+		];
+
+		echo view('layout/header', $data);
 		echo view('pages/home_page');
 		echo view('layout/footer');
 	}
 
 	public function profile()
 	{
-		echo view('layout/header');
+
+		$data = [
+			'title' => 'Profile |'
+		];
+
+		echo view('layout/header', $data);
 		echo view('pages/profile_page');
 		echo view('layout/footer');
 	}
 
 	public function marketplace()
 	{
-		echo view('layout/header');
+
+		$data = [
+			'title' => 'Marketplace |'
+		];
+
+		echo view('layout/header', $data);
 		echo view('pages/marketplace_page');
 		echo view('layout/footer');
 	}
