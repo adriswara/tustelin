@@ -9,6 +9,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
                 </li>
+                <li>
+                    <a class="nav-link" href="/home/profile">Beta_Profile</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="/home/marketplace">Beta_marketplace</a>
+                </li>
                 <li></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle pl-1" href="#" role="button" data-bs-toggle="dropdown">Kategori Jasa</a>
@@ -62,6 +68,7 @@
             </form>
         </div>
         <ul class="navbar-nav me-auto">
+
             <li class="nav-item">
                 <a class="nav-link" href="javascript:void(0)">Pernikahan</a>
             </li>
