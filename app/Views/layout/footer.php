@@ -1,27 +1,62 @@
-<div class="container mt-0 bg-secondary" style="margin-bottom: 90px">
-    <div class="row">
-        <div class="col-sm-4">
-            <h3 style="margin-top: -20px; padding-top: 70px">Daftarkan Akunmu</h3>
-            <p style="margin-bottom: auto">
-                Daftar terlebih dahulu untuk memesan jasa.
-            </p>
+<!-- Modal Login -->
+
+<div id="id01" class="modal">
+    <form class="modal-content animate" action="/action_page.php" method="post">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <img src="/img_avatar1.png" alt="Avatar" class="avatar" />
         </div>
-        <div class="col-sm-4" style="margin-top: 50px">
-            <h3 style="height: margin-top: -20px;padding top : 70px;">
-                Negosiasi
-            </h3>
-            <p style="margin-bottom: auto">
-                Negosiasikan harga sesuai dengan kebutuhanmu
-            </p>
+
+        <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required />
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required />
+
+            <button class="btn btn-primary" type="submit">Login</button>
+            <label>
+                <input type="checkbox" checked="checked" name="remember" /> Remember
+                me
+            </label>
         </div>
-        <div class="col-sm-4">
-            <h3 style="margin-top: -20px; padding-top: 70px">
-                Pilih jasa sesuai kebutuhanmu
-            </h3>
-            <p style="margin-bottom: auto">
-                Pilih berbagai jenis jasa foto sesuai dengan konsep dan kebutuhan
-                anda
-            </p>
+
+        <div class="container" style="background-color: #f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">
+                Cancel
+            </button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+</div>
+<div>
+    <div class="container mt-0 bg-secondary" style="margin-bottom: 90px">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3 style="margin-top: -20px; padding-top: 70px">
+                    Daftarkan Akunmu
+                </h3>
+                <p style="margin-bottom: auto">
+                    Daftar terlebih dahulu untuk memesan jasa.
+                </p>
+            </div>
+            <div class="col-sm-4" style="margin-top: 50px">
+                <h3 style="height: margin-top: -20px;padding top : 70px;">
+                    Negosiasi
+                </h3>
+                <p style="margin-bottom: auto">
+                    Negosiasikan harga sesuai dengan kebutuhanmu
+                </p>
+            </div>
+            <div class="col-sm-4">
+                <h3 style="margin-top: -20px; padding-top: 70px">
+                    Pilih jasa sesuai kebutuhanmu
+                </h3>
+                <p style="margin-bottom: auto">
+                    Pilih berbagai jenis jasa foto sesuai dengan konsep dan kebutuhan
+                    anda
+                </p>
+            </div>
         </div>
     </div>
 </div>

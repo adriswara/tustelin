@@ -15,11 +15,15 @@ class Home extends BaseController
 
 	public function profile()
 	{
-		return view('pages/profile_page');
+		echo view('layout/header');
+		echo view('pages/profile_page');
+		echo view('layout/footer');
 	}
 
 	public function marketplace()
 	{
-		return view('pages/marketplace_page');
+		echo view('layout/header');
+		echo view('pages/marketplace_page');
+		echo view('layout/footer');
 	}
 }
