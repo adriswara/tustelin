@@ -7,8 +7,10 @@ class Home extends BaseController
 	public function index()
 	{
 		// return view('welcome_message');
-		return view('pages/home_page');
 		// echo "Hello World!";
+		echo view('layout/header');
+		echo view('pages/home_page');
+		echo view('layout/footer');
 	}
 
 	public function profile()
