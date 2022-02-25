@@ -29,6 +29,7 @@ class Fotografer extends BaseController
 
 
         return view('fotografer/index', $data);
+        //return view('pages/marketplace_page', $data);
     }
 }
 

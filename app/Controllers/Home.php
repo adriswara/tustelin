@@ -2,8 +2,15 @@
 
 namespace App\Controllers;
 
+use App\Models\FotograferModel;
+
 class Home extends BaseController
 {
+	protected $fotograferModel;
+	public function __construct()
+	{
+		$this->fotograferModel = new FotograferModel();
+	}
 	public function index()
 	{
 		// return view('welcome_message');
@@ -34,6 +41,24 @@ class Home extends BaseController
 			'title' => 'Marketplace |'
 		];
 
-		echo view('pages/marketplace_page', $data);
+		$fotograferVar = $this->fotograferModel->findAll();
+
+
+		$data = [
+
+			'title' => 'Daftar Fotografer',
+			'fotografer' => $fotograferVar
+		];
+
+		//$fotograferModel = new \App\Models\FotograferModel();
+
+
+
+
+
+		// return view('fotografer/index', $data);
+		return view('pages/marketplace_page', $data);
+
+		//echo view('pages/marketplace_page', $data);
 	}
 }
