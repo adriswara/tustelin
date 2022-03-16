@@ -77,7 +77,7 @@
           <div>
             <img id="CardDi" class="card-img-top" src="/makanan.jpg" alt="Card image" style="width: 100%" />
             <div style="margin-left: 6rem; margin-top: -3rem">
-              <img id="CardDp" src="/img_avatar1.png" alt="Logo" style="width: 120px" class="rounded-pill" />
+              <img id="CardDp" src="/displaypic/<?= $profil['displaypic']; ?>" alt="Logo" style="width: 120px" class="rounded-pill" />
             </div>
           </div>
 

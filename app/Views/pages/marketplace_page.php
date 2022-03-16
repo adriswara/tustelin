@@ -58,7 +58,7 @@
                 <?= $k['akun_instagram']; ?>
               </p>
               <p>
-                <button href="#" class="btn btn-primary">See Profile</button>
+                <a href="/Profile/<?= $k['slug']; ?>"><button class="btn btn-primary">See Profile</button></a>
               </p>
             </div>
           </div>

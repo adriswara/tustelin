@@ -27,6 +27,7 @@ class Home extends BaseController
 	public function profile()
 	{
 
+
 		$data = [
 			'title' => 'Profile |'
 		];
@@ -34,31 +35,37 @@ class Home extends BaseController
 		echo view('pages/profile_page', $data);
 	}
 
-	public function marketplace()
-	{
-
-		$data = [
-			'title' => 'Marketplace |'
-		];
-
-		$fotograferVar = $this->fotograferModel->findAll();
 
 
-		$data = [
+	// public function marketplace()
+	// {
 
-			'title' => 'Daftar Fotografer',
-			'fotografer' => $fotograferVar
-		];
+	// 	$data = [
+	// 		'title' => 'Marketplace |'
+	// 	];
 
-		//$fotograferModel = new \App\Models\FotograferModel();
-
-
-
+	// 	$fotograferVar = $this->fotograferModel->findAll();
 
 
-		// return view('fotografer/index', $data);
-		return view('pages/marketplace_page', $data);
+	// 	$data = [
 
-		//echo view('pages/marketplace_page', $data);
-	}
+	// 		'title' => 'Daftar Fotografer',
+	// 		'fotografer' => $fotograferVar
+	// 	];
+
+	// 	//$fotograferModel = new \App\Models\FotograferModel();
+
+
+
+
+
+	// 	// return view('fotografer/index', $data);
+	// 	return view('pages/marketplace_page', $data);
+
+	// 	//echo view('pages/marketplace_page', $data);
+	// }
+	// public function profileSegment($slug)
+	// {
+	// 	echo $slug;
+	// }
 }

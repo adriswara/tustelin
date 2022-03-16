@@ -1,6 +1,7 @@
 <?= $this->extend('layout/page_layout'); ?>
 
 <?= $this->section('pageContent'); ?>
+<h1>INI INDEX PHP YANG JADI TABEL BETA</h1>
 <div class="containter bg-light" style="height:30vh">
     <div class="row">
         <div class="col">

@@ -13,7 +13,7 @@
                     <a class="nav-link" href="/home/profile">Beta_Profile</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/home/marketplace">Beta_marketplace</a>
+                    <a class="nav-link" href="/profile/index">Beta_marketplace</a>
                 </li>
                 <li>
                     <a class="nav-link" href="/fotografer">Beta_database</a>
