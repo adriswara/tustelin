@@ -9,11 +9,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
                 </li>
-                <li>
+                <!-- <li>
                     <a class="nav-link" href="/home/profile">Beta_Profile</a>
-                </li>
+                </li> -->
                 <li>
-                    <a class="nav-link" href="/profile/index">Beta_marketplace</a>
+                    <a class="nav-link" href="/profile/index">Marketplace</a>
                 </li>
                 <li>
                     <a class="nav-link" href="/fotografer">Beta_database</a>
