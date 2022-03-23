@@ -10,7 +10,7 @@
                     <a class="nav-link" href="/">Home</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/user_authentication">Beta_Login</a>
+                    <a class="nav-link" href="/Login">Beta_Login</a>
                 </li>
                 <li>
                     <a class="nav-link" href="/profile/index">Marketplace</a>
