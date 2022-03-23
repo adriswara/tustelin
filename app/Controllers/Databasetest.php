@@ -6,7 +6,7 @@ use App\Models\AlatModel;
 use App\Models\FotograferModel;
 use App\Models\AliranKomersilModel;
 
-class Fotografer extends BaseController
+class DatabaseTest extends BaseController
 {
     protected $fotograferModel;
     protected $aliranKomersilModel;
@@ -38,7 +38,7 @@ class Fotografer extends BaseController
 
 
 
-        return view('fotografer/index', $data);
+        return view('databasetest/index', $data);
         //return view('pages/marketplace_page', $data);
     }
 }

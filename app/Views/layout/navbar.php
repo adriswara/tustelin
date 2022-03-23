@@ -9,14 +9,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
                 </li>
-                <!-- <li>
-                    <a class="nav-link" href="/home/profile">Beta_Profile</a>
-                </li> -->
+                <li>
+                    <a class="nav-link" href="/user_authentication">Beta_Login</a>
+                </li>
                 <li>
                     <a class="nav-link" href="/profile/index">Marketplace</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/fotografer">Beta_database</a>
+                    <a class="nav-link" href="/databasetest">Beta_database</a>
                 </li>
                 <li></li>
                 <li class="nav-item dropdown">
