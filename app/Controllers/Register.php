@@ -22,7 +22,7 @@ class Register extends Controller
         //set rules validation form
         $rules = [
             'name'          => 'required|min_length[3]|max_length[20]',
-            'email'         => 'required|min_length[6]|max_length[50]|valid_email|is_unique[pengguna.email_pengguna]',
+            'email'         => 'required|min_length[6]|max_length[50]|valid_email|is_unique[pelanggan.email_pengguna]',
             'password'      => 'required|min_length[6]|max_length[200]',
             'confpassword'  => 'matches[password]'
         ];
@@ -32,7 +32,7 @@ class Register extends Controller
             $data = [
                 'username_pengguna'     => $this->request->getVar('name'),
                 'email_pengguna'    => $this->request->getVar('email'),
-                'sandi_pengguna' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
+                'sandi_pengguna' => $this->request->getVar('password'), PASSWORD_DEFAULT //password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
             ];
             $model->save($data);
             return redirect()->to('/login');
