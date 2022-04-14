@@ -15,10 +15,18 @@ class Profile extends BaseController
 
     public function index()
     {
+        d($this->request->getVar('keyword'));
 
-        $data = [
-            'title' => 'Marketplace |'
-        ];
+        $keyword = $this->request->getVar('keyword');
+
+        if ($keyword) {
+            $this->fotograferModel->search($keyword);
+        } else {
+            $fotografer = $this->fotograferModel;
+        }
+
+
+
 
         // $fotograferVar = $this->fotograferModel->findAll();
 

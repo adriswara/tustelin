@@ -17,4 +17,9 @@ class FotograferModel extends Model
         }
         return $this->where(['slug' => $slug])->first();
     }
+
+    public function search($keyword)
+    {
+        return $this->table('fotografer')->like('nama', $keyword);
+    }
 }
