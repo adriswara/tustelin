@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <!-- form -->
       <form class="d-flex" action="" method="post">
-        <input class="form-control me-2" type="text" placeholder="Cari jasa untukmu disini" name="keyword">
+        <input class="form-control me-2" type="text" placeholder="Cari jasa untukmu disini" name="keyword" id="frmKeyword">
         <!-- button cari -->
         <button class="btn btn-primary" type="submit" name="submit" style="width: 100px">
           <div>
@@ -54,7 +54,16 @@
       <h2 class="justify-content-center" style="margin-top: 1rem">
         Hasil Pencarian Anda
       </h2>
-      <p class="justify-content-center">Kategori Jasa ?</p>
+      <p class="justify-content-center">Pencarian : <p id="hasilSrc"></p>
+      </p>
+      <!--  -->
+      <script>
+        function myFunction() {
+          var x = document.getElementById("frmKeyword").elements[0].value;
+          document.getElementById("hasilSrc").innerHTML = x;
+        }
+      </script>
+      <!--  -->
       <!-- SEARCH BAR V2 -->
       <!-- 
       <div class="col-6">

@@ -20,6 +20,6 @@ class FotograferModel extends Model
 
     public function search($keyword)
     {
-        return $this->table('fotografer')->like('nama', $keyword);
+        return $this->table('fotografer')->like('nama', $keyword)->orLike('akun_instagram', $keyword);
     }
 }
