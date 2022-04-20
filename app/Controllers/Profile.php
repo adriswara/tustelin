@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\AliranKomersilModel;
 use App\Models\FotograferModel;
 
 class Profile extends BaseController
@@ -10,15 +11,16 @@ class Profile extends BaseController
     public function __construct()
     {
         $this->fotograferModel = new FotograferModel();
+        $this->alirankomersilModel = new AliranKomersilModel();
     }
 
 
     public function index()
     {
-        d($this->request->getVar('keyword'));
+        // d($this->request->getVar('keyword'));
 
         $keyword = $this->request->getVar('keyword');
-
+        // $joins = $this->fotograferModel->join();
         if ($keyword) {
             $this->fotograferModel->search($keyword);
         } else {
@@ -31,11 +33,27 @@ class Profile extends BaseController
         // $fotograferVar = $this->fotograferModel->findAll();
 
 
+
+
+        // echo gettype($data['fotografer']);
+        $arraytemp = $this->fotograferModel->joinkomersil()->getResult();
+        $arrayresult = array();
+        foreach ($arraytemp as $key) {
+            $arrayresult[] = json_decode(json_encode($key), true);;
+        }
+
         $data = [
 
             'title' => 'Daftar Fotografer',
-            'fotografer' => $this->fotograferModel->getFotografer()
+            // 'fotografer' => $this->fotograferModel->getFotografer(),
+            'fotografer' => $arrayresult
         ];
+
+
+
+        d($data);
+
+        // $data = json_decode($data, true);
 
         //$fotograferModel = new \App\Models\FotograferModel();
 

@@ -119,12 +119,13 @@
             <!-- Card Body -->
             <div class="card-body" style="margin-top: 1rem">
               <p class="text-secondary" style="margin-left: 10rem">
-                Rp500.000
+                Rp <?= $k['harga']; ?>
               </p>
               <h4 class="card-title" style="margin-top: 1rem"><?= $k['nama']; ?></h4>
               <p class="card-text">
                 <?= $k['akun_instagram']; ?>
               </p>
+              <p class="card-text"> <?= $k['nama_aliran']; ?> </p>
               <p>
                 <a href="/Profile/<?= $k['slug']; ?>"><button class="btn btn-primary">See Profile</button></a>
               </p>
