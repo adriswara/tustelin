@@ -43,7 +43,7 @@
                     Login
                 </button>
 
-                <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#myModal" style="width: auto">
+                <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#myModal1" style="width: auto">
                     Sign Up
                 </button>
 

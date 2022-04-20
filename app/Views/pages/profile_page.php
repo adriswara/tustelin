@@ -3,6 +3,47 @@
 <?= $this->section('pageContent'); ?>
 <!---->
 <div class="bg-secondary" style="margin-top: -1rem; margin-bottom: 1rem">
+
+  <!-- modal 2 -->
+
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal2">
+    <div class="modal-dialog modal-fullscreen-sm-down">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h2 class="modal-title">Kontak Fotografer</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <label for="email"><b>Nomor Telefon</b></label>
+          <p><?= $profil['no_telfon']; ?></p>
+          <label for="email"><b>Email</b> </label>
+          <p><?= $profil['email']; ?></p>
+          <label for="psw"><b>Instagram</b></label>
+          <p><?= $profil['akun_instagram']; ?></p>
+          <label for="psw-repeat"><b>Nomor Rekening</b></label>
+          <p><?= $profil['no_rekening']; ?></p>
+
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- end of modal 2 -->
+
+
+
   <!-- Card -->
   <div class="bg-light py-5"></div>
 
@@ -75,7 +116,7 @@
 
         <div class="card" style="width: 300px">
           <div>
-            <img id="CardDi" class="card-img-top" src="/makanan.jpg" alt="Card image" style="width: 100%" />
+            <img id="CardDi" class="card-img-top" src="/displaypic/<?= $profil['displaypic']; ?>" alt="Card image" style="width: 100%" />
             <div style="margin-left: 6rem; margin-top: -3rem">
               <img id="CardDp" src="/displaypic/<?= $profil['displaypic']; ?>" alt="Logo" style="width: 120px" class="rounded-pill" />
             </div>
@@ -83,17 +124,24 @@
 
           <!-- Card Body -->
           <div class="card-body" style="margin-top: 1rem">
-            <p class="card-text">Harga Dimulai Dari :Rp500.000</p>
+            <h4 class="card-title" style="margin-top: 1rem"><?= $profil['nama']; ?></h4>
+            <p class="card-text">Harga Dimulai Dari :<?= $profil['harga']; ?></p>
             <p class="card-text">Rating : 4.0/5.0</p>
             <p>Total pemesanan jasa : 332</p>
             <p>
-              <button href="#" class="btn btn-primary">Negosiasi</button>
+              <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#myModal2">
+                Kontak Fotografer
+              </button>
             </p>
           </div>
         </div>
         <div style="padding-top: 1rem"></div>
       </div>
-      <!---->
+      <!--batas-->
+
+
+
+      <!-- batas -->
     </div>
     <br />
     <div class="row justify-content-end" style="margin-right: 20rem">
@@ -144,8 +192,8 @@
             <h4 class="card-title" style="margin-top: 1rem">
               Equipment List
             </h4>
-            <p class="card-text">Main Camera : Sony A7</p>
-            <p class="card-text">Secondary Camera : Canon 1Dx</p>
+            <p class="card-text">Main Camera : <?= $profil['nama_alat']; ?></p>
+
             <h5>Other Equipment</h5>
             <p class="card-text">Excell tripod</p>
             <p>DJI Ronin S Gimbal</p>

@@ -73,6 +73,8 @@ class Profile extends BaseController
             'title' => 'Profil Fotografer',
             'profil' => $this->fotograferModel->getFotografer($slug)
         ];
+
+        d($data);
         return view('pages/profile_page', $data);
     }
 }

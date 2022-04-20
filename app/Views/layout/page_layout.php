@@ -18,7 +18,7 @@
   <!--Modal Sign Up-->
 
   <!-- The Modal -->
-  <div class="modal" id="myModal">
+  <div class="modal" id="myModal1">
     <div class="modal-dialog modal-fullscreen-sm-down">
       <div class="modal-content">
         <!-- Modal Header -->
@@ -56,7 +56,7 @@
       </div>
     </div>
   </div>
-
+  <!-- end of modal signup -->
 
   <!--HEADER > CONTENT-->
   <?= $this->renderSection('pageContent'); ?>
@@ -93,6 +93,16 @@
       </div>
     </form>
   </div>
+  <!-- end of modal -->
+  <!-- modal 2 -->
+
+
+
+  <!-- end of modal 2 -->
+
+
+
+
   <div>
     <div class="container mt-0 bg-secondary" style="margin-bottom: 90px">
       <div class="row">
