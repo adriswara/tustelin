@@ -40,7 +40,7 @@
                         Login
                     </button></a>
 
-                <a href="/Sign Up"><button class="btn" type="button" style="width: auto">
+                <a href="/Register"><button class="btn" type="button" style="width: auto">
                         Sign Up
                     </button> </a>
 

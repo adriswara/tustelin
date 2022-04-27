@@ -11,7 +11,9 @@ class Register extends Controller
     {
         //include helper form
         helper(['form']);
-        $data = [];
+        $data = [
+            'title' => 'Register'
+        ];
         echo view('logintest/register', $data);
     }
 
