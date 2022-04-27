@@ -10,9 +10,6 @@
                     <a class="nav-link" href="/">Home</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/Login">Beta_Login</a>
-                </li>
-                <li>
                     <a class="nav-link" href="/profile/index">Marketplace</a>
                 </li>
                 <li>
@@ -39,13 +36,13 @@
 
             -->
 
-                <button class="btn" type="button" onclick="document.getElementById('id01').style.display='block'" style="width: auto">
-                    Login
-                </button>
+                <a href="/Login"><button class="btn" type="button" style="width: auto">
+                        Login
+                    </button></a>
 
-                <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#myModal1" style="width: auto">
-                    Sign Up
-                </button>
+                <a href="/Sign Up"><button class="btn" type="button" style="width: auto">
+                        Sign Up
+                    </button> </a>
 
                 <img src="/img_avatar1.png" alt="Logo" style="width: 40px" class="rounded-pill" />
             </a>
