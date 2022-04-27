@@ -36,12 +36,12 @@
 
             -->
 
-                <a href="/Login"><button class="btn" type="button" style="width: auto">
-                        Login
+                <a href="Login/logout"><button class="btn" type="button" style="width: auto">
+                        Logout
                     </button></a>
 
-                <a href="/Register"><button class="btn" type="button" style="width: auto">
-                        Sign Up
+                <a href=""><button class="btn" type="button" style="width: auto">
+                        <?= $get_sess ?>
                     </button> </a>
 
                 <img src="/img_avatar1.png" alt="Logo" style="width: 40px" class="rounded-pill" />
