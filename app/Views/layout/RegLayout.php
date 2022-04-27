@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title><?= $title; ?></title>
+  <title>Register</title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Bootstrap CSS
@@ -16,7 +16,7 @@
 
 <body class="bg-secondary">
   <!--NAVBAR-->
-  <?= $this->include('layout/logdNavbar'); ?>
+  <?= $this->include('layout/navbar'); ?>
   <!--Modal Sign Up-->
 
   <!-- The Modal -->

@@ -11,6 +11,10 @@ class Dashboard extends Controller
     private $session = null;
     public function index()
     {
+        $data = [
+            'title' => 'Logged'
+        ];
+
         $this->session = session();
         //  $namaLog = $session->get('username_pengguna');
         $data['get_sess'] = $this->session->get('username_pengguna');

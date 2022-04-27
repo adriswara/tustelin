@@ -32,6 +32,7 @@ class Register extends Controller
         if ($this->validate($rules)) {
             $model = new UserModel();
             $data = [
+                'title' => 'Register',
                 'username_pengguna'     => $this->request->getVar('name'),
                 'email_pengguna'    => $this->request->getVar('email'),
                 'sandi_pengguna' => $this->request->getVar('password'), PASSWORD_DEFAULT //password_hash($this->request->getVar('password'), PASSWORD_DEFAULT)
