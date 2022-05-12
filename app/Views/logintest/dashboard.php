@@ -6,6 +6,6 @@
 
 welcome back <?= $get_sess ?>
 
-<a href="http://localhost:8080/login/logout"><button class="btn btn-primary" type="button"> Logout </button></a>
+<a href="/Dashboard/logged"><button class="btn btn-primary" type="button"> Direct to market </button></a>
 
 <?= $this->endSection(); ?>

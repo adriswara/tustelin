@@ -2,10 +2,25 @@
 
 namespace App\Controllers;
 
+
+use App\Models\AliranKomersilModel;
+use App\Models\FotograferModel;
+
+
 use CodeIgniter\Controller;
+
+
 
 class Dashboard extends Controller
 {
+
+    protected $fotograferModel;
+    public function __construct()
+    {
+        $this->fotograferModel = new FotograferModel();
+        $this->alirankomersilModel = new AliranKomersilModel();
+    }
+
     public $globalVariable = 'I am callable';
 
     private $session = null;
@@ -32,5 +47,59 @@ class Dashboard extends Controller
         //   'namaLoged' => $namaLog
         // ];
         echo view('logintest/dashboard', $data);
+    }
+    public function logged()
+    {
+        $arraytemp = $this->fotograferModel->joinkomersil()->getResult();
+        $arrayresult = array();
+        foreach ($arraytemp as $key) {
+            $arrayresult[] = json_decode(json_encode($key), true);;
+        }
+
+        $data = [
+
+            'title' => 'Daftar Fotografer',
+
+            'fotografer' => $arrayresult,
+
+        ];
+
+
+
+        $this->session = session();
+
+        $data['get_sess'] = $this->session->get('username_pengguna');
+
+        $data['global'] = $this->globalVariable;
+
+
+
+        $keyword = $this->request->getVar('keyword');
+
+        if ($keyword) {
+            $this->fotograferModel->search($keyword);
+        } else {
+            $fotografer = $this->fotograferModel;
+        }
+
+
+
+
+
+
+
+        d($data);
+
+
+
+
+
+
+
+
+
+        return view('pages/marketplace_pageLogd', $data);
+
+        // return redirect('pages/marketplace_pageLogd', $data);
     }
 }
