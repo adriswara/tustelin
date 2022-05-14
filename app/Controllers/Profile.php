@@ -74,6 +74,12 @@ class Profile extends BaseController
             'profil' => $this->fotograferModel->getFotografer($slug)
         ];
 
+        $this->session = session();
+
+        $data['get_sess'] = $this->session->get('username_pengguna');
+
+        // $data['global'] = $this->globalVariable;
+
         d($data);
         return view('pages/profile_page', $data);
     }

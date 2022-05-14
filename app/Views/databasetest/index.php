@@ -57,7 +57,7 @@
                     <?php foreach ($alat as $j) : ?>
                         <tr>
                             <th scope="row"><?= $j['id_alat']; ?></th>
-                            <td><?= $j['nama']; ?></td>
+                            <td><?= $j['nama_alat']; ?></td>
                             <td><?= $j['merek']; ?></td>
                             <td><?= $j['jenis']; ?></td>
                         </tr>
