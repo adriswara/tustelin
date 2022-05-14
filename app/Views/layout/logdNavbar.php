@@ -36,7 +36,7 @@
 
             -->
 
-                <a href="Login/logout"><button class="btn" type="button" style="width: auto">
+                <a href="http://localhost:8080/login/logout"><button class="btn" type="button" style="width: auto">
                         Logout
                     </button></a>
 
