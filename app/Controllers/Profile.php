@@ -78,8 +78,6 @@ class Profile extends BaseController
 
         $data['get_sess'] = $this->session->get('username_pengguna');
 
-        // $data['global'] = $this->globalVariable;
-
         d($data);
         return view('pages/profile_page', $data);
     }
