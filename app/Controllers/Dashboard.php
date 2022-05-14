@@ -72,8 +72,6 @@ class Dashboard extends Controller
 
         $data['global'] = $this->globalVariable;
 
-
-
         $keyword = $this->request->getVar('keyword');
 
         if ($keyword) {
@@ -82,21 +80,7 @@ class Dashboard extends Controller
             $fotografer = $this->fotograferModel;
         }
 
-
-
-
-
-
-
         d($data);
-
-
-
-
-
-
-
-
 
         return view('pages/marketplace_pageLogd', $data);
 
