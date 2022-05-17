@@ -63,6 +63,8 @@ class Login extends Controller
         }
     }
 
+
+
     public function logout()
     {
         $session = session();

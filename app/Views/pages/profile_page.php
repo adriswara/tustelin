@@ -143,6 +143,11 @@
 
       <!-- batas -->
     </div>
+    <!-- Gallery -->
+
+
+
+    <!-- close gallery -->
     <br />
     <div class="row justify-content-end" style="margin-right: 20rem">
       <!-- -->

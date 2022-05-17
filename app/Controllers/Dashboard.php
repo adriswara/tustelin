@@ -86,4 +86,19 @@ class Dashboard extends Controller
 
         // return redirect('pages/marketplace_pageLogd', $data);
     }
+
+    public function logedHome()
+    {
+        $data = [
+            'title' => 'Home | Web Fotografi'
+        ];
+
+        $this->session = session();
+
+        $data['get_sess'] = $this->session->get('username_pengguna');
+
+        d($data);
+
+        return view('pages/LogDhome_page', $data);
+    }
 }
