@@ -50,7 +50,7 @@ class DashboardAdmin extends Controller
         //     'title' => 'Loggedin',
         //   'namaLoged' => $namaLog
         // ];
-        echo view('logintest/dashboard', $data);
+        echo view('logintest/dashboardAdmin', $data);
     }
     public function logged()
     {
