@@ -1,7 +1,11 @@
 .marketplace__list .card {
-  width: 300px;
+  height: 100%;
+}
+
+.marketplace__list .card__wrapper {
   height: 450px;
   margin-bottom: 30px;
+  display: inline-block;
 }
 
 .marketplace__list .card__imgwrapper {
@@ -91,5 +95,23 @@
 
 .marketplace__list .card__body .type__arsitektur {
   background-color: #feffca;
+}
+
+.marketplace .dropdown {
+  display: inline-block;
+  float: right;
+}
+
+.marketplace .dropdown button {
+  width: 160px;
+  background: white;
+  text-align: left;
+  border: 1px solid grey;
+}
+
+.marketplace .dropdown .dropdown-toggle::after {
+  position: absolute;
+  right: 10px;
+  top: 44%;
 }
 /*# sourceMappingURL=marketplace.css.map */
