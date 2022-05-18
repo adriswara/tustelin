@@ -1,7 +1,11 @@
 .marketplace__list .card {
-  width: 300px;
+  height: 100%;
+}
+
+.marketplace__list .card__wrapper {
   height: 450px;
   margin-bottom: 30px;
+  display: inline-block;
 }
 
 .marketplace__list .card__imgwrapper {

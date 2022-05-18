@@ -51,7 +51,7 @@ class Profile extends BaseController
 
 
 
-        d($data);
+
 
         // $data = json_decode($data, true);
 

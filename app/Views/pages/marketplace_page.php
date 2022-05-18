@@ -80,7 +80,7 @@
 
 
       <!-- SEARCH BAR v2/ -->
-      <div class="dropdown" style="width: 20rem; margin-right: 0rem; margin-left: 71rem">
+      <div class="dropdown">
         Urutan Pencarian
         <button type="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown" style="width: 11rem">
           Urutkan
@@ -104,35 +104,33 @@
   </div>
 
   <div class="marketplace__list bg-light container">
-    <div class="row hidden-md-up justify-content-between">
+    <div class="row hidden-md-up">
       <?php foreach ($fotografer as $index => $k) : ?>
+        <div class="card__wrapper col-lg-3 col-md-4 col-sm-12">
+          <div class="card  px-0">
+            <div class="card__imgwrapper">
+              <img id="CardDi" class="card__img" src="/displaypic/<?= $k['displaypic']; ?>" alt="Card image" />
+              <img id="CardDp" src="/displaypic/<?= $k['displaypic']; ?>" alt="Logo" class="rounded-pill card__pp" />
+            </div>
 
-
-
-        <div class="card px-0">
-          <div class="card__imgwrapper">
-            <img id="CardDi" class="card__img" src="/displaypic/<?= $k['displaypic']; ?>" alt="Card image" />
-            <img id="CardDp" src="/displaypic/<?= $k['displaypic']; ?>" alt="Logo" class="rounded-pill card__pp" />
-          </div>
-
-          <!-- Card Body -->
-          <div class="card-body card__body">
-            <p class="harga">
-              <?= $k['harga']; ?>
-            </p>
-            <h4 class="card-title mb-0"><?= $k['nama']; ?></h4>
-            <p class="account card-text text-secondary ">
-              <?= $k['akun_instagram']; ?>
-            </p>
-            <p class="type type__<?= $k['nama_aliran']; ?>"> Foto <?= $k['nama_aliran']; ?> </p>
-            <p class="button">
-              <a href="/Login"><button class="btn btn-primary">See Profile</button></a>
-            </p>
+            <!-- Card Body -->
+            <div class="card-body card__body">
+              <p class="harga">
+                <?= $k['harga']; ?>
+              </p>
+              <h4 class="card-title mb-0"><?= $k['nama']; ?></h4>
+              <p class="account card-text text-secondary ">
+                <?= $k['akun_instagram']; ?>
+              </p>
+              <p class="type type__<?= $k['nama_aliran']; ?>"> Foto <?= $k['nama_aliran']; ?> </p>
+              <p class="button">
+                <a href="/Login"><button class="btn btn-primary">See Profile</button></a>
+              </p>
+            </div>
           </div>
         </div>
-        <?php if ($index % 3 == 0 && $index != 0) { ?>
-          <div class="w-100"></div>
-        <?php } ?>
+
+
       <?php endforeach; ?>
 
     </div>
