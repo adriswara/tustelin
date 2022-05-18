@@ -6,6 +6,6 @@
 
 welcome back <?= $get_sess ?>
 
-<a href="/Dashboard/logged"><button class="btn btn-primary" type="button"> Direct to market </button></a>
+<a href="/databasetest"><button class="btn btn-primary" type="button"> Direct to admin dashboard </button></a>
 
 <?= $this->endSection(); ?>

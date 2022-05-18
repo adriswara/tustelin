@@ -1,12 +1,12 @@
-<?= $this->extend('layout/page_layout'); ?>
+<?= $this->extend('layout/logdLayout'); ?>
 
 <?= $this->section('pageContent'); ?>
-<h1>INI INDEX PHP YANG JADI TABEL BETA</h1>
-<div class="containter bg-light" style="height:30vh">
+<h1 class="bg-light"> INI INDEX PHP YANG JADI TABEL BETA</h1>
+<div class="container bg-light" style="height:150vh">
     <div class="row">
         <div class="col">
-            <h1>Tabel Fotografer</h1>
-            <table class="table bg-dark text-light">
+            <h1 class="bg-light">Tabel Fotografer</h1>
+            <table class="table  text-dark bg-light ">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -26,8 +26,8 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
-            <h1>Tabel Fotografer</h1>
-            <table class="table bg-light">
+            <h1 class="bg-light">Tabel Fotografer</h1>
+            <table class="table text-dark bg-light">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -43,8 +43,8 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
-            <h1>Tabel Fotografer</h1>
-            <table class="table bg-light">
+            <h1 class="bg-light">Tabel Fotografer</h1>
+            <table class="table text-dark bg-light">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -67,5 +67,4 @@
         </div>
     </div>
 </div>
-<!-- <?php //$this->endSection(); 
-        ?> -->
+<?php $this->endSection(); ?>

@@ -33,7 +33,9 @@ class DatabaseTest extends BaseController
         ];
 
         //$fotograferModel = new \App\Models\FotograferModel();
-
+        $this->session = session();
+        $data['get_sess'] = $this->session->get('username_admin');
+        d($data);
 
 
 
