@@ -5,13 +5,14 @@ namespace App\Controllers;
 
 use App\Models\AliranKomersilModel;
 use App\Models\FotograferModel;
+use App\Models\AdminModel;
 
 
 use CodeIgniter\Controller;
 
 
 
-class Dashboard extends Controller
+class DashboardAdmin extends Controller
 {
 
     protected $fotograferModel;
@@ -19,6 +20,7 @@ class Dashboard extends Controller
     {
         $this->fotograferModel = new FotograferModel();
         $this->alirankomersilModel = new AliranKomersilModel();
+        $this->adminModel = new AdminModel();
     }
 
     public $globalVariable = 'I am callable';
@@ -32,7 +34,7 @@ class Dashboard extends Controller
 
         $this->session = session();
         //  $namaLog = $session->get('username_pengguna');
-        $data['get_sess'] = $this->session->get('username_pengguna');
+        $data['get_sess'] = $this->session->get('username_admin');
 
         //echo $namaLog;
         //$output = ob_get_contents();
@@ -70,7 +72,7 @@ class Dashboard extends Controller
 
         $this->session = session();
 
-        $data['get_sess'] = $this->session->get('username_pengguna');
+        $data['get_sess'] = $this->session->get('admin_pengguna');
 
         $data['global'] = $this->globalVariable;
 
@@ -97,7 +99,7 @@ class Dashboard extends Controller
 
         $this->session = session();
 
-        $data['get_sess'] = $this->session->get('username_pengguna');
+        $data['get_sess'] = $this->session->get('username_admin');
 
         d($data);
 

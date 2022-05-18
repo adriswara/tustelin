@@ -24,6 +24,8 @@ class Home extends BaseController
 		echo view('pages/home_page', $data);
 	}
 
+
+
 	public function profile()
 	{
 

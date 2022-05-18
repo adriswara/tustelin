@@ -130,7 +130,7 @@
               </p>
               <p class="card-text"> <?= $k['nama_aliran']; ?> </p>
               <p>
-                <a href="/Profile/<?= $k['slug']; ?>"><button class="btn btn-primary">See Profile</button></a>
+                <a href="/Login"><button class="btn btn-primary">See Profile</button></a>
               </p>
             </div>
           </div>

@@ -11,20 +11,20 @@
             <?php if (session()->getFlashdata('msg')) : ?>
                 <div class="alert alert-danger"><?= session()->getFlashdata('msg') ?></div>
             <?php endif; ?>
-            <form action="/login/auth" method="post">
+            <form action="/loginAdmin/auth" method="post">
                 <div class="mb-3">
-                    <label for="InputForEmail" class="form-label">Email address</label>
-                    <input type="email" name="email" class="form-control" id="InputForEmail" value="<?= set_value('email') ?>">
+                    <label for="InputForEmail" class="form-label">Admin Email address</label>
+                    <input type="email" name="email_admin" class="form-control" id="InputForEmail" value="<?= set_value('email_admin') ?>">
                 </div>
                 <div class="mb-3">
-                    <label for="InputForPassword" class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" id="InputForPassword">
+                    <label for="InputForPassword" class="form-label">Admin Password</label>
+                    <input type="password" name="password_admin" class="form-control" id="InputForPassword">
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary">Login</button>
                 <br>
                 <br>
-                <h5><a href="/LoginAdmin"><i>Admin Login</i></a></h5>
+                <h5><a href="/Login"><i>User Login</i></a></h5>
                 <br>
             </form>
         </div>

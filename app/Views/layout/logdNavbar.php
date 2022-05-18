@@ -7,14 +7,14 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/dashboard/logedHome">Home</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/profile/index">Marketplace</a>
+                    <a class="nav-link" href="/Dashboard/logged">Marketplace</a>
                 </li>
-                <li>
+                <!-- <li>
                     <a class="nav-link" href="/databasetest">Beta_database</a>
-                </li>
+                </li> -->
                 <li></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle pl-1" href="#" role="button" data-bs-toggle="dropdown">Kategori Jasa</a>
@@ -36,13 +36,13 @@
 
             -->
 
-                <a href="Login/logout"><button class="btn" type="button" style="width: auto">
+                <a href="http://localhost:8080/login/logout"><button class="btn" type="button" style="width: auto">
                         Logout
                     </button></a>
 
-                <a href=""><button class="btn" type="button" style="width: auto">
-                        <?= $get_sess ?>
-                    </button> </a>
+                <button class="btn" type="button" style="width: auto">
+                    <?= $get_sess ?>
+                </button>
 
                 <img src="/img_avatar1.png" alt="Logo" style="width: 40px" class="rounded-pill" />
             </a>
