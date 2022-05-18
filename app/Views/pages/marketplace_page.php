@@ -52,9 +52,9 @@
   <div class=" py-5 container">
     <div class="justify-content-center">
       <h2 class="justify-content-center mt-2">
-        Hasil Pencarian Anda
+        Hasil Pencarian Fotografer Anda
       </h2>
-      <p class="justify-content-center">Pencarian :
+      <p class="justify-content-center">Fotografer yang ditemukan <?= (count($fotografer) > 0 ? count($fotografer) : 0); ?> item
       <p id="hasilSrc"></p>
       </p>
       <!--  -->
