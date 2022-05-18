@@ -124,4 +124,7 @@ nb-configuration.xml
 /results/
 /phpunit*.xml
 /.phpunit.*.cache
-
+spark
+composer.lock
+public/css/*.css.map
+public/css/*.scss
