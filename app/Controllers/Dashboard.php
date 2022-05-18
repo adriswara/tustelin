@@ -33,6 +33,7 @@ class Dashboard extends Controller
         $this->session = session();
         //  $namaLog = $session->get('username_pengguna');
         $data['get_sess'] = $this->session->get('username_pengguna');
+
         //echo $namaLog;
         //$output = ob_get_contents();
         //parse_str($output);
@@ -41,6 +42,7 @@ class Dashboard extends Controller
         //echo "Welcome back, "  ; //$session->get('username_pengguna');
         //  $data['get_session'] = $this->$namaLog;
         $data['global'] = $this->globalVariable;
+        $this->session->sess_expiration = '3600';
         //   $data = [
 
         //     'title' => 'Loggedin',
@@ -80,7 +82,7 @@ class Dashboard extends Controller
             $fotografer = $this->fotograferModel;
         }
 
-        d($data);
+        d($data, $this->session->sess_expiration);
 
         return view('pages/marketplace_pageLogd', $data);
 
