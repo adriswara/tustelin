@@ -47,14 +47,15 @@
 </nav>
 <!-- nav 2 -->
 
-<div class="bg-secondary" style="margin-top: -1rem; margin-bottom: 1rem">
+<div class="bg-secondary marketplace" style="margin-top: -1rem; margin-bottom: 1rem">
   <!-- Card -->
   <div class="bg-light py-5">
     <div class="justify-content-center" style="margin-left: 20rem; margin-right: -10rem">
       <h2 class="justify-content-center" style="margin-top: 1rem">
         Hasil Pencarian Anda
       </h2>
-      <p class="justify-content-center">Pencarian : <p id="hasilSrc"></p>
+      <p class="justify-content-center">Pencarian :
+      <p id="hasilSrc"></p>
       </p>
       <!--  -->
       <script>
