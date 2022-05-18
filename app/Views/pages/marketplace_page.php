@@ -55,7 +55,7 @@
         Hasil Pencarian Fotografer Anda
       </h2>
       <p class="justify-content-center">Fotografer yang ditemukan <?= (count($fotografer) > 0 ? count($fotografer) : 0); ?> item
-      <p id="hasilSrc"></p>
+        <p id="hasilSrc"></p>
       </p>
       <!--  -->
       <script>
@@ -106,27 +106,6 @@
   <div class="marketplace__list bg-light container">
     <div class="row hidden-md-up">
       <?php foreach ($fotografer as $index => $k) : ?>
-<<<<<<< HEAD
-        <div class="card px-0">
-          <div class="card__imgwrapper">
-            <img id="CardDi" class="card__img" src="/displaypic/<?= $k['displaypic']; ?>" alt="Card image" />
-            <img id="CardDp" src="/displaypic/<?= $k['displaypic']; ?>" alt="Logo" class="rounded-pill card__pp" />
-          </div>
-
-          <!-- Card Body -->
-          <div class="card-body card__body">
-            <p class="harga">
-              <?= $k['harga']; ?>
-            </p>
-            <h4 class="card-title mb-0"><?= $k['nama']; ?></h4>
-            <p class="account card-text text-secondary ">
-              <?= $k['akun_instagram']; ?>
-            </p>
-            <p class="type type__<?= $k['nama_aliran']; ?>"> Foto <?= $k['nama_aliran']; ?> </p>
-            <p class="button">
-              <a href="/Login"><button class="btn btn-primary">See Profile</button></a>
-            </p>
-=======
         <div class="card__wrapper col-lg-3 col-md-4 col-sm-12">
           <div class="card  px-0">
             <div class="card__imgwrapper">
@@ -148,7 +127,6 @@
                 <a href="/Login"><button class="btn btn-primary">See Profile</button></a>
               </p>
             </div>
->>>>>>> dev/css
           </div>
         </div>
 
