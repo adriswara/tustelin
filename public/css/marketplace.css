@@ -1,1 +1,95 @@
-/* No CSS *//*# sourceMappingURL=marketplace.css.map */
+.marketplace__list .card {
+  width: 300px;
+  height: 450px;
+  margin-bottom: 30px;
+}
+
+.marketplace__list .card__imgwrapper {
+  position: relative;
+}
+
+.marketplace__list .card__imgwrapper::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  opacity: 0.3;
+  background-color: black;
+}
+
+.marketplace__list .card__imgwrapper .card__img {
+  height: 200px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.marketplace__list .card__imgwrapper .card__pp {
+  width: 70px;
+  height: 70px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  top: 80%;
+  left: 10px;
+  z-index: 5;
+}
+
+.marketplace__list .card__body .harga {
+  text-align: right;
+  color: #0069d5;
+}
+
+.marketplace__list .card__body .account {
+  font-size: 15px;
+}
+
+.marketplace__list .card__body .button {
+  position: absolute;
+  width: calc(100% - 35px);
+  bottom: 0;
+}
+
+.marketplace__list .card__body .type {
+  padding: 5px 10px;
+  background-color: #dbe9ff;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+
+.marketplace__list .card__body .type__makanan {
+  background-color: #ffdd81;
+}
+
+.marketplace__list .card__body .type__modelling {
+  background-color: #ebcdff;
+}
+
+.marketplace__list .card__body .type__keluarga {
+  background-color: #d4fdc9;
+}
+
+.marketplace__list .card__body .type__acara {
+  background-color: #ffd1d1;
+}
+
+.marketplace__list .card__body .type__produk {
+  background-color: #c6d6f8;
+}
+
+.marketplace__list .card__body .type__jasa {
+  background-color: #ffdaee;
+}
+
+.marketplace__list .card__body .type__pribadi {
+  background-color: #d6feff;
+}
+
+.marketplace__list .card__body .type__arsitektur {
+  background-color: #feffca;
+}
+/*# sourceMappingURL=marketplace.css.map */
