@@ -124,7 +124,7 @@
               </p>
               <p class="type type__<?= $k['nama_aliran']; ?>"> Foto <?= $k['nama_aliran']; ?> </p>
               <p class="button">
-                <a href="/Login"><button class="btn btn-primary">See Profile</button></a>
+                <a href=<?= (isset($get_sess)) ? "/Profile/" . $k['slug'] : "/Login" ?>><button class="btn btn-primary">See Profile</button></a>
               </p>
             </div>
           </div>

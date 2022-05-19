@@ -16,7 +16,7 @@
 
 <body class="bg-secondary">
   <!--NAVBAR-->
-  <?= $this->include('layout/logdNavbar'); ?>
+  <?= $this->include('layout/navbar'); ?>
   <!--Modal Sign Up-->
 
   <!-- The Modal -->

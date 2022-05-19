@@ -1,4 +1,4 @@
-<?= $this->extend('layout/logdLayout'); ?>
+<?= $this->extend('layout/page_layout'); ?>
 
 <?= $this->section('pageContent'); ?>
 <h1 class="bg-light"> INI INDEX PHP YANG JADI TABEL BETA</h1>

@@ -36,7 +36,7 @@
 
             -->
                 <?php if (isset($get_sess)) : ?>
-                    <a href="http://localhost:8080/login/logout">
+                    <a href="/login/logout">
                         <button class="btn" type="button" style="width: auto">
                             Logout
                         </button>
