@@ -68,10 +68,10 @@ class DatabaseTest extends BaseController
         return view('databasetest/index', $data);
         //return view('pages/marketplace_page', $data);
     }
-    public function delete($id)
+
+
+    public function deletePengguna($id)
     {
-
-
         $this->userModel->where('id_pengguna', $id)->delete();
         return redirect()->to('/Databasetest');
     }

@@ -48,7 +48,7 @@
                             <td><?= $k['sandi_pengguna']; ?></td>
                             <td><?= $k['email_pengguna']; ?></td>
                             <td><button class="btn btn-warning">Edit</button></td>
-                            <td><a href="/DatabaseTest/delete/<?= $k['id_pengguna']; ?>" class="btn btn-danger">Delete</a></td>
+                            <td><a onclick="buttonConfirm()" href="/DatabaseTest/deletePengguna/<?= $k['id_pengguna']; ?>" class="btn btn-danger">Delete</a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -196,4 +196,9 @@
         </div>
     </div>
 </div>
+<script>
+    function buttonConfirm() {
+        confirm("Confirm Delete?");
+    }
+</script>
 <?php $this->endSection(); ?>
