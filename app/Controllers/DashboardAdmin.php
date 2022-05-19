@@ -86,7 +86,7 @@ class DashboardAdmin extends Controller
 
         d($data, $this->session->sess_expiration);
 
-        return view('pages/marketplace_pageLogd', $data);
+        return view('pages/marketplace_page', $data);
 
         // return redirect('pages/marketplace_pageLogd', $data);
     }
