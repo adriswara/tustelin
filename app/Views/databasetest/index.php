@@ -29,6 +29,30 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
+            <h1 class="bg-light">Tabel Pengguna</h1>
+            <table class="table  text-dark bg-light ">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Sandi</th>
+                        <th scope="col">Email</th>
+                        <th><button class="btn btn-primary">Add</button></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($user as $k) : ?>
+                        <tr>
+                            <th scope="row"><?= $k['id_pengguna']; ?></th>
+                            <td><?= $k['username_pengguna']; ?></td>
+                            <td><?= $k['sandi_pengguna']; ?></td>
+                            <td><?= $k['email_pengguna']; ?></td>
+                            <td><button class="btn btn-warning">Edit</button></td>
+                            <td><a href="/DatabaseTest/delete/<?= $k['id_pengguna']; ?>" class="btn btn-danger">Delete</a></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
             <h1 class="bg-light">Tabel Komersil</h1>
             <table class="table text-dark bg-light">
                 <thead>
