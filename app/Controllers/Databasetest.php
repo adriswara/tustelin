@@ -82,7 +82,7 @@ class DatabaseTest extends BaseController
         return view('databasetest/createFotografer', $data);
     }
 
-    public function save()
+    public function saveFotografer()
     {
         // dd($this->request->getVar());
         $slug = url_title($this->request->getVar('nama'), '-', true);
@@ -92,6 +92,9 @@ class DatabaseTest extends BaseController
             'displaypic' => $this->request->getVar('displaypic'),
             'akun_instagram' => $this->request->getVar('akun_instagram')
         ]);
+
+        session()->setFlashdata('pesan', 'Input berhasil');
+
         return redirect()->to('/databasetest');
     }
 

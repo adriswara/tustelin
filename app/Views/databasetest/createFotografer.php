@@ -5,7 +5,7 @@
     <div class="row">
         <div class="row-8">
             <h2 class="">Form Input Data </h2>
-            <form action="/Databasetest/save" method="post">
+            <form action="/Databasetest/saveFotografer" method="post">
                 <?= csrf_field(); ?>
                 <div class="mb-3">
                     <label for="displaypic" class="form-label">Display Pic</label>
