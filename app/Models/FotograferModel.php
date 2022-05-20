@@ -8,6 +8,7 @@ class FotograferModel extends Model
 {
     protected $table      = 'fotografer';
     protected $primaryKey = 'id_fotografer';
+    protected $allowedFields = ['nama', 'slug', 'displaypic', 'akun_instagram'];
 
     public function getFotografer($slug = false)
     {

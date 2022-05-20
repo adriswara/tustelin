@@ -70,6 +70,31 @@ class DatabaseTest extends BaseController
     }
 
 
+    public function createFotografer()
+    {
+        $data = [
+            'title' => 'Form Tambah Data Fotografer'
+        ];
+
+        $this->session = session();
+        $data['get_sess'] = $this->session->get('username_admin');
+
+        return view('databasetest/createFotografer', $data);
+    }
+
+    public function save()
+    {
+        // dd($this->request->getVar());
+        $slug = url_title($this->request->getVar('nama'), '-', true);
+        $this->fotograferModel->save([
+            'nama' => $this->request->getVar('nama'),
+            'slug' => $slug,
+            'displaypic' => $this->request->getVar('displaypic'),
+            'akun_instagram' => $this->request->getVar('akun_instagram')
+        ]);
+        return redirect()->to('/databasetest');
+    }
+
     public function deleteFotografer($id)
     {
         $this->fotograferModel->where('id_fotografer', $id)->delete();

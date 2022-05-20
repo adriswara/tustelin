@@ -13,7 +13,7 @@
                         <th scope="col">Display</th>
                         <th scope="col">Nama</th>
                         <th scope="col">Instagram</th>
-                        <th><button class="btn btn-primary">Add</button></th>
+                        <th><a href="/DatabaseTest/createFotografer" class="btn btn-primary ">Add</a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,7 +68,7 @@
                             <th scope="row"><?= $i['id_komersil']; ?></th>
                             <td><?= $i['nama_aliran']; ?></td>
                             <td><button class="btn btn-warning">Edit</button></td>
-                            <td><a onclick="buttonConfirm()" href="/DatabaseTest/deleteKomersil/<?= $k['id_komersil']; ?>" class="btn btn-danger">Delete</button></td>
+                            <td><a onclick="buttonConfirm()" href="/DatabaseTest/deleteKomersil/<?= $i['id_komersil']; ?>" class="btn btn-danger">Delete</button></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -92,7 +92,7 @@
                             <td><?= $j['merek']; ?></td>
                             <td><?= $j['jenis']; ?></td>
                             <td><button class="btn btn-warning">Edit</button></td>
-                            <td><a onclick="buttonConfirm()" href="/DatabaseTest/deleteAlat/<?= $k['id_alat']; ?>" class="btn btn-danger">Delete</button></td>
+                            <td><a onclick="buttonConfirm()" href="/DatabaseTest/deleteAlat/<?= $j['id_alat']; ?>" class="btn btn-danger">Delete</button></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -116,7 +116,7 @@
                             <td><?= $j['password_admin']; ?></td>
                             <td><?= $j['email_admin']; ?></td>
                             <td><button class="btn btn-warning">Edit</button></td>
-                            <td><a onclick="buttonConfirm()" href="/DatabaseTest/deleteAdmin/<?= $k['id_admin']; ?>" class="btn btn-danger">Delete</button></td>
+                            <td><a onclick="buttonConfirm()" href="/DatabaseTest/deleteAdmin/<?= $j['id_admin']; ?>" class="btn btn-danger">Delete</button></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -136,7 +136,7 @@
                             <th scope="row"><?= $j['id_kota']; ?></th>
                             <td><?= $j['nama_kota']; ?></td>
                             <td><button class="btn btn-warning">Edit</button></td>
-                            <td><a onclick="buttonConfirm()" href="/DatabaseTest/deleteKota/<?= $k['id_kota']; ?>" class="btn btn-danger">Delete</button></td>
+                            <td><a onclick="buttonConfirm()" href="/DatabaseTest/deleteKota/<?= $j['id_kota']; ?>" class="btn btn-danger">Delete</button></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -164,7 +164,7 @@
                             <td><?= $j['rating']; ?></td>
                             <td><?= $j['waktu_kirim']; ?></td>
                             <td><button class="btn btn-warning">Edit</button></td>
-                            <td><a onclick="buttonConfirm()" href="/DatabaseTest/deleteReview/<?= $k['id_review']; ?>" class="btn btn-danger">Delete</button></td>
+                            <td><a onclick="buttonConfirm()" href="/DatabaseTest/deleteReview/<?= $j['id_review']; ?>" class="btn btn-danger">Delete</button></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
@@ -188,7 +188,7 @@
                             <td><?= $j['judul']; ?></td>
                             <td><?= $j['file_foto']; ?></td>
                             <td><button class="btn btn-warning">Edit</button></td>
-                            <td><a onclick="buttonConfirm()" href="/DatabaseTest/deleteFoto/<?= $k['id_foto']; ?>" class="btn btn-danger">Delete</button></td>
+                            <td><a onclick="buttonConfirm()" href="/DatabaseTest/deleteFoto/<?= $j['id_foto']; ?>" class="btn btn-danger">Delete</button></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

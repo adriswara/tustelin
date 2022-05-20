@@ -79,6 +79,13 @@ class Profile extends BaseController
         $data['get_sess'] = $this->session->get('username_pengguna');
 
         d($data);
+
+        // untuk exception not found
+
+        if (empty($data['profil'])) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Fotografer' . $slug . 'tidak ditemukan');
+        }
+
         return view('pages/profile_page', $data);
     }
 }
