@@ -46,7 +46,7 @@
                         <th scope="col">Nama</th>
                         <th scope="col">Sandi</th>
                         <th scope="col">Email</th>
-                        <th><button class="btn btn-primary">Add</button></th>
+                        <th><a href="/DatabaseTest/createPengguna" class="btn btn-primary ">Add</a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,7 +68,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Komersil</th>
-                        <th><button class="btn btn-primary">Add</button></th>
+                        <th><a href="/DatabaseTest/createKomersil" class="btn btn-primary ">Add</a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -90,7 +90,7 @@
                         <th scope="col">nama</th>
                         <th scope="col">merek</th>
                         <th scope="col">jenis</th>
-                        <th><button class="btn btn-primary">Add</button></th>
+                        <th><a href="/DatabaseTest/createAlat" class="btn btn-primary ">Add</a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -114,7 +114,7 @@
                         <th scope="col">nama</th>
                         <th scope="col">password</th>
                         <th scope="col">email</th>
-                        <th><button class="btn btn-primary">Add</button></th>
+                        <th><a href="/DatabaseTest/createAdmin" class="btn btn-primary ">Add</a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -136,7 +136,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">nama kota</th>
-                        <th><button class="btn btn-primary">Add</button></th>
+                        <th><a href="/DatabaseTest/createKota" class="btn btn-primary ">Add</a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -160,7 +160,7 @@
                         <th scope="col">review</th>
                         <th scope="col">rating</th>
                         <th scope="col">waktu_kirim</th>
-                        <th><button class="btn btn-primary">Add</button></th>
+                        <th><a href="/DatabaseTest/createReview" class="btn btn-primary ">Add</a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -186,7 +186,7 @@
                         <th scope="col">fotografer</th>
                         <th scope="col">judul</th>
                         <th scope="col">file_foto</th>
-                        <th><button class="btn btn-primary">Add</button></th>
+                        <th><a href="/DatabaseTest/createFoto" class="btn btn-primary ">Add</a></th>
                     </tr>
                 </thead>
                 <tbody>

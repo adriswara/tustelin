@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="password_admin" class="form-label">Sandi Pengguna</label>
+                    <label for="password_admin" class="form-label">Sandi Admin</label>
                     <input type="text" name="password_admin" class="form-control" id="password_admin" autofocus>
                 </div>
                 <div class="mb-3">

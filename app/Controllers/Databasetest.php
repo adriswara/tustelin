@@ -69,6 +69,69 @@ class DatabaseTest extends BaseController
         //return view('pages/marketplace_page', $data);
     }
 
+    public function createAdmin()
+    {
+
+        $this->session = session();
+
+        $data = [
+            'title' => 'Form Tambah Data Admin',
+            'validation' => \Config\Services::validation()
+        ];
+
+
+        $data['get_sess'] = $this->session->get('username_admin');
+
+        return view('databasetest/createAdmin', $data);
+    }
+
+    public function createAlat()
+    {
+
+        $this->session = session();
+
+        $data = [
+            'title' => 'Form Tambah Data Alat',
+            'validation' => \Config\Services::validation()
+        ];
+
+
+        $data['get_sess'] = $this->session->get('username_admin');
+
+        return view('databasetest/createAlat', $data);
+    }
+
+    public function createKomersil()
+    {
+
+        $this->session = session();
+
+        $data = [
+            'title' => 'Form Tambah Data Aliran',
+            'validation' => \Config\Services::validation()
+        ];
+
+
+        $data['get_sess'] = $this->session->get('username_admin');
+
+        return view('databasetest/createKomersil', $data);
+    }
+
+    public function createFoto()
+    {
+
+        $this->session = session();
+
+        $data = [
+            'title' => 'Form Tambah Data Foto',
+            'validation' => \Config\Services::validation()
+        ];
+
+
+        $data['get_sess'] = $this->session->get('username_admin');
+
+        return view('databasetest/createFoto', $data);
+    }
 
     public function createFotografer()
     {
@@ -85,6 +148,55 @@ class DatabaseTest extends BaseController
 
         return view('databasetest/createFotografer', $data);
     }
+
+    public function createKota()
+    {
+
+        $this->session = session();
+
+        $data = [
+            'title' => 'Form Tambah Data Kota',
+            'validation' => \Config\Services::validation()
+        ];
+
+
+        $data['get_sess'] = $this->session->get('username_admin');
+
+        return view('databasetest/createKota', $data);
+    }
+
+    public function createPengguna()
+    {
+
+        $this->session = session();
+
+        $data = [
+            'title' => 'Form Tambah Data Pengguna',
+            'validation' => \Config\Services::validation()
+        ];
+
+
+        $data['get_sess'] = $this->session->get('username_admin');
+
+        return view('databasetest/createPengguna', $data);
+    }
+
+    public function createReview()
+    {
+
+        $this->session = session();
+
+        $data = [
+            'title' => 'Form Tambah Data Review',
+            'validation' => \Config\Services::validation()
+        ];
+
+
+        $data['get_sess'] = $this->session->get('username_admin');
+
+        return view('databasetest/createReview', $data);
+    }
+
 
     public function saveFotografer()
     {
