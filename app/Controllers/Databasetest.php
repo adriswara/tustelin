@@ -72,11 +72,15 @@ class DatabaseTest extends BaseController
 
     public function createFotografer()
     {
-        $data = [
-            'title' => 'Form Tambah Data Fotografer'
-        ];
 
         $this->session = session();
+
+        $data = [
+            'title' => 'Form Tambah Data Fotografer',
+            'validation' => \Config\Services::validation()
+        ];
+
+
         $data['get_sess'] = $this->session->get('username_admin');
 
         return view('databasetest/createFotografer', $data);
@@ -85,6 +89,20 @@ class DatabaseTest extends BaseController
     public function saveFotografer()
     {
         // dd($this->request->getVar());
+
+        if (!$this->validate([
+            'nama' => [
+                'rules' => 'required|is_unique[fotografer.nama]',
+                'errors' => [
+                    'required' => '{field} nama harus diisi.',
+                    'is_unique' => '{field} nama sudah terdaftar'
+                ]
+            ]
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('databasetest/createFotografer')->withInput()->with('validation', $validation);
+        }
+
         $slug = url_title($this->request->getVar('nama'), '-', true);
         $this->fotograferModel->save([
             'nama' => $this->request->getVar('nama'),
@@ -92,6 +110,7 @@ class DatabaseTest extends BaseController
             'displaypic' => $this->request->getVar('displaypic'),
             'akun_instagram' => $this->request->getVar('akun_instagram')
         ]);
+
 
         session()->setFlashdata('pesan', 'Input berhasil');
 
