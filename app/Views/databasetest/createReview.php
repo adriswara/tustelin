@@ -5,19 +5,27 @@
     <div class="row">
         <div class="row-8">
             <h2 class="">Form Input Data </h2>
-            <form action="/Databasetest/savePengguna" method="post">
+            <form action="/Databasetest/saveReview" method="post">
                 <?= csrf_field(); ?>
                 <div class="mb-3">
-                    <label for="username_pengguna" class="form-label"> username </label>
-                    <input type="text" name="username_pengguna" class="form-control" id="username_pengguna">
+                    <label for="if_fotografer" class="form-label"> No Id Fotografer </label>
+                    <input type="text" name="if_fotografer" class="form-control" id="if_fotografer">
                 </div>
                 <div class="mb-3">
-                    <label for="sandi_pengguna" class="form-label">Sandi Pengguna</label>
-                    <input type="text" name="sandi_pengguna" class="form-control" id="sandi_pengguna" autofocus>
+                    <label for="id_pengguna" class="form-label">No Id Pengguna</label>
+                    <input type="text" name="id_pengguna" class="form-control" id="id_pengguna" autofocus>
                 </div>
                 <div class="mb-3">
-                    <label for="email_pengguna" class="form-label">Email</label>
-                    <input type="text" name="email_pengguna" class="form-control" id="email_pengguna">
+                    <label for="review" class="form-label">Review</label>
+                    <input type="text" name="review" class="form-control" id="review">
+                </div>
+                <div class="mb-3">
+                    <label for="Rating" class="form-label">Rating</label>
+                    <input type="text" name="Rating" class="form-control" id="Rating">
+                </div>
+                <div class="mb-3">
+                    <label for="waktu_kirim" class="form-label">waktu kirim</label>
+                    <input type="text" name="waktu_kirim" class="form-control" id="waktu_kirim">
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary">Submit</button>

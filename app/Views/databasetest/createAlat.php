@@ -5,19 +5,19 @@
     <div class="row">
         <div class="row-8">
             <h2 class="">Form Input Data </h2>
-            <form action="/Databasetest/savePengguna" method="post">
+            <form action="/Databasetest/saveAlat" method="post">
                 <?= csrf_field(); ?>
                 <div class="mb-3">
-                    <label for="username_pengguna" class="form-label"> username </label>
-                    <input type="text" name="username_pengguna" class="form-control" id="username_pengguna">
+                    <label for="nama_alat" class="form-label"> Nama Alat </label>
+                    <input type="text" name="nama_alat" class="form-control" id="nama_alat">
                 </div>
                 <div class="mb-3">
-                    <label for="sandi_pengguna" class="form-label">Sandi Pengguna</label>
-                    <input type="text" name="sandi_pengguna" class="form-control" id="sandi_pengguna" autofocus>
+                    <label for="merek" class="form-label">Merek</label>
+                    <input type="text" name="merek" class="form-control" id="merek" autofocus>
                 </div>
                 <div class="mb-3">
-                    <label for="email_pengguna" class="form-label">Email</label>
-                    <input type="text" name="email_pengguna" class="form-control" id="email_pengguna">
+                    <label for="jenis" class="form-label">Jenis Alat</label>
+                    <input type="text" name="jenis" class="form-control" id="jenis">
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary">Submit</button>
