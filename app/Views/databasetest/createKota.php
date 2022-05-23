@@ -9,7 +9,7 @@
                 <?= csrf_field(); ?>
                 <div class="mb-3">
                     <label for="nama_kota" class="form-label"> Nama Kota </label>
-                    <input type="text" name="nama_kota" class="form-control" id="nama_kota">
+                    <input type="text" name="nama_kota" class="form-control" id="nama_kota" value="<?= old('nama_kota'); ?>">
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary">Submit</button>

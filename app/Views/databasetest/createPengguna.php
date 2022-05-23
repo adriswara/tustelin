@@ -16,11 +16,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="sandi_pengguna" class="form-label">Sandi Pengguna</label>
-                    <input type="text" name="sandi_pengguna" class="form-control" id="sandi_pengguna" autofocus>
+                    <input type="text" name="sandi_pengguna" class="form-control" id="sandi_pengguna" value="<?= old('sandi_pengguna'); ?>">
                 </div>
                 <div class="mb-3">
                     <label for="email_pengguna" class="form-label">Email</label>
-                    <input type="text" name="email_pengguna" class="form-control" id="email_pengguna">
+                    <input type="text" name="email_pengguna" class="form-control" id="email_pengguna" value="<?= old('email_pengguna'); ?>">
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary">Submit</button>

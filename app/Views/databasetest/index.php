@@ -2,7 +2,7 @@
 
 <?= $this->section('pageContent'); ?>
 <h1 class="bg-light"> INI INDEX PHP YANG JADI TABEL BETA</h1>
-<div class="container bg-light" style="">
+<div class="container bg-light">
     <div class="row">
         <div class="col">
             <h1 class="bg-light">Tabel Fotografer</h1>

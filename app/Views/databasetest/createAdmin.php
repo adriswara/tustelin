@@ -16,11 +16,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="password_admin" class="form-label">Sandi Admin</label>
-                    <input type="text" name="password_admin" class="form-control" id="password_admin" autofocus>
+                    <input type="text" name="password_admin" class="form-control" id="password_admin" value="<?= old('password_admin'); ?>">
                 </div>
                 <div class="mb-3">
                     <label for="email_admin" class="form-label">Email</label>
-                    <input type="text" name="email_admin" class="form-control" id="email_admin">
+                    <input type="text" name="email_admin" class="form-control" id="email_admin" value="<?= old('email_admin'); ?>">
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary">Submit</button>
