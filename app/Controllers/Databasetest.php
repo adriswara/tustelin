@@ -447,42 +447,50 @@ class DatabaseTest extends BaseController
     public function deleteFotografer($id)
     {
         $this->fotograferModel->where('id_fotografer', $id)->delete();
+        session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/Databasetest');
     }
 
     public function deletePengguna($id)
     {
         $this->userModel->where('id_pengguna', $id)->delete();
+        session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/Databasetest');
     }
     public function deleteKomersil($id)
     {
         $this->aliranKomersilModel->where('id_komersil', $id)->delete();
+        session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/Databasetest');
     }
     public function deleteAlat($id)
     {
         $this->alatModel->where('id_alat', $id)->delete();
+        session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/Databasetest');
     }
     public function deleteAdmin($id)
     {
         $this->adminModel->where('id_admin', $id)->delete();
+        session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/Databasetest');
     }
     public function deleteKota($id)
     {
         $this->kotaModel->where('id_kota', $id)->delete();
+        session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/Databasetest');
     }
     public function deleteReview($id)
     {
         $this->reviewModel->where('id_review', $id)->delete();
+        session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/Databasetest');
     }
     public function deleteFoto($id)
     {
         $this->fotoModel->where('id_foto', $id)->delete();
+        session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/Databasetest');
     }
 }
