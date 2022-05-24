@@ -10,16 +10,16 @@ class FotograferModel extends Model
     protected $primaryKey = 'id_fotografer';
     protected $allowedFields = ['nama', 'slug', 'displaypic', 'akun_instagram'];
 
-    public function getFotografer($slug = false)
+    public function getFotografer($id = false)
     {
         $querry = $this->joinkomersil();
 
 
-        if ($slug == false) {
+        if ($id == false) {
             return $this->joinkomersil();
         }
-        d($this->table('fotografer')->select('id_fotografer,slug, nama, displaypic, harga, akun_instagram,email,no_telfon,no_rekening')->where(['slug' => $slug])->first());
-        return $this->table('fotografer')->select('id_fotografer,slug, nama, displaypic, harga, akun_instagram,email,no_telfon,no_rekening')->where(['slug' => $slug])->first();
+        d($this->table('fotografer')->select('id_fotografer,slug, nama, displaypic, harga, akun_instagram,email,no_telfon,no_rekening')->where(['id_fotografer' => $id])->first());
+        return $this->table('fotografer')->select('id_fotografer,slug, nama, displaypic, harga, akun_instagram,email,no_telfon,no_rekening')->where(['id_fotografer' => $id])->first();
         // return $this->table('fotografer')->join('aliran_komersil', 'fotografer.id_komersil = aliran_komersil.id_komersil', 'inner')->join('alat', 'fotografer.id_alat = alat.id_alat', 'inner')->select('slug, nama, displaypic, nama_aliran,nama_alat, harga, akun_instagram,email,no_telfon,no_rekening')->where(['slug' => $slug])->first();
     }
 

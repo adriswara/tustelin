@@ -197,7 +197,7 @@ class DatabaseTest extends BaseController
         return view('databasetest/createReview', $data);
     }
 
-    public function editFotografer($slug)
+    public function editFotografer($id = null)
     {
 
         $this->session = session();
@@ -207,10 +207,10 @@ class DatabaseTest extends BaseController
         $data = [
             'title' => 'Form Ubah Data Fotografer',
             'validation' => \Config\Services::validation(),
-            'fotografer' => $this->fotograferModel->getFotografer($slug)
+            'fotografer' => $this->fotograferModel->getFotografer($id)
         ];
 
-        d($data);
+
 
         $data['get_sess'] = $this->session->get('username_admin');
 
@@ -487,7 +487,7 @@ class DatabaseTest extends BaseController
             ]
         ])) {
             $validation = \Config\Services::validation();
-            return redirect()->to('databasetest/editFotografer/' . $this->request->getVar('slug'))->withInput()->with('validation', $validation);
+            return redirect()->to('databasetest/editFotografer/' . $id)->withInput()->with('validation', $validation);
         }
 
         $slug = url_title($this->request->getVar('nama'), '-', true);
@@ -502,7 +502,8 @@ class DatabaseTest extends BaseController
 
         session()->setFlashdata('pesan', 'Edit berhasil');
 
-        return redirect()->to('/databasetest');
+        // return redirect()->to('/databasetest');
+        return redirect()->to('databasetest/editFotografer/' . $id);
     }
 
 
