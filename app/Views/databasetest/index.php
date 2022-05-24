@@ -32,7 +32,7 @@
                             <td><img src="/displaypic/<?= $k['displaypic']; ?>" alt="" width="100"></td>
                             <td><?= $k['nama']; ?></td>
                             <td><?= $k['akun_instagram']; ?></td>
-                            <td><button class="btn btn-warning">Edit</button></td>
+                            <td><a class="btn btn-warning" href="DatabaseTest/editFotografer/<?= $k['slug']; ?>">Edit</a></td>
                             <td><a onclick="buttonConfirm()" href="/DatabaseTest/deleteFotografer/<?= $k['id_fotografer']; ?>" class="btn btn-danger">Delete</button></td>
                         </tr>
                     <?php endforeach; ?>

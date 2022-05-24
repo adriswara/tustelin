@@ -197,6 +197,27 @@ class DatabaseTest extends BaseController
         return view('databasetest/createReview', $data);
     }
 
+    public function editFotografer($slug)
+    {
+
+        $this->session = session();
+
+
+
+        $data = [
+            'title' => 'Form Ubah Data Fotografer',
+            'validation' => \Config\Services::validation(),
+            'fotografer' => $this->fotograferModel->getFotografer($slug)
+        ];
+
+        d($data);
+
+        $data['get_sess'] = $this->session->get('username_admin');
+
+
+
+        return view('databasetest/editFotografer', $data);
+    }
 
     public function saveFotografer()
     {
@@ -439,6 +460,47 @@ class DatabaseTest extends BaseController
 
 
         session()->setFlashdata('pesan', 'Input berhasil');
+
+        return redirect()->to('/databasetest');
+    }
+
+    public function updateFotografer($id)
+    {
+
+        // dd(isset($this->request->getVar('slug')));
+
+        // $prevFotografer = $this->fotograferModel->getFotografer($this->request->getVar('slug'));
+
+        // if ($prevFotografer['nama'] == $this->request->getVar('nama')) {
+        //     $rule_nama = 'required';
+        // } else {
+        //     $rule_nama = 'required | is_unique[fotografer.nama]';
+        // }
+
+        if (!$this->validate([
+            'nama' => [
+                'rules' => 'required|is_unique[fotografer.nama]',
+                'errors' => [
+                    'required' => '{field} nama harus diisi.',
+                    'is_unique' => '{field} nama sudah terdaftar'
+                ]
+            ]
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('databasetest/editFotografer/' . $this->request->getVar('slug'))->withInput()->with('validation', $validation);
+        }
+
+        $slug = url_title($this->request->getVar('nama'), '-', true);
+        $this->fotograferModel->save([
+            'id_fotografer' => $id,
+            'nama' => $this->request->getVar('nama'),
+            'slug' => $slug,
+            'displaypic' => $this->request->getVar('displaypic'),
+            'akun_instagram' => $this->request->getVar('akun_instagram')
+        ]);
+
+
+        session()->setFlashdata('pesan', 'Edit berhasil');
 
         return redirect()->to('/databasetest');
     }

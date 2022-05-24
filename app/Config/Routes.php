@@ -34,7 +34,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 
 $routes->get('/Profile/(:segment)', 'Profile::profileSegment/$1');
-
+$routes->get('/databaseTest/editFotografer/(:segment)', 'Fotografer::edit/$1');
 $routes->get('/dashboard', 'Dashboard::index' /*,['filter' => 'auth']*/);
 
 /*
