@@ -38,7 +38,13 @@ class FotograferModel extends Model
 
     public function search($keyword)
     {
-        return $this->table('fotografer')->like('nama', $keyword)->orLike('akun_instagram', $keyword);
+        // d($this->table('fotografer')->join('aliran_komersil as komersil', 'fotografer.id_komersil = komersil.id_komersil', 'inner')->like('nama', $keyword)->orLike('akun_instagram', $keyword)->get()->getResult());
+
+        // return $this->table('fotografer')->join('aliran_komersil as komersil', 'fotografer.id_komersil = aliran_komersil.id_komersil', 'inner')->select("slug, nama, displaypic, nama_aliran, harga, akun_instagram,email,no_telfon,no_rekening");
+
+        // return $this->table('fotografer')->like('nama', $keyword)->orLike('akun_instagram', $keyword);
+
+        return $this->table('fotografer')->join('aliran_komersil as komersil', 'fotografer.id_komersil = komersil.id_komersil', 'inner')->like('nama', $keyword)->orLike('akun_instagram', $keyword)->orLike('nama_aliran', $keyword)->get()->getResultArray();
     }
 
     public function joinkomersil()

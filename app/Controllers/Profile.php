@@ -22,31 +22,20 @@ class Profile extends BaseController
         $keyword = $this->request->getVar('keyword');
         // $joins = $this->fotograferModel->join();
         if ($keyword) {
-            $this->fotograferModel->search($keyword);
+            $arrayResult = $this->fotograferModel->search($keyword);
         } else {
-            $fotografer = $this->fotograferModel;
+            $arrayResult = $this->fotograferModel;
         }
 
 
 
 
-        // $fotograferVar = $this->fotograferModel->findAll();
-
-
-
-
-        // echo gettype($data['fotografer']);
-        $arraytemp = $this->fotograferModel->joinkomersil()->getResult();
-        $arrayresult = array();
-        foreach ($arraytemp as $key) {
-            $arrayresult[] = json_decode(json_encode($key), true);;
-        }
 
         $data = [
 
             'title' => 'Daftar Fotografer',
             // 'fotografer' => $this->fotograferModel->getFotografer(),
-            'fotografer' => $arrayresult
+            'fotografer' => $arrayResult
         ];
 
 
