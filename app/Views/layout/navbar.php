@@ -35,14 +35,31 @@
               data-bs-target="#myModal"
 
             -->
+                <?php if (isset($get_sess)) : ?>
+                    <a href="/login/logout">
+                        <button class="btn" type="button" style="width: auto">
+                            Logout
+                        </button>
+                    </a>
+                    <button class="btn" type="button" style="width: auto">
+                        <?= $get_sess ?>
+                    </button>
 
-                <a href="/Login"><button class="btn" type="button" style="width: auto">
-                        Login
-                    </button></a>
+                <?php else : ?>
+                    <a href="/Login">
+                        <button class="btn" type="button" style="width: auto">
+                            Login
+                        </button>
+                    </a>
+                    <a href="/Register">
+                        <button class="btn" type="button" style="width: auto">
+                            Sign Up
+                        </button>
+                    </a>
+                <?php endif; ?>
 
-                <a href="/Register"><button class="btn" type="button" style="width: auto">
-                        Sign Up
-                    </button> </a>
+
+
 
                 <img src="/img_avatar1.png" alt="Logo" style="width: 40px" class="rounded-pill" />
             </a>

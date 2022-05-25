@@ -1,4 +1,4 @@
-<?= $this->extend('layout/logDLayout'); ?>
+<?= $this->extend('layout/page_layout'); ?>
 <!--START CONTENT-->
 <?= $this->section('pageContent'); ?>
 <!---->
