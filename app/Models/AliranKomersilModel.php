@@ -12,6 +12,14 @@ class AliranKomersilModel extends Model
         /** , 'user_created_at' */
     ];
 
+    public function getAliran($id = false)
+    {
+
+        return $this->table('aliran_komersil')->select('id_komersil, nama_aliran')->where(['id_komersil' => $id])->first();
+    }
+
+
+
     public function join()
     {
         return $this->table('aliran_komersil')->join('fotografer', 'aliran_komersil.id_komersil = fotografer.id_komersil');

@@ -197,6 +197,51 @@ class DatabaseTest extends BaseController
         return view('databasetest/createReview', $data);
     }
 
+    public function editAdmin($id = null)
+    {
+
+        $this->session = session();
+
+
+
+        $data = [
+            'title' => 'Form Ubah Data Alat',
+            'validation' => \Config\Services::validation(),
+            'admin' => $this->adminModel->getAdmin($id)
+        ];
+
+
+
+        $data['get_sess'] = $this->session->get('username_admin');
+
+        d($data);
+
+        return view('databasetest/editAdmin', $data);
+    }
+
+    public function editAlat($id = null)
+    {
+
+        $this->session = session();
+
+
+
+        $data = [
+            'title' => 'Form Ubah Data Alat',
+            'validation' => \Config\Services::validation(),
+            'alat' => $this->alatModel->getAlat($id)
+        ];
+
+
+
+        $data['get_sess'] = $this->session->get('username_admin');
+
+        d($data);
+
+        return view('databasetest/editAlat', $data);
+    }
+
+
     public function editFotografer($id = null)
     {
 
@@ -219,6 +264,29 @@ class DatabaseTest extends BaseController
         return view('databasetest/editFotografer', $data);
     }
 
+    public function editKomersil($id = null)
+    {
+
+        $this->session = session();
+
+
+
+        $data = [
+            'title' => 'Form Ubah Data Fotografer',
+            'validation' => \Config\Services::validation(),
+            'aliran_komersil' => $this->aliranKomersilModel->getAliran($id)
+        ];
+
+
+
+        $data['get_sess'] = $this->session->get('username_admin');
+
+
+
+        return view('databasetest/editKomersil', $data);
+    }
+
+
     public function saveFotografer()
     {
         // dd($this->request->getVar());
@@ -233,6 +301,7 @@ class DatabaseTest extends BaseController
             ]
         ])) {
             $validation = \Config\Services::validation();
+            d($validation);
             return redirect()->to('databasetest/createFotografer')->withInput()->with('validation', $validation);
         }
 
@@ -464,6 +533,70 @@ class DatabaseTest extends BaseController
         return redirect()->to('/databasetest');
     }
 
+    public function updateAdmin($id)
+    {
+
+
+        if (!$this->validate([
+            'username_admin' => [
+                'rules' => 'required|is_unique[admin.username_admin]',
+                'errors' => [
+                    'required' => '{field} nama harus diisi.',
+                    'is_unique' => '{field} nama sudah terdaftar'
+                ]
+            ]
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('databasetest/editAdmin/' . $id)->withInput()->with('validation', $validation);
+        }
+
+
+        $this->adminModel->save([
+            'id_admin' => $id,
+            'username_admin' => $this->request->getVar('username_admin'),
+            'password_admin' => $this->request->getVar('password_admin'),
+            'email_admin' => $this->request->getVar('email_admin')
+        ]);
+
+
+        session()->setFlashdata('pesan', 'Edit berhasil');
+
+        // return redirect()->to('/databasetest');
+        return redirect()->to('databasetest/editAdmin/' . $id);
+    }
+
+    public function updateAlat($id)
+    {
+
+
+        if (!$this->validate([
+            'nama_alat' => [
+                'rules' => 'required|is_unique[alat.nama_alat]',
+                'errors' => [
+                    'required' => '{field} nama harus diisi.',
+                    'is_unique' => '{field} nama sudah terdaftar'
+                ]
+            ]
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('databasetest/editAlat/' . $id)->withInput()->with('validation', $validation);
+        }
+
+
+        $this->alatModel->save([
+            'id_alat' => $id,
+            'nama_alat' => $this->request->getVar('nama_alat'),
+            'merek' => $this->request->getVar('merek'),
+            'jenis' => $this->request->getVar('jenis')
+        ]);
+
+
+        session()->setFlashdata('pesan', 'Edit berhasil');
+
+        // return redirect()->to('/databasetest');
+        return redirect()->to('databasetest/editAlat/' . $id);
+    }
+
     public function updateFotografer($id)
     {
 
@@ -504,6 +637,36 @@ class DatabaseTest extends BaseController
 
         // return redirect()->to('/databasetest');
         return redirect()->to('databasetest/editFotografer/' . $id);
+    }
+
+    public function updateKomersil($id)
+    {
+
+
+        if (!$this->validate([
+            'nama_aliran' => [
+                'rules' => 'required|is_unique[aliran_komersil.nama_aliran]',
+                'errors' => [
+                    'required' => '{field} nama harus diisi.',
+                    'is_unique' => '{field} nama sudah terdaftar'
+                ]
+            ]
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('databasetest/editKomersil/' . $id)->withInput()->with('validation', $validation);
+        }
+
+
+        $this->aliranKomersilModel->save([
+            'id_komersil' => $id,
+            'nama_aliran' => $this->request->getVar('nama_aliran'),
+        ]);
+
+
+        session()->setFlashdata('pesan', 'Edit berhasil');
+
+        // return redirect()->to('/databasetest');
+        return redirect()->to('databasetest/editKomersil/' . $id);
     }
 
 

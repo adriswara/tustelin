@@ -76,7 +76,7 @@
                         <tr>
                             <th scope="row"><?= $i['id_komersil']; ?></th>
                             <td><?= $i['nama_aliran']; ?></td>
-                            <td><button class="btn btn-warning">Edit</button></td>
+                            <td><a class="btn btn-warning" href="DatabaseTest/editKomersil/<?= $i['id_komersil']; ?>">Edit</a></td>
                             <td><a onclick="buttonConfirm()" href="/DatabaseTest/deleteKomersil/<?= $i['id_komersil']; ?>" class="btn btn-danger">Delete</button></td>
                         </tr>
                     <?php endforeach; ?>
@@ -100,7 +100,7 @@
                             <td><?= $j['nama_alat']; ?></td>
                             <td><?= $j['merek']; ?></td>
                             <td><?= $j['jenis']; ?></td>
-                            <td><button class="btn btn-warning">Edit</button></td>
+                            <td><a class="btn btn-warning" href="DatabaseTest/editAlat/<?= $j['id_alat']; ?>">Edit</a></td>
                             <td><a onclick="buttonConfirm()" href="/DatabaseTest/deleteAlat/<?= $j['id_alat']; ?>" class="btn btn-danger">Delete</button></td>
                         </tr>
                     <?php endforeach; ?>
@@ -124,7 +124,7 @@
                             <td><?= $j['username_admin']; ?></td>
                             <td><?= $j['password_admin']; ?></td>
                             <td><?= $j['email_admin']; ?></td>
-                            <td><button class="btn btn-warning">Edit</button></td>
+                            <td><a class="btn btn-warning" href="DatabaseTest/editAdmin/<?= $j['id_admin']; ?>">Edit</a></td>
                             <td><a onclick="buttonConfirm()" href="/DatabaseTest/deleteAdmin/<?= $j['id_admin']; ?>" class="btn btn-danger">Delete</button></td>
                         </tr>
                     <?php endforeach; ?>
