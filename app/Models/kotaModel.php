@@ -11,4 +11,10 @@ class KotaModel extends Model
     protected $allowedFields = ['nama_kota'
         /** , 'user_created_at' */
     ];
+
+    public function getKota($id = false)
+    {
+
+        return $this->table('kota')->select('id_kota, nama_kota')->where(['id_kota' => $id])->first();
+    }
 }
