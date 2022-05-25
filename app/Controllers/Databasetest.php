@@ -287,6 +287,53 @@ class DatabaseTest extends BaseController
     }
 
 
+
+    public function editKota($id = null)
+    {
+
+        $this->session = session();
+
+
+
+        $data = [
+            'title' => 'Form Ubah Data kota',
+            'validation' => \Config\Services::validation(),
+            'kota' => $this->kotaModel->getKota($id)
+        ];
+
+
+
+        $data['get_sess'] = $this->session->get('username_admin');
+
+        d($data);
+
+        return view('databasetest/editKota', $data);
+    }
+
+
+    public function editPengguna($id = null)
+    {
+
+        $this->session = session();
+
+
+
+        $data = [
+            'title' => 'Form Ubah Data Fotografer',
+            'validation' => \Config\Services::validation(),
+            'pelanggan' => $this->userModel->getUser($id)
+        ];
+
+
+
+        $data['get_sess'] = $this->session->get('username_admin');
+
+
+
+        return view('databasetest/editPengguna', $data);
+    }
+
+
     public function saveFotografer()
     {
         // dd($this->request->getVar());
@@ -667,6 +714,67 @@ class DatabaseTest extends BaseController
 
         // return redirect()->to('/databasetest');
         return redirect()->to('databasetest/editKomersil/' . $id);
+    }
+
+    public function updateKota($id)
+    {
+
+
+        if (!$this->validate([
+            'nama_kota' => [
+                'rules' => 'required|is_unique[kota.nama_kota]',
+                'errors' => [
+                    'required' => '{field} nama harus diisi.',
+                    'is_unique' => '{field} nama sudah terdaftar'
+                ]
+            ]
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('databasetest/editKota/' . $id)->withInput()->with('validation', $validation);
+        }
+
+
+        $this->kotaModel->save([
+            'id_kota' => $id,
+            'nama_kota' => $this->request->getVar('nama_kota'),
+        ]);
+
+
+        session()->setFlashdata('pesan', 'Edit berhasil');
+
+        // return redirect()->to('/databasetest');
+        return redirect()->to('databasetest/editKota/' . $id);
+    }
+
+
+    public function updatePengguna($id)
+    {
+
+
+        if (!$this->validate([
+            'username_pengguna' => [
+                'rules' => 'required|is_unique[pelanggan.username_pengguna]',
+                'errors' => [
+                    'required' => '{field} nama harus diisi.',
+                    'is_unique' => '{field} nama sudah terdaftar'
+                ]
+            ]
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('databasetest/editPengguna/' . $id)->withInput()->with('validation', $validation);
+        }
+
+
+        $this->userModel->save([
+            'id_pengguna' => $id,
+            'username_pengguna' => $this->request->getVar('username_pengguna'),
+        ]);
+
+
+        session()->setFlashdata('pesan', 'Edit berhasil');
+
+        // return redirect()->to('/databasetest');
+        return redirect()->to('databasetest/editPengguna/' . $id);
     }
 
 

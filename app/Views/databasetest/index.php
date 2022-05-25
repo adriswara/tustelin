@@ -56,7 +56,7 @@
                             <td><?= $k['username_pengguna']; ?></td>
                             <td><?= $k['sandi_pengguna']; ?></td>
                             <td><?= $k['email_pengguna']; ?></td>
-                            <td><button class="btn btn-warning">Edit</button></td>
+                            <td><a class="btn btn-warning" href="DatabaseTest/editPengguna/<?= $k['id_pengguna']; ?>">Edit</a></td>
                             <td><a onclick="buttonConfirm()" href="/DatabaseTest/deletePengguna/<?= $k['id_pengguna']; ?>" class="btn btn-danger">Delete</a></td>
                         </tr>
                     <?php endforeach; ?>
@@ -144,7 +144,7 @@
                         <tr>
                             <th scope="row"><?= $j['id_kota']; ?></th>
                             <td><?= $j['nama_kota']; ?></td>
-                            <td><button class="btn btn-warning">Edit</button></td>
+                            <td><a class="btn btn-warning" href="DatabaseTest/editKota/<?= $j['id_kota']; ?>">Edit</a></td>
                             <td><a onclick="buttonConfirm()" href="/DatabaseTest/deleteKota/<?= $j['id_kota']; ?>" class="btn btn-danger">Delete</button></td>
                         </tr>
                     <?php endforeach; ?>
