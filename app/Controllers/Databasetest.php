@@ -333,6 +333,28 @@ class DatabaseTest extends BaseController
         return view('databasetest/editPengguna', $data);
     }
 
+    public function editReview($id = null)
+    {
+
+        $this->session = session();
+
+
+
+        $data = [
+            'title' => 'Form Ubah Data Fotografer',
+            'validation' => \Config\Services::validation(),
+            'review' => $this->reviewModel->getReview($id)
+        ];
+
+
+
+        $data['get_sess'] = $this->session->get('username_admin');
+
+
+
+        return view('databasetest/editReview', $data);
+    }
+
 
     public function saveFotografer()
     {
@@ -775,6 +797,41 @@ class DatabaseTest extends BaseController
 
         // return redirect()->to('/databasetest');
         return redirect()->to('databasetest/editPengguna/' . $id);
+    }
+
+
+    public function updateReview($id)
+    {
+
+
+        // if (!$this->validate([
+        //     'username_pengguna' => [
+        //         'rules' => 'required|is_unique[pelanggan.username_pengguna]',
+        //         'errors' => [
+        //             'required' => '{field} nama harus diisi.',
+        //             'is_unique' => '{field} nama sudah terdaftar'
+        //         ]
+        //     ]
+        // ])) {
+        //     $validation = \Config\Services::validation();
+        //     return redirect()->to('databasetest/editPengguna/' . $id)->withInput()->with('validation', $validation);
+        // }
+
+
+        $this->reviewModel->save([
+            'id_review' => $id,
+            'id_fotografer' => $this->request->getVar('id_fotografer'),
+            'id_pengguna' => $this->request->getVar('id_pengguna'),
+            'review' => $this->request->getVar('review'),
+            'rating' => $this->request->getVar('rating'),
+
+        ]);
+
+
+        session()->setFlashdata('pesan', 'Edit berhasil');
+
+        // return redirect()->to('/databasetest');
+        return redirect()->to('databasetest/editReview/' . $id);
     }
 
 

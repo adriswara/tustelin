@@ -172,7 +172,7 @@
                             <td><?= $j['review']; ?></td>
                             <td><?= $j['rating']; ?></td>
                             <td><?= $j['waktu_kirim']; ?></td>
-                            <td><button class="btn btn-warning">Edit</button></td>
+                            <td><a class="btn btn-warning" href="DatabaseTest/editReview/<?= $j['id_review']; ?>">Edit</a></td>
                             <td><a onclick="buttonConfirm()" href="/DatabaseTest/deleteReview/<?= $j['id_review']; ?>" class="btn btn-danger">Delete</button></td>
                         </tr>
                     <?php endforeach; ?>
