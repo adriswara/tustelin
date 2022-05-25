@@ -68,17 +68,24 @@ class Profile extends BaseController
     }
     public function profileSegment($slug)
     {
-        $profil = $this->fotograferModel->getFotografer($slug);
+        $profil = $this->fotograferModel->getProfil($slug);
         $data = [
             'title' => 'Profil Fotografer',
-            'profil' => $this->fotograferModel->getFotografer($slug)
+            'profil' => $this->fotograferModel->getProfil($slug)
         ];
 
         $this->session = session();
 
         $data['get_sess'] = $this->session->get('username_pengguna');
 
-        d($data);
+        // d($data);
+
+        // untuk exception not found
+
+        if (empty($data['profil'])) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Fotografer' . $slug . 'tidak ditemukan');
+        }
+
         return view('pages/profile_page', $data);
     }
 }

@@ -8,6 +8,17 @@ class AliranKomersilModel extends Model
 {
     protected $table      = 'aliran_komersil';
     protected $primaryKey = 'id_komersil';
+    protected $allowedFields = ['nama_aliran'
+        /** , 'user_created_at' */
+    ];
+
+    public function getAliran($id = false)
+    {
+
+        return $this->table('aliran_komersil')->select('id_komersil, nama_aliran')->where(['id_komersil' => $id])->first();
+    }
+
+
 
     public function join()
     {

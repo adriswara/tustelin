@@ -9,6 +9,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/dashboard/logedHome">Home</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/databasetest">Database Dashboard</a>
+                </li>
                 <li>
                     <a class="nav-link" href="/Dashboard/logged">Marketplace</a>
                 </li>

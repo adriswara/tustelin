@@ -7,7 +7,8 @@ use CodeIgniter\Model;
 class FotoModel extends Model
 {
     protected $table = 'foto';
-    protected $allowedFields = ['judul', 'ulasan', 'jumlah_rating', 'rataRata_rating', 'file_foto'
+    protected $primaryKey = 'id_foto';
+    protected $allowedFields = ['id_fotografer', 'judul', 'ulasan', 'jumlah_rating', 'rataRata_rating', 'file_foto'
         /** , 'user_created_at' */
     ];
 }
