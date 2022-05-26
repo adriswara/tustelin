@@ -366,18 +366,32 @@ class DatabaseTest extends BaseController
                     'required' => '{field} nama harus diisi.',
                     'is_unique' => '{field} nama sudah terdaftar'
                 ]
+            ],
+            'displaypic' => [
+                'rules' => 'uploaded[displaypic]|max_size[displaypic,35840]|is_image[displaypic]|mime_in[displaypic,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'uploaded' => 'Pilih gambar display terlebih dahulu',
+                    'max_size' => 'Maksimal ukuran gambar adalah 35MB',
+                    'is_image' => 'File gambar yang anda pilih tidak valid',
+                    'mime_in' => 'File yang anda pilih bukan gambar'
+                ]
             ]
         ])) {
-            $validation = \Config\Services::validation();
-            d($validation);
-            return redirect()->to('databasetest/createFotografer')->withInput()->with('validation', $validation);
+            // $validation = \Config\Services::validation();
+            // d($validation);
+            // return redirect()->to('databasetest/createFotografer')->withInput()->with('validation', $validation);
+            return redirect()->to('databasetest/createFotografer')->withInput();
         }
 
+        $fileDisplaypic = $this->request->getFile('displaypic');
+        // dd($fileDisplaypic);
+        $fileDisplaypic->move('displaypic'); //move ke nama folder display pic di public
+        $imgName = $fileDisplaypic->getName();
         $slug = url_title($this->request->getVar('nama'), '-', true);
         $this->fotograferModel->save([
             'nama' => $this->request->getVar('nama'),
             'slug' => $slug,
-            'displaypic' => $this->request->getVar('displaypic'),
+            'displaypic' => $imgName,
             'akun_instagram' => $this->request->getVar('akun_instagram')
         ]);
 

@@ -6,11 +6,18 @@
         <div class="row-8">
             <h2 class="">Form Input Data </h2>
 
-            <form action="/Databasetest/saveFotografer" method="post">
+            <form action="/Databasetest/saveFotografer" method="post" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <div class="mb-3">
                     <label for="displaypic" class="form-label">Display Pic</label>
-                    <input type="text" name="displaypic" class="form-control" id="displaypic" value="<?= old('displaypic'); ?>">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input <?= ($validation->hasError('displaypic')) ? 'is-invalid' : ''; ?>" id="displaypic" name="displaypic">
+                        <div class="invalid-feedback">
+                            <?= $validation->getError('displaypic'); ?>
+                        </div>
+                        <label class="custom-file-label" for="displaypic"> Upload Image </label>
+                    </div>
+                    <!-- <input type="text" name="displaypic" class="form-control" id="displaypic" value="<?= old('displaypic'); ?>"> -->
                 </div>
                 <div class="mb-3">
                     <label for="nama" class="form-label">Nama Fotografer</label>
