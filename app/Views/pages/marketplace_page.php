@@ -5,7 +5,7 @@
 
 <!-- nav 2 -->
 <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
-  <div class="container-fluid">
+  <div class="container">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
