@@ -852,6 +852,10 @@ class DatabaseTest extends BaseController
 
     public function deleteFotografer($id)
     {
+
+        $fotografer = $this->fotograferModel->find($id);
+        unlink('displaypic/' . $fotografer['displaypic']);
+
         $this->fotograferModel->where('id_fotografer', $id)->delete();
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/Databasetest');
