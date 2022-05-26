@@ -24,7 +24,12 @@ class Profile extends BaseController
         if ($keyword) {
             $arrayResult = $this->fotograferModel->search($keyword);
         } else {
-            $arrayResult = $this->fotograferModel;
+            //$arrayResult = $this->fotograferModel;
+            $arraytemp = $this->fotograferModel->joinkomersil()->getResult();
+            $arrayResult = array();
+            foreach ($arraytemp as $key) {
+                $arrayResult[] = json_decode(json_encode($key), true);
+            }
         }
 
 

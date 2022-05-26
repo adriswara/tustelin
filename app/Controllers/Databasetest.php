@@ -286,8 +286,6 @@ class DatabaseTest extends BaseController
         return view('databasetest/editKomersil', $data);
     }
 
-
-
     public function editKota($id = null)
     {
 
@@ -296,7 +294,7 @@ class DatabaseTest extends BaseController
 
 
         $data = [
-            'title' => 'Form Ubah Data kota',
+            'title' => 'Form Ubah Data Fotografer',
             'validation' => \Config\Services::validation(),
             'kota' => $this->kotaModel->getKota($id)
         ];
@@ -305,10 +303,11 @@ class DatabaseTest extends BaseController
 
         $data['get_sess'] = $this->session->get('username_admin');
 
-        d($data);
+
 
         return view('databasetest/editKota', $data);
     }
+
 
 
     public function editPengguna($id = null)
@@ -767,6 +766,7 @@ class DatabaseTest extends BaseController
         // return redirect()->to('/databasetest');
         return redirect()->to('databasetest/editKota/' . $id);
     }
+
 
 
     public function updatePengguna($id)
