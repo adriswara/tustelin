@@ -385,9 +385,10 @@ class DatabaseTest extends BaseController
 
         $fileDisplaypic = $this->request->getFile('displaypic');
         // dd($fileDisplaypic);
-        $fileDisplaypic->move('displaypic'); //move ke nama folder display pic di public
-        $imgName = $fileDisplaypic->getName();
+        //$imgName = $fileDisplaypic->getName();
         $slug = url_title($this->request->getVar('nama'), '-', true);
+        $imgName = $slug . '.' . $fileDisplaypic->guessExtension();
+        $fileDisplaypic->move('displaypic', $imgName); //move ke nama folder display pic di public
         $this->fotograferModel->save([
             'nama' => $this->request->getVar('nama'),
             'slug' => $slug,
