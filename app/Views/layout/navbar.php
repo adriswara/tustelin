@@ -1,5 +1,5 @@
 <nav class="navbar header navbar-expand-sm bg-light navbar-light">
-    <div class="container">
+    <div class="container-fluid px-3">
         <a class="navbar-brand" href="#">
             <img src="/logo-transparent.png" alt="">
         </a>

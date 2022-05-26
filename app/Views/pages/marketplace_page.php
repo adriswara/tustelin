@@ -5,7 +5,7 @@
 
 <!-- nav 2 -->
 <nav class="marketplace__filter navbar-expand-sm bg-secondary navbar-dark">
-  <div class="container">
+  <div class="container-fluid p-3">
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <!-- form -->
       <form class="search-bar" action="" method="post">
