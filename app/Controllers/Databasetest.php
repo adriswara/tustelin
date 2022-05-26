@@ -700,18 +700,41 @@ class DatabaseTest extends BaseController
                     'required' => '{field} nama harus diisi.',
                     'is_unique' => '{field} nama sudah terdaftar'
                 ]
+            ],
+            'displaypic' => [
+                'rules' => 'uploaded[displaypic]|max_size[displaypic,35840]|is_image[displaypic]|mime_in[displaypic,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'uploaded' => 'Pilih gambar display terlebih dahulu',
+                    'max_size' => 'Maksimal ukuran gambar adalah 35MB',
+                    'is_image' => 'File gambar yang anda pilih tidak valid',
+                    'mime_in' => 'File yang anda pilih bukan gambar'
+                ]
             ]
         ])) {
-            $validation = \Config\Services::validation();
-            return redirect()->to('databasetest/editFotografer/' . $id)->withInput()->with('validation', $validation);
+            // $validation = \Config\Services::validation();
+            // return redirect()->to('databasetest/editFotografer/' . $id)->withInput()->with('validation', $validation);
+            return redirect()->to('databasetest/editFotografer/' . $id)->withInput();
+        }
+        $fotografer = $this->fotograferModel->find($id);
+        unlink('displaypic/' . $fotografer['displaypic']);
+        $fileDisplaypic = $this->request->getFile('displaypic');
+        $slug = url_title($this->request->getVar('nama'), '-', true);
+
+        //dd($this->request->getVar('olddisplaypic'));
+
+        if ($fileDisplaypic->getError() == 4) {
+            $imgName = $this->request->getVar('olddisplaypic');
+        } else {
+            $imgName = $slug . '.' . $fileDisplaypic->guessExtension();
+            $fileDisplaypic->move('displaypic', $imgName);
+            // unlink('displaypic/' . $this->request->getVar('olddisplaypic'));
         }
 
-        $slug = url_title($this->request->getVar('nama'), '-', true);
         $this->fotograferModel->save([
             'id_fotografer' => $id,
             'nama' => $this->request->getVar('nama'),
             'slug' => $slug,
-            'displaypic' => $this->request->getVar('displaypic'),
+            'displaypic' => $imgName,
             'akun_instagram' => $this->request->getVar('akun_instagram')
         ]);
 
