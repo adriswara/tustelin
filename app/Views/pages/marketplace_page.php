@@ -4,45 +4,41 @@
 <!---->
 
 <!-- nav 2 -->
-<nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+<nav class="marketplace__filter navbar-expand-sm bg-secondary navbar-dark">
   <div class="container">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <!-- form -->
-      <form class="d-flex" action="" method="post">
-        <input class="form-control me-2" type="text" placeholder="Cari jasa untukmu disini" name="keyword" id="frmKeyword">
-        <!-- button cari -->
-        <button class="btn btn-primary" type="submit" name="submit" style="width: 100px">
-          <div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-            </svg>
-            Cari
-          </div>
-        </button>
-        <!-- button cari / -->
+      <form class="search-bar" action="" method="post">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <input class="form-control me-2" type="text" placeholder="ketik nama, username, kota, atau bidang dari fotografer yang kamu cari" name="keyword" id="frmKeyword">
       </form>
       <!-- form / -->
     </div>
-    <ul class="navbar-nav me-auto">
+    <div class="tags">
+      <div class="tag__wrapper__cover-right"></div>
+      <div class="tag__wrapper">
+        <div class="tag__wrapper__list">
+          <a class=tag>keluarga</a>
+          <a class=tag>keluarga</a>
+          <a class=tag>keluarga</a>
+          <a class=tag>keluarga</a>
+          <a class=tag>keluarga</a>
+          <a class=tag>keluarga</a>
+          <a class=tag>keluarga</a>
+          <a class=tag>keluarga</a>
+          <a class=tag>keluarga</a>
+          <a class=tag>keluarga</a>
+          <a class=tag>keluarga</a>
+          <a class=tag>keluarga</a>
+          <a class=tag>keluarga</a>
+          <a class=tag>keluarga</a>
 
-      <li class="nav-item">
-        <a class="nav-link" href="javascript:void(0)">Pernikahan</a>
-      </li>
+        </div>
 
-      <li class="nav-item">
-        <a class="nav-link" href="javascript:void(0)">Acara</a>
-      </li>
+      </div>
+      <div class="tag__wrapper__cover-left"></div>
+    </div>
 
-      <li class="nav-item">
-        <a class="nav-link" href="javascript:void(0)">Foto Produk</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="javascript:void(0)">Foto Keluarga</a>
-      </li>
-    </ul>
   </div>
 </nav>
 <!-- nav 2 -->
