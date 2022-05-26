@@ -109,7 +109,8 @@
 
 
 
-  <div class="footer">
+
+  <!-- <div class="footer">
     <div class="container mt-0">
       <div class="row">
         <div class="col-sm-4">
@@ -139,7 +140,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <script>
     // Get the modal login
