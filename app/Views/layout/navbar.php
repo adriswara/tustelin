@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
-    <div class="container-fluid">
+    <div class="container">
         <a class="navbar-brand" href="#">#Tustelin.id</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
