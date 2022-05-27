@@ -1,4 +1,4 @@
-<?= $this->extend('layout/logdLayout'); ?>
+<?= $this->extend('layout/page_layout'); ?>
 <?= $this->section('pageContent'); ?>
 
 <div class="container">
@@ -19,7 +19,7 @@
                 <?= csrf_field(); ?>
                 <input type="hidden" name="id_kota" id="<?= $kota['id_kota']; ?>">
                 <div class="mb-3">
-                    <label for="nama_kota" class="form-label"> Nama Kota </label>
+                    <label for="nama_kota" class="form-label"> Nama Aliran </label>
                     <input type="text" name="nama_kota" class="form-control  <?= ($validation->hasError('nama_kota')) ? 'is-invalid' : ''; ?>" id="nama_kota" autofocus value="<?= $kota['nama_kota']; ?>" id="nama_kota" value="<?= $kota['nama_kota']; ?>">
                     <div class="invalid-feedback">
                         <?= $validation->getError('nama_kota'); ?>

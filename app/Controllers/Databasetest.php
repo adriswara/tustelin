@@ -286,8 +286,6 @@ class DatabaseTest extends BaseController
         return view('databasetest/editKomersil', $data);
     }
 
-
-
     public function editKota($id = null)
     {
 
@@ -296,7 +294,7 @@ class DatabaseTest extends BaseController
 
 
         $data = [
-            'title' => 'Form Ubah Data kota',
+            'title' => 'Form Ubah Data Fotografer',
             'validation' => \Config\Services::validation(),
             'kota' => $this->kotaModel->getKota($id)
         ];
@@ -305,10 +303,11 @@ class DatabaseTest extends BaseController
 
         $data['get_sess'] = $this->session->get('username_admin');
 
-        d($data);
+
 
         return view('databasetest/editKota', $data);
     }
+
 
 
     public function editPengguna($id = null)
@@ -367,18 +366,33 @@ class DatabaseTest extends BaseController
                     'required' => '{field} nama harus diisi.',
                     'is_unique' => '{field} nama sudah terdaftar'
                 ]
+            ],
+            'displaypic' => [
+                'rules' => 'uploaded[displaypic]|max_size[displaypic,35840]|is_image[displaypic]|mime_in[displaypic,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'uploaded' => 'Pilih gambar display terlebih dahulu',
+                    'max_size' => 'Maksimal ukuran gambar adalah 35MB',
+                    'is_image' => 'File gambar yang anda pilih tidak valid',
+                    'mime_in' => 'File yang anda pilih bukan gambar'
+                ]
             ]
         ])) {
-            $validation = \Config\Services::validation();
-            d($validation);
-            return redirect()->to('databasetest/createFotografer')->withInput()->with('validation', $validation);
+            // $validation = \Config\Services::validation();
+            // d($validation);
+            // return redirect()->to('databasetest/createFotografer')->withInput()->with('validation', $validation);
+            return redirect()->to('databasetest/createFotografer')->withInput();
         }
 
+        $fileDisplaypic = $this->request->getFile('displaypic');
+        // dd($fileDisplaypic);
+        //$imgName = $fileDisplaypic->getName();
         $slug = url_title($this->request->getVar('nama'), '-', true);
+        $imgName = $slug . '.' . $fileDisplaypic->guessExtension();
+        $fileDisplaypic->move('displaypic', $imgName); //move ke nama folder display pic di public
         $this->fotograferModel->save([
             'nama' => $this->request->getVar('nama'),
             'slug' => $slug,
-            'displaypic' => $this->request->getVar('displaypic'),
+            'displaypic' => $imgName,
             'akun_instagram' => $this->request->getVar('akun_instagram')
         ]);
 
@@ -686,18 +700,41 @@ class DatabaseTest extends BaseController
                     'required' => '{field} nama harus diisi.',
                     'is_unique' => '{field} nama sudah terdaftar'
                 ]
+            ],
+            'displaypic' => [
+                'rules' => 'uploaded[displaypic]|max_size[displaypic,35840]|is_image[displaypic]|mime_in[displaypic,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'uploaded' => 'Pilih gambar display terlebih dahulu',
+                    'max_size' => 'Maksimal ukuran gambar adalah 35MB',
+                    'is_image' => 'File gambar yang anda pilih tidak valid',
+                    'mime_in' => 'File yang anda pilih bukan gambar'
+                ]
             ]
         ])) {
-            $validation = \Config\Services::validation();
-            return redirect()->to('databasetest/editFotografer/' . $id)->withInput()->with('validation', $validation);
+            // $validation = \Config\Services::validation();
+            // return redirect()->to('databasetest/editFotografer/' . $id)->withInput()->with('validation', $validation);
+            return redirect()->to('databasetest/editFotografer/' . $id)->withInput();
+        }
+        $fotografer = $this->fotograferModel->find($id);
+        unlink('displaypic/' . $fotografer['displaypic']);
+        $fileDisplaypic = $this->request->getFile('displaypic');
+        $slug = url_title($this->request->getVar('nama'), '-', true);
+
+        //dd($this->request->getVar('olddisplaypic'));
+
+        if ($fileDisplaypic->getError() == 4) {
+            $imgName = $this->request->getVar('olddisplaypic');
+        } else {
+            $imgName = $slug . '.' . $fileDisplaypic->guessExtension();
+            $fileDisplaypic->move('displaypic', $imgName);
+            // unlink('displaypic/' . $this->request->getVar('olddisplaypic'));
         }
 
-        $slug = url_title($this->request->getVar('nama'), '-', true);
         $this->fotograferModel->save([
             'id_fotografer' => $id,
             'nama' => $this->request->getVar('nama'),
             'slug' => $slug,
-            'displaypic' => $this->request->getVar('displaypic'),
+            'displaypic' => $imgName,
             'akun_instagram' => $this->request->getVar('akun_instagram')
         ]);
 
@@ -769,6 +806,7 @@ class DatabaseTest extends BaseController
     }
 
 
+
     public function updatePengguna($id)
     {
 
@@ -837,6 +875,10 @@ class DatabaseTest extends BaseController
 
     public function deleteFotografer($id)
     {
+
+        $fotografer = $this->fotograferModel->find($id);
+        unlink('displaypic/' . $fotografer['displaypic']);
+
         $this->fotograferModel->where('id_fotografer', $id)->delete();
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/Databasetest');
