@@ -54,7 +54,6 @@
     </p>
     <!-- SEARCH BAR v2/ -->
     <div class="dropdown">
-      Urutan Pencarian
       <button type="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown" style="width: 11rem">
         Urutkan
       </button>
@@ -81,11 +80,11 @@
 
     <div class="filter__sidebar">
       <div>
-        Arlin Sasqia Puspa Shiffa
+        Filter
       </div>
     </div>
     <div class="card__listing">
-      <div class="row hidden-md-up w-100">
+      <div class="card__listing__wrapper row hidden-md-up w-100">
         <?php foreach ($fotografer as $index => $k) : ?>
           <div class="card__wrapper col-lg-3 col-md-6 col-sm-12">
             <div class="card  px-0">

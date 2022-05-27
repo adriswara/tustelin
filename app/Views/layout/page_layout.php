@@ -108,6 +108,7 @@
 
 
 
+  <?= $this->include('layout/footer'); ?>
 
 
   <!-- <div class="footer">
