@@ -106,7 +106,7 @@
                   </span>
                   <div class="ratingReview">
                     <i class="fa fa-star" aria-hidden="true"></i>
-                    <span class="rating">5.0</span>
+                    <span class="rating"><?= $k['rating']; ?></span>
                     <span class="review">( 5 Reviews )</span>
                   </div>
                   <div class="city"> <?= $k['nama_kota']; ?> </div>

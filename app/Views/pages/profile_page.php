@@ -126,7 +126,7 @@
           <div class="card-body" style="margin-top: 1rem">
             <h4 class="card-title" style="margin-top: 1rem"><?= $profil['nama']; ?></h4>
             <p class="card-text">Harga Dimulai Dari : <?= $profil['harga']; ?></p>
-            <p class="card-text">Rating : 4.0/5.0</p>
+            <p class="card-text">Rating : <?= $profil['rating']; ?>.0/5.0</p>
             <p>Total pemesanan jasa : 332</p>
             <p>
               <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#myModal2">
@@ -230,9 +230,9 @@ This part is straight out of Bootstrap docs. Just a carousel inside a modal.
 
         <div class="containerChat">
           <img src="/img_avatar1.png" alt="Avatar" style="width: 100%" />
-          <h4>User 1</h4>
-          <p>Great Service!</p>
-          <span class="time-right">11:00</span>
+          <h4><?= $profil['username_pengguna']; ?></h4>
+          <p><?= $profil['review']; ?></p>
+          <span class="time-right"><?= $profil['waktu_kirim']; ?></span>
         </div>
 
         <div class="containerChat darker">
