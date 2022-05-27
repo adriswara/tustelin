@@ -109,7 +109,7 @@
                     <span class="rating">5.0</span>
                     <span class="review">( 5 Reviews )</span>
                   </div>
-                  <div class="city">Bandung</div>
+                  <div class="city"> <?= $k['nama_kota']; ?> </div>
                   <p class="type type__<?= $k['nama_aliran']; ?>"> Foto <?= $k['nama_aliran']; ?> </p>
                 </div>
 

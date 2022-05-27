@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Models\AliranKomersilModel;
 use App\Models\FotograferModel;
+use App\Models\KotaModel;
+use App\Models\ReviewModel;
 
 class Profile extends BaseController
 {
@@ -12,6 +14,8 @@ class Profile extends BaseController
     {
         $this->fotograferModel = new FotograferModel();
         $this->alirankomersilModel = new AliranKomersilModel();
+        $this->reviewModel = new ReviewModel();
+        $this->kotaModel = new KotaModel();
     }
 
 

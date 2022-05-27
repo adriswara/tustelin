@@ -125,7 +125,7 @@
           <!-- Card Body -->
           <div class="card-body" style="margin-top: 1rem">
             <h4 class="card-title" style="margin-top: 1rem"><?= $profil['nama']; ?></h4>
-            <p class="card-text">Harga Dimulai Dari :<?= $profil['harga']; ?></p>
+            <p class="card-text">Harga Dimulai Dari : <?= $profil['harga']; ?></p>
             <p class="card-text">Rating : 4.0/5.0</p>
             <p>Total pemesanan jasa : 332</p>
             <p>
