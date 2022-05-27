@@ -54,8 +54,10 @@
       <h2 class="justify-content-center mt-2">
         Hasil Pencarian Fotografer Anda
       </h2>
+
       <p class="justify-content-center">Fotografer yang ditemukan <?= (count($fotografer) > 0 ? count($fotografer) : 0); ?> item
-      <p id="hasilSrc"></p>
+
+        <p id="hasilSrc"></p>
       </p>
       <!--  -->
       <script>
