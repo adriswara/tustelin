@@ -76,7 +76,7 @@ class Profile extends BaseController
 
         $data['get_sess'] = $this->session->get('username_pengguna');
 
-        // d($data);
+        d($data);
 
         // untuk exception not found
 
