@@ -52,6 +52,7 @@
     </h3>
     <p class="justify-content-center marketplace__find">Fotografer yang ditemukan <?= (count($fotografer) > 0 ? count($fotografer) : 0); ?> item
     </p>
+    <button class="filter-button" onclick="openNav()"><i class="fa fa-filter" aria-hidden="true"></i> Filter</button>
     <!-- SEARCH BAR v2/ -->
     <div class="dropdown-sort dropdown">
       <button type="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown" style="width: 11rem">

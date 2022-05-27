@@ -13,7 +13,7 @@ function stickySidebar() {
   }
   $(window).scroll(function () {
     var scroll = $(window).scrollTop();
-    console.log(scroll);
+    // console.log(scroll);
     if (scroll >= 230.5) {
       $(".filter__sidebar").addClass("sticky");
       $(".marketplace .card__listing").addClass("sticky");
@@ -30,6 +30,14 @@ function filterSidebar() {
     openSpeed: 400,
     closeSpeed: 400,
   });
+}
+
+function openNav() {
+  const sidebar = $(".filter__sidebar");
+  const cardListing = $(".card__listing");
+
+  sidebar.toggleClass("opened");
+  cardListing.toggleClass("opened");
 }
 
 $(document).ready(function () {
