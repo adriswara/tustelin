@@ -46,14 +46,14 @@
 <div class="bg-light marketplace">
 
   <!-- List of Cards -->
-  <div class=" py-5 container-fluid">
-    <h2 class="mt-2">
+  <div class=" py-3 container-fluid">
+    <h3 class="mt-2">
       Hasil Pencarian Fotografer Anda
-    </h2>
-    <p class="justify-content-center">Fotografer yang ditemukan <?= (count($fotografer) > 0 ? count($fotografer) : 0); ?> item
+    </h3>
+    <p class="justify-content-center marketplace__find">Fotografer yang ditemukan <?= (count($fotografer) > 0 ? count($fotografer) : 0); ?> item
     </p>
     <!-- SEARCH BAR v2/ -->
-    <div class="dropdown">
+    <div class="dropdown-sort dropdown">
       <button type="button" class="btn btn-default dropdown-toggle" data-bs-toggle="dropdown" style="width: 11rem">
         Urutkan
       </button>
@@ -80,7 +80,130 @@
 
     <div class="filter__sidebar">
       <div>
-        Filter
+        <article class="beefup">
+          <h2 class="beefup__head ">Aliran</h2>
+          <div class="beefup__body">
+            <form action="">
+              <div class="checkbox">
+                <input type="checkbox" id="acara" name="acara" value="acara">
+                <label for="vehicle1"> Acara</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="acara" name="acara" value="acara">
+                <label for="vehicle1"> Acara</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="acara" name="acara" value="acara">
+                <label for="vehicle1"> Acara</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="acara" name="acara" value="acara">
+                <label for="vehicle1"> Acara</label>
+              </div>
+            </form>
+          </div>
+        </article>
+
+        <article class="beefup">
+          <h2 class="beefup__head">Kota</h2>
+          <div class="beefup__body">
+            <form action="">
+              <div class="checkbox">
+                <input type="checkbox" id="acara" name="acara" value="acara">
+                <label for="vehicle1"> Jakarta</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="acara" name="acara" value="acara">
+                <label for="vehicle1"> Bandung</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="acara" name="acara" value="acara">
+                <label for="vehicle1"> Solo</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="acara" name="acara" value="acara">
+                <label for="vehicle1"> Surabaya</label>
+              </div>
+            </form>
+          </div>
+        </article>
+
+        <article class="beefup">
+          <h2 class="beefup__head">Harga</h2>
+          <div class="beefup__body">
+            <form action="">
+              <div class="checkbox">
+                <input type="checkbox" id="acara" name="acara" value="acara">
+                <label for="vehicle1"> Rp0 - Rp100.000</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="acara" name="acara" value="acara">
+                <label for="vehicle1"> Rp100.000 - Rp1 Juta</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="acara" name="acara" value="acara">
+                <label for="vehicle1">Rp1 Juta - Rp3 Juta </label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="acara" name="acara" value="acara">
+                <label for="vehicle1"> Rp3 Juta - Rp5 Juta</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="acara" name="acara" value="acara">
+                <label for="vehicle1"> > Rp5 Juta</label>
+              </div>
+            </form>
+          </div>
+        </article>
+
+        <article class="beefup">
+          <h2 class="beefup__head">Rating</h2>
+          <div class="beefup__body">
+            <form action="">
+              <div class="checkbox">
+                <input type="checkbox" id="acara" name="acara" value="acara">
+                <label for="vehicle1"><i class="fa fa-star" aria-hidden="true"></i> 1</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="acara" name="acara" value="acara">
+                <label for="vehicle1"><i class="fa fa-star" aria-hidden="true"></i> 2</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="acara" name="acara" value="acara">
+                <label for="vehicle1"><i class="fa fa-star" aria-hidden="true"></i> 3</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="acara" name="acara" value="acara">
+                <label for="vehicle1"><i class="fa fa-star" aria-hidden="true"></i> 4</label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="acara" name="acara" value="acara">
+                <label for="vehicle1"><i class="fa fa-star" aria-hidden="true"></i> 5</label>
+              </div>
+            </form>
+          </div>
+        </article>
+
+        <article class="beefup">
+          <h2 class="beefup__head">Jumlah Review</h2>
+          <div class="beefup__body">
+            <form action="">
+              <div class="checkbox">
+                <input type="checkbox" id="acara" name="acara" value="acara">
+                <label for="vehicle1">0 - 100 </label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="acara" name="acara" value="acara">
+                <label for="vehicle1">100 - 500 </label>
+              </div>
+              <div class="checkbox">
+                <input type="checkbox" id="acara" name="acara" value="acara">
+                <label for="vehicle1">> 500</label>
+              </div>
+
+            </form>
+          </div>
+        </article>
       </div>
     </div>
     <div class="card__listing">
