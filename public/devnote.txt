@@ -1,0 +1,3 @@
+Bikin method sum data di model samting ╝
+di controller tiap input $review bikin sum review.rating dengan manggil method di model ╝
+update data sum nya berdasarkan review.id_pengguna = pengguna.id_pengguna ╝
