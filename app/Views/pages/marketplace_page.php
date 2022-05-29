@@ -18,20 +18,11 @@
       <div class="tag__wrapper__cover-right"></div>
       <div class="tag__wrapper">
         <div class="tag__wrapper__list">
-          <a class=tag>keluarga</a>
-          <a class=tag>keluarga</a>
-          <a class=tag>keluarga</a>
-          <a class=tag>keluarga</a>
-          <a class=tag>keluarga</a>
-          <a class=tag>keluarga</a>
-          <a class=tag>keluarga</a>
-          <a class=tag>keluarga</a>
-          <a class=tag>keluarga</a>
-          <a class=tag>keluarga</a>
-          <a class=tag>keluarga</a>
-          <a class=tag>keluarga</a>
-          <a class=tag>keluarga</a>
-          <a class=tag>keluarga</a>
+          <?php foreach ($fotografer as $index => $k) : ?>
+            <a class=tag><?= $k['nama_aliran']; ?></a>
+          <?php endforeach; ?>
+
+
 
         </div>
 
@@ -84,22 +75,14 @@
           <h2 class="beefup__head ">Aliran</h2>
           <div class="beefup__body">
             <form action="">
-              <div class="checkbox">
-                <input type="checkbox" id="acara" name="acara" value="acara">
-                <label for="vehicle1"> Acara</label>
-              </div>
-              <div class="checkbox">
-                <input type="checkbox" id="acara" name="acara" value="acara">
-                <label for="vehicle1"> Acara</label>
-              </div>
-              <div class="checkbox">
-                <input type="checkbox" id="acara" name="acara" value="acara">
-                <label for="vehicle1"> Acara</label>
-              </div>
-              <div class="checkbox">
-                <input type="checkbox" id="acara" name="acara" value="acara">
-                <label for="vehicle1"> Acara</label>
-              </div>
+              <?php foreach ($fotografer as $index => $k) : ?>
+
+                <div class="checkbox">
+                  <input type="checkbox" id="<?= $k['nama_aliran']; ?>" name="<?= $k['nama_aliran']; ?>" value="<?= $k['nama_aliran']; ?>">
+                  <label for="<?= $k['nama_aliran']; ?>"> <?= $k['nama_aliran']; ?></label>
+                </div>
+
+              <?php endforeach; ?>
             </form>
           </div>
         </article>
@@ -108,22 +91,14 @@
           <h2 class="beefup__head">Kota</h2>
           <div class="beefup__body">
             <form action="">
-              <div class="checkbox">
-                <input type="checkbox" id="acara" name="acara" value="acara">
-                <label for="vehicle1"> Jakarta</label>
-              </div>
-              <div class="checkbox">
-                <input type="checkbox" id="acara" name="acara" value="acara">
-                <label for="vehicle1"> Bandung</label>
-              </div>
-              <div class="checkbox">
-                <input type="checkbox" id="acara" name="acara" value="acara">
-                <label for="vehicle1"> Solo</label>
-              </div>
-              <div class="checkbox">
-                <input type="checkbox" id="acara" name="acara" value="acara">
-                <label for="vehicle1"> Surabaya</label>
-              </div>
+              <?php foreach ($fotografer as $index => $k) : ?>
+
+                <div class="checkbox">
+                  <input type="checkbox" id="<?= $k['nama_kota']; ?>" name="<?= $k['nama_kota']; ?>" value="<?= $k['nama_kota']; ?>">
+                  <label for="<?= $k['nama_kota']; ?>"> <?= $k['nama_kota']; ?></label>
+                </div>
+
+              <?php endforeach; ?>
             </form>
           </div>
         </article>
@@ -133,24 +108,24 @@
           <div class="beefup__body">
             <form action="">
               <div class="checkbox">
-                <input type="checkbox" id="acara" name="acara" value="acara">
-                <label for="vehicle1"> Rp0 - Rp100.000</label>
+                <input type="checkbox" id="filterHarga" name="filterHarga" value="filterHarga">
+                <label for="filterHarga"> Rp0 - Rp1.000.000</label>
               </div>
               <div class="checkbox">
-                <input type="checkbox" id="acara" name="acara" value="acara">
-                <label for="vehicle1"> Rp100.000 - Rp1 Juta</label>
+                <input type="checkbox" id="filterHarga" name="filterHarga" value="filterHarga">
+                <label for="filterHarga"> Rp1.000.000 - Rp2.000.000</label>
               </div>
               <div class="checkbox">
-                <input type="checkbox" id="acara" name="acara" value="acara">
-                <label for="vehicle1">Rp1 Juta - Rp3 Juta </label>
+                <input type="checkbox" id="filterHarga" name="filterHarga" value="filterHarga">
+                <label for="filterHarga">Rp2.000.000 - Rp3.000.000</label>
               </div>
               <div class="checkbox">
-                <input type="checkbox" id="acara" name="acara" value="acara">
-                <label for="vehicle1"> Rp3 Juta - Rp5 Juta</label>
+                <input type="checkbox" id="filterHarga" name="filterHarga" value="filterHarga">
+                <label for="filterHarga">Rp3.000.000 - Rp4.000.000</label>
               </div>
               <div class="checkbox">
-                <input type="checkbox" id="acara" name="acara" value="acara">
-                <label for="vehicle1"> > Rp5 Juta</label>
+                <input type="checkbox" id="filterHarga" name="filterHarga" value="filterHarga">
+                <label for="filterHarga"> > Rp5.000.000</label>
               </div>
             </form>
           </div>
@@ -161,24 +136,24 @@
           <div class="beefup__body">
             <form action="">
               <div class="checkbox">
-                <input type="checkbox" id="acara" name="acara" value="acara">
-                <label for="vehicle1"><i class="fa fa-star" aria-hidden="true"></i> 1</label>
+                <input type="checkbox" id="filterRating" name="filterRating" value="filterRating">
+                <label for="filterRating"><i class="fa fa-star" aria-hidden="true"></i> 1</label>
               </div>
               <div class="checkbox">
-                <input type="checkbox" id="acara" name="acara" value="acara">
-                <label for="vehicle1"><i class="fa fa-star" aria-hidden="true"></i> 2</label>
+                <input type="checkbox" id="filterRating" name="filterRating" value="filterRating">
+                <label for="filterRating"><i class="fa fa-star" aria-hidden="true"></i> 2</label>
               </div>
               <div class="checkbox">
-                <input type="checkbox" id="acara" name="acara" value="acara">
-                <label for="vehicle1"><i class="fa fa-star" aria-hidden="true"></i> 3</label>
+                <input type="checkbox" id="filterRating" name="filterRating" value="filterRating">
+                <label for="filterRating"><i class="fa fa-star" aria-hidden="true"></i> 3</label>
               </div>
               <div class="checkbox">
-                <input type="checkbox" id="acara" name="acara" value="acara">
-                <label for="vehicle1"><i class="fa fa-star" aria-hidden="true"></i> 4</label>
+                <input type="checkbox" id="filterRating" name="filterRating" value="filterRating">
+                <label for="filterRating"><i class="fa fa-star" aria-hidden="true"></i> 4</label>
               </div>
               <div class="checkbox">
-                <input type="checkbox" id="acara" name="acara" value="acara">
-                <label for="vehicle1"><i class="fa fa-star" aria-hidden="true"></i> 5</label>
+                <input type="checkbox" id="filterRating" name="filterRating" value="filterRating">
+                <label for="asd"><i class="fa fa-star" aria-hidden="true"></i> 5</label>
               </div>
             </form>
           </div>
@@ -189,16 +164,16 @@
           <div class="beefup__body">
             <form action="">
               <div class="checkbox">
-                <input type="checkbox" id="acara" name="acara" value="acara">
-                <label for="vehicle1">0 - 100 </label>
+                <input type="checkbox" id="filterJmlRating" name="filterJmlRating" value="filterJmlRating">
+                <label for="filterJmlRating">0 - 10 </label>
               </div>
               <div class="checkbox">
-                <input type="checkbox" id="acara" name="acara" value="acara">
-                <label for="vehicle1">100 - 500 </label>
+                <input type="checkbox" id="filterJmlRating" name="filterJmlRating" value="filterJmlRating">
+                <label for="filterJmlRating">10 - 100 </label>
               </div>
               <div class="checkbox">
-                <input type="checkbox" id="acara" name="acara" value="acara">
-                <label for="vehicle1">> 500</label>
+                <input type="checkbox" id="filterJmlRating" name="filterJmlRating" value="filterJmlRating">
+                <label for="filterJmlRating">> 100</label>
               </div>
 
             </form>
@@ -228,9 +203,10 @@
                     <?= $k['akun_instagram']; ?>
                   </span>
                   <div class="ratingReview">
+
                     <i class="fa fa-star" aria-hidden="true"></i>
-                    <span class="rating"><?= $k['rating']; ?></span>
-                    <span class="review">( 5 Reviews )</span>
+                    <span class="rating"><?= $k['rataRata_rating']; ?></span>
+                    <span class="review">( <?= $k['jumlah_rating']; ?> Reviews )</span>
                   </div>
                   <div class="city"> <?= $k['nama_kota']; ?> </div>
                   <p class="type type__<?= $k['nama_aliran']; ?>"> Foto <?= $k['nama_aliran']; ?> </p>
