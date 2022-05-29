@@ -17,6 +17,8 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
 
+        <?= d($profil); ?>
+
         <!-- Modal body -->
         <div class="modal-body">
           <label for="email"><b>Nomor Telefon</b></label>
@@ -111,8 +113,10 @@
       <!---->
 
       <!---->
+      <?= d($profil[0]['rataRata_rating']); ?>
       <div class="col-md-2">
         <!---->
+
 
         <div class="card" style="width: 300px">
           <div>
@@ -122,12 +126,15 @@
             </div>
           </div>
 
+
+
           <!-- Card Body -->
           <div class="card-body" style="margin-top: 1rem">
             <h4 class="card-title" style="margin-top: 1rem"><?= $profil[0]['nama']; ?></h4>
             <p class="card-text">Harga Dimulai Dari : <?= $profil[0]['harga']; ?></p>
-            <p class="card-text">Rating : <?= $profil[0]['rating']; ?>.0/5.0</p>
-            <p>Total pemesanan jasa : 332</p>
+            <p class="card-text">Rating : <?= $profil[0]['rataRata_rating']; ?>.0/5.0</p>
+
+            <p>Total pemesanan jasa : <?= $profil[0]['jumlah_rating']; ?></p>
             <p>
               <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#myModal2">
                 Kontak Fotografer
@@ -234,7 +241,8 @@ This part is straight out of Bootstrap docs. Just a carousel inside a modal.
             <img src="/img_avatar1.png" alt="Avatar" style="width: 100%" />
             <h4><?= $k['username_pengguna']; ?></h4>
             <p><?= $k['review']; ?></p>
-            <span class="time-right"><?= $k['waktu_kirim']; ?></span>
+            <span class="">Rating : <?= $k['rating']; ?></span>
+            <span class="time-right"><?= $k['waktu_kirim']; ?> </span>
           </div>
 
         <?php endforeach; ?>
