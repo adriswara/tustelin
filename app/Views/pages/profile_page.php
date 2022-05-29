@@ -247,26 +247,20 @@ This part is straight out of Bootstrap docs. Just a carousel inside a modal.
 
         <?php endforeach; ?>
 
-        <div class="containerChat darker">
-          <img src="/img_avatar1.png" alt="Avatar" class="left" style="width: 100%" />
-          <h4>User 2</h4>
-          <p>Harga sesuai dengan jasa.</p>
-          <span class="time-right">11:01</span>
-        </div>
 
-        <div class="containerChat">
-          <img src="/img_avatar1.png" alt="Avatar" style="width: 100%" />
-          <h4>User 3</h4>
-          <p>Pelayanan terbaik dikelasnya.</p>
-          <span class="time-right">11:02</span>
-        </div>
+
 
         <div class="containerChat darker">
-          <img src="/img_avatar1.png" alt="Avatar" class="left" style="width: 100%" />
-          <h4>User 4</h4>
-          <p>Hasil foto terlambat.</p>
-          <span class="time-right">11:05</span>
+
+          <h4>Input Review</h4>
+          <div class="form-group">
+
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
         </div>
+
       </div>
 
       <div class="col-md-2">
