@@ -872,6 +872,11 @@ class DatabaseTest extends BaseController
 
         session()->setFlashdata('pesan', 'Edit berhasil');
 
+        $avgRating = $this->reviewModel->avgReview($this->request->getVar('id_fotografer'));
+        // dd($avgRating);
+        $this->avgRatingFotografer($this->request->getVar('id_fotografer'), $avgRating);
+
+
         // return redirect()->to('/databasetest');
         return redirect()->to('databasetest/editReview/' . $id);
     }
