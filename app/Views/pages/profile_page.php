@@ -17,16 +17,18 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
 
+        <?= d($profil); ?>
+
         <!-- Modal body -->
         <div class="modal-body">
           <label for="email"><b>Nomor Telefon</b></label>
-          <p><?= $profil['no_telfon']; ?></p>
+          <p><?= $profil[0]['no_telfon']; ?></p>
           <label for="email"><b>Email</b> </label>
-          <p><?= $profil['email']; ?></p>
+          <p><?= $profil[0]['email']; ?></p>
           <label for="psw"><b>Instagram</b></label>
-          <p><?= $profil['akun_instagram']; ?></p>
+          <p><?= $profil[0]['akun_instagram']; ?></p>
           <label for="psw-repeat"><b>Nomor Rekening</b></label>
-          <p><?= $profil['no_rekening']; ?></p>
+          <p><?= $profil[0]['no_rekening']; ?></p>
 
         </div>
 
@@ -111,23 +113,28 @@
       <!---->
 
       <!---->
+      <?= d($profil[0]['rataRata_rating']); ?>
       <div class="col-md-2">
         <!---->
 
+
         <div class="card" style="width: 300px">
           <div>
-            <img id="CardDi" class="card-img-top" src="/displaypic/<?= $profil['displaypic']; ?>" alt="Card image" style="width: 100%" />
+            <img id="CardDi" class="card-img-top" src="/displaypic/<?= $profil[0]['displaypic']; ?>" alt="Card image" style="width: 100%" />
             <div style="margin-left: 6rem; margin-top: -3rem">
-              <img id="CardDp" src="/displaypic/<?= $profil['displaypic']; ?>" alt="Logo" style="width: 120px" class="rounded-pill" />
+              <img id="CardDp" src="/displaypic/<?= $profil[0]['displaypic']; ?>" alt="Logo" style="width: 120px" class="rounded-pill" />
             </div>
           </div>
 
+
+
           <!-- Card Body -->
           <div class="card-body" style="margin-top: 1rem">
-            <h4 class="card-title" style="margin-top: 1rem"><?= $profil['nama']; ?></h4>
-            <p class="card-text">Harga Dimulai Dari :<?= $profil['harga']; ?></p>
-            <p class="card-text">Rating : 4.0/5.0</p>
-            <p>Total pemesanan jasa : 332</p>
+            <h4 class="card-title" style="margin-top: 1rem"><?= $profil[0]['nama']; ?></h4>
+            <p class="card-text">Harga Dimulai Dari : <?= $profil[0]['harga']; ?></p>
+            <p class="card-text">Rating : <?= $profil[0]['rataRata_rating']; ?>.0/5.0</p>
+
+            <p>Total pemesanan jasa : <?= $profil[0]['jumlah_rating']; ?></p>
             <p>
               <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#myModal2">
                 Kontak Fotografer
@@ -228,33 +235,32 @@ This part is straight out of Bootstrap docs. Just a carousel inside a modal.
       <div class="col-md-2" style="width: 60rem">
         <h2>User Review</h2>
 
-        <div class="containerChat">
-          <img src="/img_avatar1.png" alt="Avatar" style="width: 100%" />
-          <h4>User 1</h4>
-          <p>Great Service!</p>
-          <span class="time-right">11:00</span>
-        </div>
+        <?php foreach ($profil as $k) : ?>
+
+          <div class="containerChat">
+            <img src="/img_avatar1.png" alt="Avatar" style="width: 100%" />
+            <h4><?= $k['username_pengguna']; ?></h4>
+            <p><?= $k['review']; ?></p>
+            <span class="">Rating : <?= $k['rating']; ?></span>
+            <span class="time-right"><?= $k['waktu_kirim']; ?> </span>
+          </div>
+
+        <?php endforeach; ?>
+
+
+
 
         <div class="containerChat darker">
-          <img src="/img_avatar1.png" alt="Avatar" class="left" style="width: 100%" />
-          <h4>User 2</h4>
-          <p>Harga sesuai dengan jasa.</p>
-          <span class="time-right">11:01</span>
+
+          <h4>Input Review</h4>
+          <div class="form-group">
+
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
         </div>
 
-        <div class="containerChat">
-          <img src="/img_avatar1.png" alt="Avatar" style="width: 100%" />
-          <h4>User 3</h4>
-          <p>Pelayanan terbaik dikelasnya.</p>
-          <span class="time-right">11:02</span>
-        </div>
-
-        <div class="containerChat darker">
-          <img src="/img_avatar1.png" alt="Avatar" class="left" style="width: 100%" />
-          <h4>User 4</h4>
-          <p>Hasil foto terlambat.</p>
-          <span class="time-right">11:05</span>
-        </div>
       </div>
 
       <div class="col-md-2">
@@ -271,7 +277,7 @@ This part is straight out of Bootstrap docs. Just a carousel inside a modal.
             <h4 class="card-title" style="margin-top: 1rem">
               Equipment List
             </h4>
-            <p class="card-text">Main Camera : <?= $profil['nama_alat']; ?></p>
+            <p class="card-text">Main Camera : <?= $profil[0]['nama_alat']; ?></p>
 
             <h5>Other Equipment</h5>
             <p class="card-text">Excell tripod</p>

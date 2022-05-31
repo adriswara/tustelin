@@ -21,6 +21,8 @@ class DatabaseTest extends BaseController
     protected $kotaModel;
     protected $userModel;
     protected $reviewModel;
+    protected $avgRating;
+    protected $sumRating;
 
     public function __construct()
     {
@@ -555,18 +557,19 @@ class DatabaseTest extends BaseController
     {
         // dd($this->request->getVar());
 
-        if (!$this->validate([
-            'id_pengguna' => [
-                'rules' => 'required|is_unique[review.id_pengguna]',
-                'errors' => [
-                    'required' => '{field} nama harus diisi.',
-                    'is_unique' => '{field} nama sudah terdaftar'
-                ]
-            ]
-        ])) {
-            $validation = \Config\Services::validation();
-            return redirect()->to('databasetest/createReview')->withInput()->with('validation', $validation);
-        }
+        // if (!$this->validate([
+        //     'id_pengguna' => [
+        //         'rules' => 'required|is_unique[review.id_pengguna]',
+        //         'errors' => [
+        //             'required' => '{field} nama harus diisi.',
+        //             'is_unique' => '{field} nama sudah terdaftar'
+        //         ]
+        //     ]rataRata_ratingac
+        // ])) {
+        //     $validation = \Config\Services::validation();
+        //     dd($validation);
+        //     return redirect()->to('databasetest/createReview')->withInput()->with('validation', $validation);
+        // }
 
         $this->reviewModel->save([
             'id_fotografer' => $this->request->getVar('id_fotografer'),
@@ -578,7 +581,10 @@ class DatabaseTest extends BaseController
 
 
         session()->setFlashdata('pesan', 'Input berhasil');
-
+        $avgRating = $this->reviewModel->avgReview($this->request->getVar('id_fotografer'));
+        $this->avgRatingFotografer($this->request->getVar('id_fotografer'), $avgRating);
+        $sumRating = $this->reviewModel->sumReview($this->request->getVar('id_fotografer'));
+        $this->sumRatingFotografer($this->request->getVar('id_fotografer'), $sumRating);
         return redirect()->to('/databasetest');
     }
 
@@ -868,8 +874,39 @@ class DatabaseTest extends BaseController
 
         session()->setFlashdata('pesan', 'Edit berhasil');
 
+        $avgRating = $this->reviewModel->avgReview($this->request->getVar('id_fotografer'));
+        // dd($avgRating);
+        $this->avgRatingFotografer($this->request->getVar('id_fotografer'), $avgRating);
+
+
         // return redirect()->to('/databasetest');
         return redirect()->to('databasetest/editReview/' . $id);
+    }
+
+
+    // buat input save ke db fotografer
+    public function avgRatingFotografer($id, $avgRating)
+    {
+
+        // d(json_decode($avgRating[0]->rating, true));
+        // dd($avgRating);
+        $this->fotograferModel->save([
+            'id_fotografer' => $id,
+            'rataRata_rating' => json_decode($avgRating[0]->rating, true)
+        ]);
+    }
+
+    public function sumRatingFotografer($id, $sumRating)
+    {
+
+        // d(json_decode($avgRating[0]->rating, true));
+        // dd($avgRating);
+        d($sumRating);
+        $this->fotograferModel->save([
+            'id_fotografer' => $id,
+            'jumlah_rating' => $sumRating
+
+        ]);
     }
 
 

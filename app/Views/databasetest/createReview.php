@@ -20,8 +20,8 @@
                     <input type="text" name="review" class="form-control" id="review" value="<?= old('review'); ?>">
                 </div>
                 <div class="mb-3">
-                    <label for="Rating" class="form-label">Rating</label>
-                    <input type="text" name="Rating" class="form-control" id="Rating" value="<?= old('Rating'); ?>">
+                    <label for="rating" class="form-label">rating</label>
+                    <input type="text" name="rating" class="form-control" id="rating" value="<?= old('Rating'); ?>">
                 </div>
                 <!-- <div class="mb-3">
                     <label for="waktu_kirim" class="form-label">waktu kirim</label>

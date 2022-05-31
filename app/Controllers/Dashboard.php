@@ -52,7 +52,7 @@ class Dashboard extends Controller
     }
     public function logged()
     {
-        $arraytemp = $this->fotograferModel->joinkomersil()->getResult();
+        $arraytemp = $this->fotograferModel->joinMarket()->getResult();
         $arrayresult = array();
         foreach ($arraytemp as $key) {
             $arrayresult[] = json_decode(json_encode($key), true);;
