@@ -40,8 +40,10 @@ class Profile extends BaseController
             'title' => 'Daftar Fotografer',
             // 'fotografer' => $this->fotograferModel->getFotografer(),
             'fotografer' => $arrayResult,
-            'kriteria' => $kriteria
+            'kriteria' => $kriteria,
+            'filter_aliran' => null
         ];
+        // dd($data);
         // $data = json_decode($data, true);
 
         //$fotograferModel = new \App\Models\FotograferModel();
@@ -66,11 +68,11 @@ class Profile extends BaseController
             $filterResult = $this->fotograferModel->filter($filter_aliran);
         } else {
 
-            $filterResult = $this->fotograferModel->joinMarket()->getResult();
-            // $filterResult = array();
-            // foreach ($arraytemp as $key) {
-            //     $arrayResult[] = json_decode(json_encode($key), true);
-            // }
+            $arraytemp = $this->fotograferModel->joinMarket()->getResult();
+            $filterResult = array();
+            foreach ($arraytemp as $key) {
+                $filterResult[] = json_decode(json_encode($key), true);
+            }
         }
 
         $data = [
@@ -78,7 +80,8 @@ class Profile extends BaseController
             'title' => 'Daftar Fotografer',
             // 'fotografer' => $this->fotograferModel->getFotografer(),
             'fotografer' => $filterResult,
-            'kriteria' => $kriteria
+            'kriteria' => $kriteria,
+            'filter_aliran' => $filter_aliran
         ];
 
         // dd($data);
@@ -115,9 +118,8 @@ class Profile extends BaseController
 
         $result = [
 
-            'title' => 'Daftar Fotografer',
             // 'fotografer' => $this->fotograferModel->getFotografer(),
-            'kota' => $dataAliran,
+            'kota' => $dataKota,
             'aliran' => $dataAliran
         ];
 

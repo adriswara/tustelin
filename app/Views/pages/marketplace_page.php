@@ -78,7 +78,7 @@
               <?php foreach ($kriteria['aliran'] as $index => $j) : ?>
 
                 <div class="checkbox">
-                  <input onChange="this.form.submit()" type="checkbox" id="filter_aliran" name="filter_aliran" value="<?= $j['nama_aliran']; ?>">
+                  <input <?= ($j['nama_aliran'] == $filter_aliran) ? "checked" : "" ?> onChange="this.form.submit()" type="checkbox" id="filter_aliran" name="filter_aliran" value="<?= $j['nama_aliran']; ?>">
                   <label for="filter_aliran"> <?= $j['nama_aliran']; ?></label>
                 </div>
 
@@ -91,13 +91,11 @@
           <h2 class="beefup__head">Kota</h2>
           <div class="beefup__body">
             <form action="">
-              <?php foreach ($fotografer as $index => $k) : ?>
-
-                <?= d($k['nama_kota']); ?>
+              <?php foreach ($kriteria['kota'] as $index => $j) : ?>
 
                 <div class="checkbox">
-                  <input type="checkbox" id="<?= $k['nama_kota']; ?>" name="filter_kota" value="<?= $k['nama_kota']; ?>">
-                  <label for="<?= $k['nama_kota']; ?>"> <?= $k['nama_kota']; ?></label>
+                  <input type="checkbox" id="<?= $j['nama_kota']; ?>" name="filter_kota" value="<?= $j['nama_kota']; ?>">
+                  <label for="<?= $j['nama_kota']; ?>"> <?= $j['nama_kota']; ?></label>
                 </div>
 
               <?php endforeach; ?>
@@ -185,7 +183,7 @@
     </div>
     <div class="card__listing">
       <div class="card__listing__wrapper row hidden-md-up w-100">
-        <?php foreach ($fotografer as $index => $k) : ?>
+        <?php foreach ($fotografer as $k) : ?>
           <div class="card__wrapper col-lg-3 col-md-6 col-sm-12">
             <div class="card  px-0">
               <div class="card__imgwrapper">
