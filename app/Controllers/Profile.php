@@ -58,16 +58,15 @@ class Profile extends BaseController
     {
 
         if ($filter_aliran == null) {
-            $filter_aliran = $this->request->getVar('filter_aliran');
+            $filter_aliran = $this->request->getVar('filter_aliran[]');
         }
 
         $kriteria = $this->criteriaGetter();
 
-        // dd($filter_aliran);
+
         if ($filter_aliran) {
             $filterResult = $this->fotograferModel->filter($filter_aliran);
         } else {
-
             $arraytemp = $this->fotograferModel->joinMarket()->getResult();
             $filterResult = array();
             foreach ($arraytemp as $key) {

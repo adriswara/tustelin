@@ -41,6 +41,8 @@
     <h3 class="mt-2">
       Hasil Pencarian Fotografer Anda
     </h3>
+
+
     <p class="justify-content-center marketplace__find">Fotografer yang ditemukan <?= (count($fotografer) > 0 ? count($fotografer) : 0); ?> item
     </p>
     <button class="filter-button" onclick="openNav()"><i class="fa fa-filter" aria-hidden="true"></i> Filter</button>
@@ -79,8 +81,14 @@
               <?php foreach ($kriteria['aliran'] as $index => $j) : ?>
 
                 <div class="checkbox">
-                  <input <?= ($j['nama_aliran'] == $filter_aliran) ? "checked" : "" ?> onChange="this.form.submit()" type="checkbox" id="filter_aliran" name="filter_aliran" value="<?= $j['nama_aliran']; ?>">
-                  <label for="filter_aliran"> <?= $j['nama_aliran']; ?></label>
+                  <?php if (is_array($filter_aliran)) : ?>
+                    <input <?= (in_array($j['nama_aliran'], $filter_aliran)) ? "checked" : "" ?> onChange="this.form.submit()" type="checkbox" id="filter_aliran" name="filter_aliran[]" value="<?= $j['nama_aliran']; ?>">
+                    <label for="filter_aliran"> <?= $j['nama_aliran']; ?></label>
+                  <?php else : ?>
+                    <input onChange="this.form.submit()" type="checkbox" id="filter_aliran" name="filter_aliran[]" value="<?= $j['nama_aliran']; ?>">
+                    <label for="filter_aliran"> <?= $j['nama_aliran']; ?></label>
+                  <?php endif; ?>
+
                 </div>
 
               <?php endforeach; ?>
