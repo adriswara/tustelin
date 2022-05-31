@@ -11,3 +11,6 @@ update data sum nya berdasarkan review.id_pengguna = pengguna.id_pengguna ╝
     }
 
 
+
+
+get var php manggil name
