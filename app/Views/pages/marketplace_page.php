@@ -21,9 +21,6 @@
           <?php foreach ($kriteria['aliran'] as $index => $j) : ?>
             <a href="/FilterProfile/<?= $j['nama_aliran']; ?>" class="tag" id="filter_aliran"><?= $j['nama_aliran']; ?></a>
           <?php endforeach; ?>
-
-
-
         </div>
 
       </div>
@@ -74,10 +71,12 @@
 
     <div class="filter__sidebar">
       <div>
-        <article class="beefup">
-          <h2 class="beefup__head ">Aliran</h2>
-          <div class="beefup__body">
-            <form action="/Profile/market_filter" method="post">
+        <!--  -->
+        <!-- aliran -->
+        <form action="/Profile/market_filter" method="post">
+          <article class="beefup">
+            <h2 class="beefup__head ">Aliran</h2>
+            <div class="beefup__body">
               <?php foreach ($kriteria['aliran'] as $index => $j) : ?>
 
                 <div class="checkbox">
@@ -92,26 +91,33 @@
                 </div>
 
               <?php endforeach; ?>
-            </form>
-          </div>
-        </article>
-
-        <article class="beefup">
-          <h2 class="beefup__head">Kota</h2>
-          <div class="beefup__body">
-            <form action="">
+              <!-- </form> -->
+            </div>
+          </article>
+          <!--  -->
+          <!-- kota -->
+          <article class="beefup">
+            <h2 class="beefup__head">Kota</h2>
+            <div class="beefup__body">
+              <!-- <form action="/Profile/market_filter" method="post"> -->
               <?php foreach ($kriteria['kota'] as $index => $j) : ?>
 
                 <div class="checkbox">
-                  <input type="checkbox" id="<?= $j['nama_kota']; ?>" name="filter_kota" value="<?= $j['nama_kota']; ?>">
-                  <label for="<?= $j['nama_kota']; ?>"> <?= $j['nama_kota']; ?></label>
+                  <?php if (is_array($filter_kota)) : ?>
+                    <input <?= (in_array($j['nama_kota'], $filter_kota)) ? "checked" : "" ?> onChange="this.form.submit()" type="checkbox" id="filter_kota" name="filter_kota[]" value="<?= $j['nama_kota']; ?>">
+                    <label for="filter_kota"> <?= $j['nama_kota']; ?></label>
+                  <?php else : ?>
+                    <input onChange="this.form.submit()" type="checkbox" id="filter_kota" name="filter_kota[]" value="<?= $j['nama_kota']; ?>">
+                    <label for="filter_kota"> <?= $j['nama_kota']; ?></label>
+
+                  <?php endif; ?>
                 </div>
 
               <?php endforeach; ?>
-            </form>
-          </div>
-        </article>
-
+            </div>
+          </article>
+        </form>
+        <!-- harga -->
         <article class="beefup">
           <h2 class="beefup__head">Harga</h2>
           <div class="beefup__body">
@@ -139,7 +145,7 @@
             </form>
           </div>
         </article>
-
+        <!-- rating -->
         <article class="beefup">
           <h2 class="beefup__head">Rating</h2>
           <div class="beefup__body">
@@ -167,7 +173,7 @@
             </form>
           </div>
         </article>
-
+        <!-- jmkRevuew -->
         <article class="beefup">
           <h2 class="beefup__head">Jumlah Review</h2>
           <div class="beefup__body">

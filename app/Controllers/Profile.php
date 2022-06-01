@@ -41,7 +41,8 @@ class Profile extends BaseController
             // 'fotografer' => $this->fotograferModel->getFotografer(),
             'fotografer' => $arrayResult,
             'kriteria' => $kriteria,
-            'filter_aliran' => null
+            'filter_aliran' => null,
+            'filter_kota' => null
         ];
         // dd($data);
         // $data = json_decode($data, true);
@@ -54,33 +55,49 @@ class Profile extends BaseController
 
         //echo view('pages/marketplace_page', $data);
     }
-    public function market_filter($filter_aliran = null)
+    public function market_filter($filter_aliran = null, $filter_kota = null)
     {
+
+
 
         if ($filter_aliran == null) {
             $filter_aliran = $this->request->getVar('filter_aliran[]');
+            d("filter aliran==null");
         }
 
+        if ($filter_kota == null) {
+            $filter_kota = $this->request->getVar('filter_kota[]');
+            d('filter kota == null');
+        }
+        // d($filter_aliran);
+        // dd($filter_kota);
         $kriteria = $this->criteriaGetter();
-
-
-        if ($filter_aliran) {
-            $filterResult = $this->fotograferModel->filter($filter_aliran);
+        // if nya fingger crossed
+        // if ($filter_kota) {
+        //     $filterResult = $this->fotograferModel->filter($filter_kota);
+        // }
+        if ($filter_aliran || $filter_kota) {
+            d('antara aliran ato kota ada');
+            $filterResult = $this->fotograferModel->filter($filter_aliran, $filter_kota);
         } else {
             $arraytemp = $this->fotograferModel->joinMarket()->getResult();
             $filterResult = array();
             foreach ($arraytemp as $key) {
                 $filterResult[] = json_decode(json_encode($key), true);
             }
+            // dd($filterResult);
+            d('duaduanya gaadaa');
         }
-
+        // dd($filter_aliran);
         $data = [
 
             'title' => 'Daftar Fotografer',
             // 'fotografer' => $this->fotograferModel->getFotografer(),
             'fotografer' => $filterResult,
             'kriteria' => $kriteria,
-            'filter_aliran' => $filter_aliran
+            'filter_aliran' => $filter_aliran,
+            'filter_kota' => $filter_kota
+
         ];
 
         // dd($data);

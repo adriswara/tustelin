@@ -73,26 +73,87 @@ class FotograferModel extends Model
         return $this->table('fotografer')->join('aliran_komersil', 'fotografer.id_komersil = aliran_komersil.id_komersil', 'outter')->join('alat', 'fotografer.id_alat = alat.id_alat', 'outter')->join('kota', 'fotografer.id_kota = kota.id_kota', 'outter')->select('slug, nama, displaypic, nama_aliran,nama_alat, harga, akun_instagram,email,no_telfon,no_rekening, nama_kota ,rataRata_rating,jumlah_rating')->get();
     }
 
-    public function filter($filter_aliran)
+    public function filter($filter_aliran = null, $filter_kota = null)
     {
-        // $filter_aliran = $this->request->getVar('filter_aliran');
-        // $filter_kota =  $this->request->getVar('filter_kota');
         $result = null;
-        // dd(is_string($filter_aliran));
-        // dd(gettype($filter_aliran));
-        // dd($filter_aliran);
         $arrFilterAliran = array();
+        $arrFilterKota = array();
+        // merubah string filter aliran dari string ke array
         if (is_string($filter_aliran)) {
-            // $filter_aliran[0] = $filter_aliran;
-            $arrFilterAliran[0] = explode(',', $filter_aliran, '1');
-            // dd('masuk');\
-            // dd($arrFilterAliran[0]->getResultArray());
+            // $arrFilterAliran[0] = explode(',', $filter_aliran, '1');
+            $arrFilterAliran = array($filter_aliran);
+        } else if (is_array($filter_aliran)) {
+            $arrFilterAliran = $filter_aliran;
+        }
 
-            $result =  $this->table('fotografer')->join('aliran_komersil', 'fotografer.id_komersil = aliran_komersil.id_komersil', 'outter')->join('alat', 'fotografer.id_alat = alat.id_alat', 'outter')->join('kota', 'fotografer.id_kota = kota.id_kota', 'outter')->select('slug, nama, displaypic, nama_aliran,nama_alat, harga, akun_instagram,email,no_telfon,no_rekening, nama_kota ,rataRata_rating,jumlah_rating')->whereIn('nama_aliran', $arrFilterAliran[0])->get()->getResultArray();
-        } else {
-            $result =  $this->table('fotografer')->join('aliran_komersil', 'fotografer.id_komersil = aliran_komersil.id_komersil', 'outter')->join('alat', 'fotografer.id_alat = alat.id_alat', 'outter')->join('kota', 'fotografer.id_kota = kota.id_kota', 'outter')->select('slug, nama, displaypic, nama_aliran,nama_alat, harga, akun_instagram,email,no_telfon,no_rekening, nama_kota ,rataRata_rating,jumlah_rating')->whereIn('nama_aliran', $filter_aliran)->get()->getResultArray();
+        if (is_string($filter_kota)) {
+
+
+            //   $arrFilterKota[0] = explode(',', $filter_kota, '1');
+
+            $arrFilterKota = array($filter_kota);
+        } else if (is_array($filter_kota)) {
+            $arrFilterKota = $filter_kota;
         }
         // dd($result);
-        return $result;
+        $result =  $this->table('fotografer')->join('aliran_komersil', 'fotografer.id_komersil = aliran_komersil.id_komersil', 'outter')->join('alat', 'fotografer.id_alat = alat.id_alat', 'outter')->join('kota', 'fotografer.id_kota = kota.id_kota', 'outter')->select('slug, nama, displaypic, nama_aliran,nama_alat, harga, akun_instagram,email,no_telfon,no_rekening, nama_kota ,rataRata_rating,jumlah_rating');
+
+        d($arrFilterAliran);
+        if ($filter_aliran != null) {
+            $result = $result->whereIn('nama_aliran', $arrFilterAliran);
+            // dd($result->get()->getResultArray());
+        }
+
+        // dd($result->get()->getResultArray());
+        // d($arrFilterAliran);
+        if ($filter_kota != null) {
+            $result = $result->whereIn('nama_kota', $arrFilterKota);
+            // dd('msk');
+        }
+        // dd($arrFilterKota);
+        return $result->get()->getResultArray();
     }
 }
+
+// ->whereIn('nama_aliran', $arrFilterAliran[0])->wherein('nama_kota', $arrFilterKota[0]);
+
+
+
+// BACKUP SEMENTARA MODEL BERHASIL 2 FILTER TAPI TOMBOL FAIL
+
+// public function filter($filter_aliran = null, $filter_kota = null)
+//---------------------------------------------------------------------
+// {
+//     $result = null;
+//     $arrFilterAliran = array();
+//     $arrFilterKota = array();
+//     // merubah string filter aliran dari string ke array
+//     if (is_string($filter_aliran)) {
+//         $arrFilterAliran[0] = explode(',', $filter_aliran, '1');
+//     } else if (is_array($filter_aliran)) {
+//         $arrFilterAliran = $filter_aliran;
+//     }
+
+//     if (is_string($filter_kota)) {
+
+
+//         $arrFilterKota[0] = explode(',', $filter_kota, '1');
+//     } else if (is_array($filter_kota)) {
+//         $arrFilterKota = $filter_kota;
+//     }
+//     // dd($result);
+//     $result =  $this->table('fotografer')->join('aliran_komersil', 'fotografer.id_komersil = aliran_komersil.id_komersil', 'outter')->join('alat', 'fotografer.id_alat = alat.id_alat', 'outter')->join('kota', 'fotografer.id_kota = kota.id_kota', 'outter')->select('slug, nama, displaypic, nama_aliran,nama_alat, harga, akun_instagram,email,no_telfon,no_rekening, nama_kota ,rataRata_rating,jumlah_rating');
+
+//     if ($filter_aliran != null) {
+//         $result = $result->whereIn('nama_aliran', $arrFilterAliran);
+//     }
+
+//     // d($arrFilterAliran);
+//     if ($filter_kota != null) {
+//         $result = $result->whereIn('nama_kota', $arrFilterKota);
+//         // d('msk');
+//     }
+//     // dd($arrFilterKota);
+//     return $result->get()->getResultArray();
+// }
+//----------------------------------------------------------------------------------------------------------------------
