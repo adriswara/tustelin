@@ -73,7 +73,7 @@ class FotograferModel extends Model
         return $this->table('fotografer')->join('aliran_komersil', 'fotografer.id_komersil = aliran_komersil.id_komersil', 'outter')->join('alat', 'fotografer.id_alat = alat.id_alat', 'outter')->join('kota', 'fotografer.id_kota = kota.id_kota', 'outter')->select('slug, nama, displaypic, nama_aliran,nama_alat, harga, akun_instagram,email,no_telfon,no_rekening, nama_kota ,rataRata_rating,jumlah_rating')->get();
     }
 
-    public function filter($filter_aliran = null, $filter_kota = null, $filter_harga = null, $filter_rating = null)
+    public function filter($filter_aliran = null, $filter_kota = null, $filter_harga = null, $filter_rating = null, $filter_jmlRating = null)
     {
         $result = null;
         $arrFilterAliran = array();
@@ -117,7 +117,8 @@ class FotograferModel extends Model
             d('filter e masuk');
         }
 
-        if (strcmp($filter_rating, 'filterRating1') == 0) {
+
+        if (strcmp($filter_rating, 'filterRating2') == 0) {
             $result = $result->where('rataRata_rating >=',  1)->where('rataRata_rating <', 2);
             d('filter a masuk');
         } elseif (strcmp($filter_rating, 'filterRating2') == 0) {
@@ -134,6 +135,17 @@ class FotograferModel extends Model
             d('filter e masuk');
         }
 
+
+        if (strcmp($filter_jmlRating, 'filterJmlRating1') == 0) {
+            $result = $result->where('jumlah_rating <=',  10);
+            d('filter a masuk');
+        } elseif (strcmp($filter_jmlRating, 'filterJmlRating2') == 0) {
+            $result = $result->where('jumlah_rating >=',  10)->where('jumlah_rating <', 100);
+            d('filter b masuk');
+        } elseif (strcmp($filter_jmlRating, 'filterJmlRating3') == 0) {
+            $result = $result->where('jumlah_rating >=',  100);
+            d('filter c masuk');
+        }
 
 
         if ($filter_aliran != null) {
