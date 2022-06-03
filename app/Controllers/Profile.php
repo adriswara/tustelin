@@ -21,7 +21,7 @@ class Profile extends BaseController
 
     public function index()
     {
-        // d($this->request->getVar('keyword'));
+
         $kriteria = $this->criteriaGetter();
         $keyword = $this->request->getVar('keyword');
         // $joins = $this->fotograferModel->join();
@@ -42,53 +42,51 @@ class Profile extends BaseController
             'fotografer' => $arrayResult,
             'kriteria' => $kriteria,
             'filter_aliran' => null,
-            'filter_kota' => null
+            'filter_kota' => null,
+            'filter_harga' => null
         ];
-        // dd($data);
         // $data = json_decode($data, true);
 
         //$fotograferModel = new \App\Models\FotograferModel();
 
-        // return view('fotografer/index', $data);
-        // dd($data);
+        // return view('fotografer/index', $data); 
         return view('pages/marketplace_page', $data);
 
         //echo view('pages/marketplace_page', $data);
     }
-    public function market_filter($filter_aliran = null, $filter_kota = null)
+    public function market_filter($filter_aliran = null, $filter_kota = null, $filter_harga = null)
     {
-
 
 
         if ($filter_aliran == null) {
             $filter_aliran = $this->request->getVar('filter_aliran[]');
-            d("filter aliran==null");
         }
 
         if ($filter_kota == null) {
             $filter_kota = $this->request->getVar('filter_kota[]');
-            d('filter kota == null');
         }
-        // d($filter_aliran);
-        // dd($filter_kota);
+
+
+        if ($filter_harga == null) {
+            $filter_harga = $this->request->getVar('filter_harga[]');
+        }
+
+
+
         $kriteria = $this->criteriaGetter();
         // if nya fingger crossed
         // if ($filter_kota) {
         //     $filterResult = $this->fotograferModel->filter($filter_kota);
         // }
-        if ($filter_aliran || $filter_kota) {
-            d('antara aliran ato kota ada');
-            $filterResult = $this->fotograferModel->filter($filter_aliran, $filter_kota);
+        if ($filter_aliran || $filter_kota || $filter_harga) {
+            $filterResult = $this->fotograferModel->filter($filter_aliran, $filter_kota, $filter_harga);
         } else {
             $arraytemp = $this->fotograferModel->joinMarket()->getResult();
             $filterResult = array();
             foreach ($arraytemp as $key) {
                 $filterResult[] = json_decode(json_encode($key), true);
             }
-            // dd($filterResult);
-            d('duaduanya gaadaa');
         }
-        // dd($filter_aliran);
         $data = [
 
             'title' => 'Daftar Fotografer',
@@ -96,13 +94,13 @@ class Profile extends BaseController
             'fotografer' => $filterResult,
             'kriteria' => $kriteria,
             'filter_aliran' => $filter_aliran,
-            'filter_kota' => $filter_kota
+            'filter_kota' => $filter_kota,
+            'filter_harga' => $filter_harga
 
         ];
 
-        // dd($data);
 
-        // dd($filterResult);
+
         return view('pages/marketplace_page', $data);
     }
     public function profileSegment($slug)
@@ -117,7 +115,6 @@ class Profile extends BaseController
 
         $data['get_sess'] = $this->session->get('username_pengguna');
 
-        d($data);
 
         // untuk exception not found
 

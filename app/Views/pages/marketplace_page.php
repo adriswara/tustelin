@@ -116,58 +116,65 @@
               <?php endforeach; ?>
             </div>
           </article>
-        </form>
-        <!-- harga -->
-        <article class="beefup">
-          <h2 class="beefup__head">Harga</h2>
-          <div class="beefup__body">
-            <form action="">
+          <!-- harga -->
+          <article class="beefup">
+            <h2 class="beefup__head">Harga</h2>
+            <div class="beefup__body">
+              <!-- <form action=""> -->
               <div class="radio">
-                <input type="radio" id="filter_harga" name="filter_harga" value="filter_harga">
+                <!--  -->
+                <input <?= ($filter_harga == 'filterHargaAll') ? "checked" : "" ?> onChange="this.form.submit()" type="radio" id="filter_harga" name="filter_harga" value="filterHargaAll">
+                <label for="filter_harga"> Rp0 - all</label>
+              </div>
+              <div class="radio">
+                <!--  -->
+                <input <?= ($filter_harga == 'filterHargaA') ? "checked" : "" ?> onChange="this.form.submit()" type="radio" id="filter_harga" name="filter_harga" value="filterHargaA">
                 <label for="filter_harga"> Rp0 - Rp1.000.000</label>
               </div>
               <div class="radio">
-                <input type="radio" id="filter_harga" name="filter_harga" value="filter_harga">
+                <!--  -->
+                <input <?= ($filter_harga == 'filterHargaB') ? "checked" : "" ?> onChange="this.form.submit()" type="radio" id="filter_harga" name="filter_harga" value="filterHargaB">
                 <label for="filter_harga"> Rp1.000.000 - Rp2.000.000</label>
               </div>
               <div class="radio">
-                <input type="radio" id="filter_harga" name="filter_harga" value="filter_harga">
+                <input <?= ($filter_harga == 'filterHargaC') ? "checked" : "" ?> onChange="this.form.submit()" type="radio" id="filter_harga" name="filter_harga" value="filterHargaC">
                 <label for="filter_harga">Rp2.000.000 - Rp3.000.000</label>
               </div>
               <div class="radio">
-                <input type="radio" id="filter_harga" name="filter_harga" value="filter_harga">
+                <input <?= ($filter_harga == 'filterHargaD') ? "checked" : "" ?> onChange="this.form.submit()" type="radio" id="filter_harga" name="filter_harga" value="filterHargaD">
                 <label for="filter_harga">Rp3.000.000 - Rp4.000.000</label>
               </div>
               <div class="radio">
-                <input type="radio" id="filter_harga" name="filter_harga" value="filter_harga">
+                <input <?= ($filter_harga == 'filterHargaE') ? "checked" : "" ?> onChange="this.form.submit()" type="radio" id="filter_harga" name="filter_harga" value="filterHargaE">
                 <label for="filter_harga"> > Rp5.000.000</label>
               </div>
-            </form>
-          </div>
-        </article>
+              <!-- </form> -->
+            </div>
+          </article>
+        </form>
         <!-- rating -->
         <article class="beefup">
           <h2 class="beefup__head">Rating</h2>
           <div class="beefup__body">
             <form action="">
-              <div class="radio">
-                <input type="radio" id="filterRating" name="filter_rating" value="filter_rating">
+              <div class="checkbox">
+                <input type="checkbox" id="filterRating" name="filter_rating" value="filter_rating">
                 <label for="filter_rating"><i class="fa fa-star" aria-hidden="true"></i> 1</label>
               </div>
-              <div class="radio">
-                <input type="radio" id="filter_rating" name="filter_rating" value="filter_rating">
+              <div class="checkbox">
+                <input type="checkbox" id="filter_rating" name="filter_rating" value="filter_rating">
                 <label for="filter_rating"><i class="fa fa-star" aria-hidden="true"></i> 2</label>
               </div>
-              <div class="radio">
-                <input type="radio" id="filter_rating" name="filter_rating" value="filter_rating">
+              <div class="checkbox">
+                <input type="checkbox" id="filter_rating" name="filter_rating" value="filter_rating">
                 <label for="filter_rating"><i class="fa fa-star" aria-hidden="true"></i> 3</label>
               </div>
-              <div class="radio">
-                <input type="radio" id="filter_rating" name="filter_rating" value="filter_rating">
+              <div class="checkbox">
+                <input type="checkbox" id="filter_rating" name="filter_rating" value="filter_rating">
                 <label for="filter_rating"><i class="fa fa-star" aria-hidden="true"></i> 4</label>
               </div>
-              <div class="radio">
-                <input type="radio" id="filter_rating" name="filter_rating" value="filter_rating">
+              <div class="checkbox">
+                <input type="checkbox" id="filter_rating" name="filter_rating" value="filter_rating">
                 <label for="asd"><i class="fa fa-star" aria-hidden="true"></i> 5</label>
               </div>
             </form>
@@ -178,16 +185,16 @@
           <h2 class="beefup__head">Jumlah Review</h2>
           <div class="beefup__body">
             <form action="">
-              <div class="radio">
-                <input type="radio" id="filter_riwayat" name="filter_riwayat" value="filter_riwayat">
+              <div class="checkbox">
+                <input type="checkbox" id="filter_riwayat" name="filter_riwayat" value="filter_riwayat">
                 <label for="filter_riwayat">0 - 10 </label>
               </div>
-              <div class="radio">
-                <input type="radio" id="filter_riwayat" name="filter_riwayat" value="filter_riwayat">
+              <div class="checkbox">
+                <input type="checkbox" id="filter_riwayat" name="filter_riwayat" value="filter_riwayat">
                 <label for="filter_riwayat">10 - 100 </label>
               </div>
-              <div class="radio">
-                <input type="radio" id="filter_riwayat" name="filter_riwayat" value="filter_riwayat">
+              <div class="checkbox">
+                <input type="checkbox" id="filter_riwayat" name="filter_riwayat" value="filter_riwayat">
                 <label for="filter_riwayat">> 100</label>
               </div>
 
