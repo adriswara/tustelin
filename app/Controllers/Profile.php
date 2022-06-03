@@ -37,8 +37,8 @@ class Profile extends BaseController
         }
         $data = [
 
-            'title' => 'Daftar Fotografer',
             // 'fotografer' => $this->fotograferModel->getFotografer(),
+            'title' => 'Daftar Fotografer',
             'fotografer' => $arrayResult,
             'kriteria' => $kriteria,
             'filter_aliran' => null,
@@ -117,9 +117,11 @@ class Profile extends BaseController
     }
     public function profileSegment($slug)
     {
+        $kriteria = $this->criteriaGetter();
         $profil = $this->fotograferModel->getProfil($slug);
         $data = [
             'title' => 'Profil Fotografer',
+            'kriteria' => $kriteria,
             'profil' => $this->fotograferModel->getProfil($slug)
         ];
 

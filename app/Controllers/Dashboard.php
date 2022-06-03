@@ -5,6 +5,7 @@ namespace App\Controllers;
 
 use App\Models\AliranKomersilModel;
 use App\Models\FotograferModel;
+use App\Controllers\Profile;
 
 
 use CodeIgniter\Controller;
@@ -19,6 +20,7 @@ class Dashboard extends Controller
     {
         $this->fotograferModel = new FotograferModel();
         $this->alirankomersilModel = new AliranKomersilModel();
+        $this->profile = new Profile();
     }
 
     public $globalVariable = 'I am callable';
@@ -52,6 +54,7 @@ class Dashboard extends Controller
     }
     public function logged()
     {
+        $kriteria = $this->profile->criteriaGetter();
         $arraytemp = $this->fotograferModel->joinMarket()->getResult();
         $arrayresult = array();
         foreach ($arraytemp as $key) {
@@ -61,8 +64,13 @@ class Dashboard extends Controller
         $data = [
 
             'title' => 'Daftar Fotografer',
-
             'fotografer' => $arrayresult,
+            'kriteria' => $kriteria,
+            'filter_aliran' => null,
+            'filter_kota' => null,
+            'filter_harga' => null,
+            'filter_rating' => null,
+            'filter_jmlRating' => null
 
         ];
 
