@@ -43,7 +43,8 @@ class Profile extends BaseController
             'kriteria' => $kriteria,
             'filter_aliran' => null,
             'filter_kota' => null,
-            'filter_harga' => null
+            'filter_harga' => null,
+            'filter_rating' => null
         ];
         // $data = json_decode($data, true);
 
@@ -54,7 +55,7 @@ class Profile extends BaseController
 
         //echo view('pages/marketplace_page', $data);
     }
-    public function market_filter($filter_aliran = null, $filter_kota = null, $filter_harga = null)
+    public function market_filter($filter_aliran = null, $filter_kota = null, $filter_harga = null, $filter_rating = null)
     {
 
 
@@ -71,6 +72,10 @@ class Profile extends BaseController
             $filter_harga = $this->request->getVar('filter_harga[]');
         }
 
+        if ($filter_rating == null) {
+            $filter_rating = $this->request->getVar('filter_rating[]');
+        }
+
 
 
         $kriteria = $this->criteriaGetter();
@@ -78,8 +83,8 @@ class Profile extends BaseController
         // if ($filter_kota) {
         //     $filterResult = $this->fotograferModel->filter($filter_kota);
         // }
-        if ($filter_aliran || $filter_kota || $filter_harga) {
-            $filterResult = $this->fotograferModel->filter($filter_aliran, $filter_kota, $filter_harga);
+        if ($filter_aliran || $filter_kota || $filter_harga || $filter_rating) {
+            $filterResult = $this->fotograferModel->filter($filter_aliran, $filter_kota, $filter_harga, $filter_rating);
         } else {
             $arraytemp = $this->fotograferModel->joinMarket()->getResult();
             $filterResult = array();
@@ -95,7 +100,8 @@ class Profile extends BaseController
             'kriteria' => $kriteria,
             'filter_aliran' => $filter_aliran,
             'filter_kota' => $filter_kota,
-            'filter_harga' => $filter_harga
+            'filter_harga' => $filter_harga,
+            'filter_rating' => $filter_rating
 
         ];
 

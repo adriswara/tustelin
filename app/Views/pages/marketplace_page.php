@@ -151,103 +151,113 @@
               <!-- </form> -->
             </div>
           </article>
-        </form>
-        <!-- rating -->
-        <article class="beefup">
-          <h2 class="beefup__head">Rating</h2>
-          <div class="beefup__body">
-            <form action="">
-              <div class="checkbox">
-                <input type="checkbox" id="filterRating" name="filter_rating" value="filter_rating">
+          <!-- rating -->
+          <article class="beefup">
+            <h2 class="beefup__head">Rating</h2>
+            <div class="beefup__body">
+              <!-- <form action=""> -->
+              <div class="radio">
+                <!--  -->
+                <input <?= ($filter_rating == 'filterRating123') ? "checked" : "" ?> onChange="this.form.submit()" type="radio" id="filter_rating" name="filter_rating" value="filterRating123">
+                <label for="filter_rating"><i class="fa fa-star" aria-hidden="true"></i> 1-5</label>
+              </div>
+              <div class="radio">
+                <!--  -->
+                <input <?= ($filter_rating == 'filterRating1') ? "checked" : "" ?> onChange="this.form.submit()" type="radio" id="filter_rating" name="filter_rating" value="filterRating1">
                 <label for="filter_rating"><i class="fa fa-star" aria-hidden="true"></i> 1</label>
               </div>
-              <div class="checkbox">
-                <input type="checkbox" id="filter_rating" name="filter_rating" value="filter_rating">
+              <div class="radio">
+                <!--  -->
+                <input <?= ($filter_rating == 'filterRating2') ? "checked" : "" ?> onChange="this.form.submit()" type="radio" id="filter_rating" name="filter_rating" value="filterRating2">
                 <label for="filter_rating"><i class="fa fa-star" aria-hidden="true"></i> 2</label>
               </div>
-              <div class="checkbox">
-                <input type="checkbox" id="filter_rating" name="filter_rating" value="filter_rating">
+              <div class="radio">
+                <!--  -->
+                <input <?= ($filter_rating == 'filterRating3') ? "checked" : "" ?> onChange="this.form.submit()" type="radio" id="filter_rating" name="filter_rating" value="filterRating3">
                 <label for="filter_rating"><i class="fa fa-star" aria-hidden="true"></i> 3</label>
               </div>
-              <div class="checkbox">
-                <input type="checkbox" id="filter_rating" name="filter_rating" value="filter_rating">
+              <div class="radio">
+                <!--  -->
+                <input <?= ($filter_rating == 'filterRating4') ? "checked" : "" ?> onChange="this.form.submit()" type="radio" id="filter_rating" name="filter_rating" value="filterRating4">
                 <label for="filter_rating"><i class="fa fa-star" aria-hidden="true"></i> 4</label>
               </div>
-              <div class="checkbox">
-                <input type="checkbox" id="filter_rating" name="filter_rating" value="filter_rating">
-                <label for="asd"><i class="fa fa-star" aria-hidden="true"></i> 5</label>
+              <div class="radio">
+                <!--  -->
+                <input <?= ($filter_rating == 'filterRating5') ? "checked" : "" ?> onChange="this.form.submit()" type="radio" id="filter_rating" name="filter_rating" value="filterRating5">
+                <label for="filter_rating"><i class="fa fa-star" aria-hidden="true"></i> 5</label>
               </div>
-            </form>
-          </div>
-        </article>
-        <!-- jmkRevuew -->
-        <article class="beefup">
-          <h2 class="beefup__head">Jumlah Review</h2>
-          <div class="beefup__body">
-            <form action="">
-              <div class="checkbox">
-                <input type="checkbox" id="filter_riwayat" name="filter_riwayat" value="filter_riwayat">
-                <label for="filter_riwayat">0 - 10 </label>
-              </div>
-              <div class="checkbox">
-                <input type="checkbox" id="filter_riwayat" name="filter_riwayat" value="filter_riwayat">
-                <label for="filter_riwayat">10 - 100 </label>
-              </div>
-              <div class="checkbox">
-                <input type="checkbox" id="filter_riwayat" name="filter_riwayat" value="filter_riwayat">
-                <label for="filter_riwayat">> 100</label>
-              </div>
-
-            </form>
-          </div>
-        </article>
+        </form>
       </div>
+      </article>
+      </form>
+      <!-- jmkRevuew -->
+      <article class="beefup">
+        <h2 class="beefup__head">Jumlah Review</h2>
+        <div class="beefup__body">
+          <form action="">
+            <div class="checkbox">
+              <input type="checkbox" id="filter_riwayat" name="filter_riwayat" value="filter_riwayat">
+              <label for="filter_riwayat">0 - 10 </label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="filter_riwayat" name="filter_riwayat" value="filter_riwayat">
+              <label for="filter_riwayat">10 - 100 </label>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="filter_riwayat" name="filter_riwayat" value="filter_riwayat">
+              <label for="filter_riwayat">> 100</label>
+            </div>
+
+          </form>
+        </div>
+      </article>
     </div>
-    <div class="card__listing">
-      <div class="card__listing__wrapper row hidden-md-up w-100">
-        <?php foreach ($fotografer as $k) : ?>
-          <div class="card__wrapper col-lg-3 col-md-6 col-sm-12">
-            <div class="card  px-0">
-              <div class="card__imgwrapper">
-                <img id="CardDi" class="card__img" src="/displaypic/<?= $k['displaypic']; ?>" alt="Card image" />
-                <img id="CardDp" src="/displaypic/<?= $k['displaypic']; ?>" alt="Logo" class="rounded-pill card__pp" />
-              </div>
+  </div>
+  <div class="card__listing">
+    <div class="card__listing__wrapper row hidden-md-up w-100">
+      <?php foreach ($fotografer as $k) : ?>
+        <div class="card__wrapper col-lg-3 col-md-6 col-sm-12">
+          <div class="card  px-0">
+            <div class="card__imgwrapper">
+              <img id="CardDi" class="card__img" src="/displaypic/<?= $k['displaypic']; ?>" alt="Card image" />
+              <img id="CardDp" src="/displaypic/<?= $k['displaypic']; ?>" alt="Logo" class="rounded-pill card__pp" />
+            </div>
 
-              <!-- Card Body -->
-              <div class="card-body card__body">
-                <p class="harga">
-                  <?= $k['harga']; ?>
-                </p>
-                <div class="description">
-                  <h4 class="card-title mb-0"><?= $k['nama']; ?>
-                  </h4>
-                  <span class="account card-text text-secondary ">
-                    <?= $k['akun_instagram']; ?>
-                  </span>
-                  <div class="ratingReview">
+            <!-- Card Body -->
+            <div class="card-body card__body">
+              <p class="harga">
+                <?= $k['harga']; ?>
+              </p>
+              <div class="description">
+                <h4 class="card-title mb-0"><?= $k['nama']; ?>
+                </h4>
+                <span class="account card-text text-secondary ">
+                  <?= $k['akun_instagram']; ?>
+                </span>
+                <div class="ratingReview">
 
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <span class="rating"><?= $k['rataRata_rating']; ?></span>
-                    <span class="review">( <?= $k['jumlah_rating']; ?> Reviews )</span>
-                  </div>
-                  <div class="city"> <?= $k['nama_kota']; ?> </div>
-                  <p class="type type__<?= $k['nama_aliran']; ?>"> Foto <?= $k['nama_aliran']; ?> </p>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <span class="rating"><?= $k['rataRata_rating']; ?></span>
+                  <span class="review">( <?= $k['jumlah_rating']; ?> Reviews )</span>
                 </div>
-
-                <p class="button">
-                  <a href=<?= (isset($get_sess)) ? "/Profile/" . $k['slug'] : "/Login" ?>><button class="btn btn-primary">See Profile</button></a>
-                </p>
+                <div class="city"> <?= $k['nama_kota']; ?> </div>
+                <p class="type type__<?= $k['nama_aliran']; ?>"> Foto <?= $k['nama_aliran']; ?> </p>
               </div>
+
+              <p class="button">
+                <a href=<?= (isset($get_sess)) ? "/Profile/" . $k['slug'] : "/Login" ?>><button class="btn btn-primary">See Profile</button></a>
+              </p>
             </div>
           </div>
+        </div>
 
 
-        <?php endforeach; ?>
+      <?php endforeach; ?>
 
-      </div>
-      <?= $this->include('layout/footer'); ?>
     </div>
-
-
+    <?= $this->include('layout/footer'); ?>
   </div>
-  <?= $this->endSection(); ?>
+
+
+</div>
+<?= $this->endSection(); ?>

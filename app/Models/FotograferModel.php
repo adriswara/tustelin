@@ -73,31 +73,23 @@ class FotograferModel extends Model
         return $this->table('fotografer')->join('aliran_komersil', 'fotografer.id_komersil = aliran_komersil.id_komersil', 'outter')->join('alat', 'fotografer.id_alat = alat.id_alat', 'outter')->join('kota', 'fotografer.id_kota = kota.id_kota', 'outter')->select('slug, nama, displaypic, nama_aliran,nama_alat, harga, akun_instagram,email,no_telfon,no_rekening, nama_kota ,rataRata_rating,jumlah_rating')->get();
     }
 
-    public function filter($filter_aliran = null, $filter_kota = null, $filter_harga = null)
+    public function filter($filter_aliran = null, $filter_kota = null, $filter_harga = null, $filter_rating = null)
     {
         $result = null;
         $arrFilterAliran = array();
         $arrFilterKota = array();
-
         $outputFilterHarga = null;
         // merubah string filter aliran dari string ke array
         if (is_string($filter_aliran)) {
-            // $arrFilterAliran[0] = explode(',', $filter_aliran, '1');
             $arrFilterAliran = array($filter_aliran);
         } else if (is_array($filter_aliran)) {
             $arrFilterAliran = $filter_aliran;
         }
-
         if (is_string($filter_kota)) {
-
-
-            //   $arrFilterKota[0] = explode(',', $filter_kota, '1');
-
             $arrFilterKota = array($filter_kota);
         } else if (is_array($filter_kota)) {
             $arrFilterKota = $filter_kota;
         }
-
         if (is_string($filter_harga)) {
             $arrFilterHarga = array($filter_harga);
         }
@@ -105,8 +97,7 @@ class FotograferModel extends Model
 
 
         $result =  $this->table('fotografer')->join('aliran_komersil', 'fotografer.id_komersil = aliran_komersil.id_komersil', 'outter')->join('alat', 'fotografer.id_alat = alat.id_alat', 'outter')->join('kota', 'fotografer.id_kota = kota.id_kota', 'outter')->select('slug, nama, displaypic, nama_aliran,nama_alat, harga, akun_instagram,email,no_telfon,no_rekening, nama_kota ,rataRata_rating,jumlah_rating');
-        d(strcmp($filter_harga[0], 'filterHargaC'));
-        d($filter_harga);
+
 
 
         if (strcmp($filter_harga, 'filterHargaA') == 0) {
@@ -126,22 +117,37 @@ class FotograferModel extends Model
             d('filter e masuk');
         }
 
+        if (strcmp($filter_rating, 'filterRating1') == 0) {
+            $result = $result->where('rataRata_rating >=',  1)->where('rataRata_rating <', 2);
+            d('filter a masuk');
+        } elseif (strcmp($filter_rating, 'filterRating2') == 0) {
+            $result = $result->where('rataRata_rating >=',  2)->where('rataRata_rating <', 2);
+            d('filter b masuk');
+        } elseif (strcmp($filter_rating, 'filterRating3') == 0) {
+            $result = $result->where('rataRata_rating >=',  3)->where('rataRata_rating <', 2);
+            d('filter c masuk');
+        } elseif (strcmp($filter_rating, 'filterRating4') == 0) {
+            $result = $result->where('rataRata_rating >=',  4)->where('rataRata_rating <', 2);
+            d('filter d masuk');
+        } elseif (strcmp($filter_rating, 'filterRating5') == 0) {
+            $result = $result->where('rataRata_rating >=',  5);
+            d('filter e masuk');
+        }
+
+
 
         if ($filter_aliran != null) {
             $result = $result->whereIn('nama_aliran', $arrFilterAliran);
-            // dd($result->get()->getResultArray());
         }
 
-        // dd($result->get()->getResultArray());
-        // d($arrFilterAliran);
+
         if ($filter_kota != null) {
             $result = $result->whereIn('nama_kota', $arrFilterKota);
-            // dd('msk');
         }
 
         $result = $result->get()->getResultArray();
 
-        // dd($arrFilterKota);
+
         return $result;
     }
 }
