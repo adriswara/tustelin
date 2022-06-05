@@ -17,7 +17,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
 
-        <?= d($profil); ?>
+
 
         <!-- Modal body -->
         <div class="modal-body">
@@ -113,7 +113,7 @@
       <!---->
 
       <!---->
-      <?= d($profil[0]['rataRata_rating']); ?>
+
       <div class="col-md-2">
         <!---->
 
@@ -254,44 +254,65 @@ This part is straight out of Bootstrap docs. Just a carousel inside a modal.
 
           <h4>Input Review</h4>
           <div class="form-group">
-
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <form action="/Profile/saveReview/<?= $profil[0]['slug']; ?>" method="post">
+              <?= csrf_field(); ?>
+              <!--  -->
+              <label for="review" class="form-label">Review :<?= $profil[0]['slug']; ?></label>
+              <input type="text" name="review" class="form-control" id="review" value="<?= old('review'); ?>">
+              <!--  -->
+              <div class="btn-group">
+                <!-- <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Rating
+                </button>
+                <div class="dropdown-menu" value="rating1">
+                  <i class="fa fa-star" aria-hidden="true">1</i>
+                </div>
+                <div class="dropdown-menu" value="rating2">
+                  <i class="fa fa-star" aria-hidden="true">2</i>
+                </div>
+                <div class="dropdown-menu" value="rating3">
+                  <i class="fa fa-star" aria-hidden="true">3</i>
+                </div>
+                <div class="dropdown-menu" value="rating4">
+                  <i class="fa fa-star" aria-hidden="true">4</i>
+                </div>
+                <div class="dropdown-menu" value="rating5">
+                  <i class="fa fa-star" aria-hidden="true">5</i>
+                </div> -->
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
           </div>
         </div>
+        <div class="col-md-2">
+          <!---->
 
-      </div>
+          <div class="card" style="width: 300px">
+            <div>
+              <img id="CardDi" class="card-img-top" src="/equipment.jpg" alt="Card image" style="width: 100%" />
+              <div style="margin: -2rem; margin-left: 1rem; "></div>
+            </div>
 
-      <div class="col-md-2">
+            <!-- Card Body -->
+            <div class="card-body" style="margin-top: 1rem">
+              <h4 class="card-title" style="margin-top: 1rem">
+                Equipment List
+              </h4>
+              <p class="card-text">Main Camera : <?= $profil[0]['nama_alat']; ?></p>
+
+              <h5>Other Equipment</h5>
+              <p class="card-text">Excell tripod</p>
+              <p>DJI Ronin S Gimbal</p>
+              <p>
+                <button href="#" class="btn btn-primary">More</button>
+              </p>
+            </div>
+          </div>
+          <div style="padding-top: 1rem"></div>
+        </div>
         <!---->
-
-        <div class="card" style="width: 300px">
-          <div>
-            <img id="CardDi" class="card-img-top" src="/equipment.jpg" alt="Card image" style="width: 100%" />
-            <div style="margin: -2rem; margin-left: 1rem; left: "></div>
-          </div>
-
-          <!-- Card Body -->
-          <div class="card-body" style="margin-top: 1rem">
-            <h4 class="card-title" style="margin-top: 1rem">
-              Equipment List
-            </h4>
-            <p class="card-text">Main Camera : <?= $profil[0]['nama_alat']; ?></p>
-
-            <h5>Other Equipment</h5>
-            <p class="card-text">Excell tripod</p>
-            <p>DJI Ronin S Gimbal</p>
-            <p>
-              <button href="#" class="btn btn-primary">More</button>
-            </p>
-          </div>
-        </div>
-        <div style="padding-top: 1rem"></div>
       </div>
-      <!---->
     </div>
   </div>
-</div>
 
-<?= $this->endSection(); ?>
+  <?= $this->endSection(); ?>

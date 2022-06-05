@@ -10,6 +10,12 @@ class FotograferModel extends Model
     protected $primaryKey = 'id_fotografer';
     protected $allowedFields = ['nama', 'slug', 'displaypic', 'akun_instagram', 'rataRata_rating', 'jumlah_rating'];
 
+
+    public function getidBySlug($slug = false)
+    {
+        return $this->table('fotografer')->select('id_fotografer, slug')->where(['slug' => $slug])->first();
+    }
+
     public function getFotografer($id = false)
     {
         $querry = $this->joinMarket();
@@ -18,9 +24,8 @@ class FotograferModel extends Model
         if ($id == false) {
             return $this->joinMarket();
         }
-        d($this->table('fotografer')->select('id_fotografer,slug, nama, displaypic, harga, akun_instagram,email,no_telfon,no_rekening')->where(['id_fotografer' => $id])->first());
+
         return $this->table('fotografer')->select('id_fotografer,slug, nama, displaypic, harga, akun_instagram,email,no_telfon,no_rekening')->where(['id_fotografer' => $id])->first();
-        // return $this->table('fotografer')->join('aliran_komersil', 'fotografer.id_komersil = aliran_komersil.id_komersil', 'inner')->join('alat', 'fotografer.id_alat = alat.id_alat', 'inner')->select('slug, nama, displaypic, nama_aliran,nama_alat, harga, akun_instagram,email,no_telfon,no_rekening')->where(['slug' => $slug])->first();
     }
 
     // -- QUERRY BUAT NAMPILIN PAS KLIK PROFIL -- //
@@ -33,9 +38,6 @@ class FotograferModel extends Model
             return $this->joinkomersil();
         }
 
-        // dd($this->table('fotografer')->join('aliran_komersil as kategori', 'fotografer.id_komersil = kategori.id_komersil', 'inner')->join('alat as equipment', 'fotografer.id_alat = equipment.id_alat', 'inner')->join('review as masukan', 'fotografer.id_fotografer = masukan.id_fotografer', 'left')->join('pelanggan as user', 'user.id_pengguna = masukan.id_pengguna', 'left')->where(['slug' => $slug])->first());
-
-        // dd($this->table('fotografer')->join('aliran_komersil as kategori', 'fotografer.id_komersil = kategori.id_komersil', 'inner')->join('alat as equipment', 'fotografer.id_alat = equipment.id_alat', 'inner')->join('review as masukan', 'fotografer.id_fotografer = masukan.id_fotografer', 'left')->join('pelanggan as user', 'user.id_pengguna = masukan.id_pengguna', 'left')->where(['slug' => $slug])->get()->getResult());
 
         d($this->table('fotografer')->join('aliran_komersil', 'fotografer.id_komersil = aliran_komersil.id_komersil', 'inner')->join('alat', 'fotografer.id_alat = alat.id_alat', 'inner')->join('review', 'fotografer.id_fotografer = review.id_fotografer', 'left')->join('pelanggan', 'pelanggan.id_pengguna = review.id_pengguna', 'left')->where(['slug' => $slug])->get()->getResultArray());
 

@@ -6,6 +6,7 @@ use App\Models\AliranKomersilModel;
 use App\Models\FotograferModel;
 use App\Models\KotaModel;
 use App\Models\ReviewModel;
+use App\Models\UserModel;
 
 class Profile extends BaseController
 {
@@ -16,6 +17,8 @@ class Profile extends BaseController
         $this->alirankomersilModel = new AliranKomersilModel();
         $this->reviewModel = new ReviewModel();
         $this->kotaModel = new KotaModel();
+        $this->controllerDatabase = new DatabaseTest();
+        $this->userModel = new UserModel();
     }
 
 
@@ -128,8 +131,9 @@ class Profile extends BaseController
         $this->session = session();
 
         $data['get_sess'] = $this->session->get('username_pengguna');
-
-
+        $this->currSlug = $slug;
+        d($slug);
+        d($this->currSlug);
         // untuk exception not found
 
         if (empty($data['profil'])) {
@@ -150,6 +154,49 @@ class Profile extends BaseController
             'aliran' => $dataAliran
         ];
 
+
         return $result;
     }
+
+    //form masukan
+    public function saveReview($slug = null)
+    {
+        $this->session = session();
+        //butuh return method berdsasarkan slug
+        //return select id where w=slug - slug
+        $profilFotografer = $slug;
+        $profilUser = $this->session->get('username_pengguna');
+
+        $varIdFotografer = $this->fotograferModel->getidBySlug($profilFotografer);
+        $varIdPelanggan = $this->userModel->getidbyUsername($profilUser);
+        $this->reviewModel->save([
+            'id_fotografer' => $varIdFotografer['id_fotografer'],
+            'id_pengguna' => $varIdPelanggan['id_pengguna'],
+            'review' => $this->request->getVar('review'),
+            'rating' => 5
+
+
+        ]);
+        session()->setFlashdata('pesan', 'Input Review berhasil');
+        //auto count rata rata dan riwayat
+        $avgRating = $this->reviewModel->avgReview($this->request->getVar('id_fotografer'));
+        $this->controllerDatabase->avgRatingFotografer($this->request->getVar('id_fotografer'), $avgRating);
+        $sumRating = $this->reviewModel->sumReview($this->request->getVar('id_fotografer'));
+        $this->controllerDatabase->sumRatingFotografer($this->request->getVar('id_fotografer'), $sumRating);
+        //
+        return redirect()->to('/databasetest');
+    }
+
+    //ini mungkin digabung
+    public function createReview()
+    {
+        $this->session = session();
+        $data = [
+            'title' => 'Form Tambah Data Review',
+            'validation' => \Config\Services::validation()
+        ];
+        $data['get_sess'] = $this->session->get('username_admin');
+        return view('databasetest/createReview', $data);
+    }
+    //ininih
 }

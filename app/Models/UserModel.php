@@ -17,4 +17,8 @@ class UserModel extends Model
 
         return $this->table('pelanggan')->select('id_pengguna, username_pengguna,email_pengguna,sandi_pengguna')->where(['id_pengguna' => $id])->first();
     }
+    public function getidbyUsername($username = false)
+    {
+        return $this->table('pelanggan')->select('id_pengguna,username_pengguna')->where(['username_pengguna' => $username])->first();
+    }
 }

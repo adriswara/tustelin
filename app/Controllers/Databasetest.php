@@ -555,22 +555,6 @@ class DatabaseTest extends BaseController
 
     public function saveReview()
     {
-        // dd($this->request->getVar());
-
-        // if (!$this->validate([
-        //     'id_pengguna' => [
-        //         'rules' => 'required|is_unique[review.id_pengguna]',
-        //         'errors' => [
-        //             'required' => '{field} nama harus diisi.',
-        //             'is_unique' => '{field} nama sudah terdaftar'
-        //         ]
-        //     ]rataRata_ratingac
-        // ])) {
-        //     $validation = \Config\Services::validation();
-        //     dd($validation);
-        //     return redirect()->to('databasetest/createReview')->withInput()->with('validation', $validation);
-        // }
-
         $this->reviewModel->save([
             'id_fotografer' => $this->request->getVar('id_fotografer'),
             'id_pengguna' => $this->request->getVar('id_pengguna'),
