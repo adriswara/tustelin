@@ -249,19 +249,19 @@ This part is straight out of Bootstrap docs. Just a carousel inside a modal.
 
 
 
+        <?php if (isset($get_sess)) : ?>
+          <div class="containerChat darker">
 
-        <div class="containerChat darker">
-
-          <h4>Input Review</h4>
-          <div class="form-group">
-            <form action="/Profile/saveReview/<?= $profil[0]['slug']; ?>" method="post">
-              <?= csrf_field(); ?>
-              <!--  -->
-              <label for="review" class="form-label">Review :<?= $profil[0]['slug']; ?></label>
-              <input type="text" name="review" class="form-control" id="review" value="<?= old('review'); ?>">
-              <!--  -->
-              <div class="btn-group">
-                <!-- <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <h4>Input Review</h4>
+            <div class="form-group">
+              <form action="/Profile/saveReview/<?= $profil[0]['slug']; ?>" method="post">
+                <?= csrf_field(); ?>
+                <!--  -->
+                <label for="review" class="form-label">Review :<?= $profil[0]['slug']; ?></label>
+                <input type="text" name="review" class="form-control" id="review" value="<?= old('review'); ?>">
+                <!--  -->
+                <div class="btn-group">
+                  <!-- <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Rating
                 </button>
                 <div class="dropdown-menu" value="rating1">
@@ -279,11 +279,12 @@ This part is straight out of Bootstrap docs. Just a carousel inside a modal.
                 <div class="dropdown-menu" value="rating5">
                   <i class="fa fa-star" aria-hidden="true">5</i>
                 </div> -->
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
-            </form>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
+        <?php endif; ?>
         <div class="col-md-2">
           <!---->
 
