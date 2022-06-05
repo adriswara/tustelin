@@ -133,7 +133,6 @@
             <h4 class="card-title" style="margin-top: 1rem"><?= $profil[0]['nama']; ?></h4>
             <p class="card-text">Harga Dimulai Dari : <?= $profil[0]['harga']; ?></p>
             <p class="card-text">Rating : <?= $profil[0]['rataRata_rating']; ?>.0/5.0</p>
-
             <p>Total pemesanan jasa : <?= $profil[0]['jumlah_rating']; ?></p>
             <p>
               <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#myModal2">
@@ -261,26 +260,60 @@ This part is straight out of Bootstrap docs. Just a carousel inside a modal.
                 <input type="text" name="review" class="form-control" id="review" value="<?= old('review'); ?>">
                 <!--  -->
                 <div class="btn-group">
-                  <!-- <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Rating
-                </button>
-                <div class="dropdown-menu" value="rating1">
-                  <i class="fa fa-star" aria-hidden="true">1</i>
+                  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Small button
+                  </button>
+                  <div class="dropdown-menu">
+                    <div class="radio">
+                      <?= $inputRating = null; ?>
+
+                      <!--  -->
+                      <input <?= ($inputRating == 'inputRating1') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating1">
+                      <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 1</label>
+                    </div>
+                    <div class="radio">
+                      <?= $inputRating = null; ?>
+
+                      <!--  -->
+                      <input <?= ($inputRating == 'inputRating2') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating2">
+                      <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 2</label>
+                    </div>
+                    <div class="radio">
+                      <?= $inputRating = null; ?>
+
+                      <!--  -->
+                      <input <?= ($inputRating == 'inputRating3') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating3">
+                      <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 3</label>
+                    </div>
+                    <div class="radio">
+                      <?= $inputRating = null; ?>
+
+                      <!--  -->
+                      <input <?= ($inputRating == 'inputRating4') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating4">
+                      <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 4</label>
+                    </div>
+                    <div class="radio">
+                      <?= $inputRating = null; ?>
+
+                      <!--  -->
+                      <input <?= ($inputRating == 'inputRating5') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating5">
+                      <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 5</label>
+                    </div>
+                  </div>
+                  <!-- <div class="dropdown-menu">
+                    2
+                  </div>
+                  <div class="dropdown-menu">
+                    3
+                  </div>
+                  <div class="dropdown-menu">
+                    4
+                  </div>
+                  <div class="dropdown-menu">
+                    5
+                  </div> -->
                 </div>
-                <div class="dropdown-menu" value="rating2">
-                  <i class="fa fa-star" aria-hidden="true">2</i>
-                </div>
-                <div class="dropdown-menu" value="rating3">
-                  <i class="fa fa-star" aria-hidden="true">3</i>
-                </div>
-                <div class="dropdown-menu" value="rating4">
-                  <i class="fa fa-star" aria-hidden="true">4</i>
-                </div>
-                <div class="dropdown-menu" value="rating5">
-                  <i class="fa fa-star" aria-hidden="true">5</i>
-                </div> -->
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
               </form>
             </div>
           </div>
