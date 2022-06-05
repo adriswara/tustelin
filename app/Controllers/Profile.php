@@ -180,9 +180,9 @@ class Profile extends BaseController
         session()->setFlashdata('pesan', 'Input Review berhasil');
         //auto count rata rata dan riwayat
         $avgRating = $this->reviewModel->avgReview($this->request->getVar('id_fotografer'));
-        $this->controllerDatabase->avgRatingFotografer($this->request->getVar('id_fotografer'), $avgRating);
+        $this->avgRatingFotografer($this->request->getVar('id_fotografer'), $avgRating);
         $sumRating = $this->reviewModel->sumReview($this->request->getVar('id_fotografer'));
-        $this->controllerDatabase->sumRatingFotografer($this->request->getVar('id_fotografer'), $sumRating);
+        $this->sumRatingFotografer($this->request->getVar('id_fotografer'), $sumRating);
         //
         return redirect()->to('/databasetest');
     }
@@ -199,4 +199,28 @@ class Profile extends BaseController
         return view('databasetest/createReview', $data);
     }
     //ininih
+
+    public function avgRatingFotografer($id, $avgRating)
+    {
+
+        // d(json_decode($avgRating[0]->rating, true));
+        // dd($avgRating);
+        $this->fotograferModel->save([
+            'id_fotografer' => $id,
+            'rataRata_rating' => json_decode($avgRating[0]->rating, true)
+        ]);
+    }
+
+    public function sumRatingFotografer($id, $sumRating)
+    {
+
+        // d(json_decode($avgRating[0]->rating, true));
+        // dd($avgRating);
+        d($sumRating);
+        $this->fotograferModel->save([
+            'id_fotografer' => $id,
+            'jumlah_rating' => $sumRating
+
+        ]);
+    }
 }
