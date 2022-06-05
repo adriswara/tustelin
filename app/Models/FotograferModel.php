@@ -39,7 +39,7 @@ class FotograferModel extends Model
         }
 
 
-        d($this->table('fotografer')->join('aliran_komersil', 'fotografer.id_komersil = aliran_komersil.id_komersil', 'inner')->join('alat', 'fotografer.id_alat = alat.id_alat', 'inner')->join('review', 'fotografer.id_fotografer = review.id_fotografer', 'left')->join('pelanggan', 'pelanggan.id_pengguna = review.id_pengguna', 'left')->where(['slug' => $slug])->get()->getResultArray());
+        // d($this->table('fotografer')->join('aliran_komersil', 'fotografer.id_komersil = aliran_komersil.id_komersil', 'inner')->join('alat', 'fotografer.id_alat = alat.id_alat', 'inner')->join('review', 'fotografer.id_fotografer = review.id_fotografer', 'left')->join('pelanggan', 'pelanggan.id_pengguna = review.id_pengguna', 'left')->where(['slug' => $slug])->get()->getResultArray());
 
         return $this->table('fotografer')->join('aliran_komersil as kategori', 'fotografer.id_komersil = kategori.id_komersil', 'inner')->join('alat as equipment', 'fotografer.id_alat = equipment.id_alat', 'inner')->join('review as masukan', 'fotografer.id_fotografer = masukan.id_fotografer', 'left')->join('pelanggan as user', 'user.id_pengguna = masukan.id_pengguna', 'left')->where(['slug' => $slug])->get()->getResultArray();
     }

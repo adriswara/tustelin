@@ -132,8 +132,8 @@ class Profile extends BaseController
 
         $data['get_sess'] = $this->session->get('username_pengguna');
         $this->currSlug = $slug;
-        d($slug);
-        d($this->currSlug);
+        // d($slug);
+        // d($this->currSlug);
         // untuk exception not found
 
         if (empty($data['profil'])) {
