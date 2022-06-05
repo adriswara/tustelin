@@ -4,7 +4,7 @@
 <!---->
 
 
-welcome back <?= $get_sess ?>
+welcome back <?= $admin_sess ?>
 
 <a href="/databasetest"><button class="btn btn-primary" type="button"> Direct to admin dashboard </button></a>
 

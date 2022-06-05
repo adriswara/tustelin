@@ -11,6 +11,8 @@
                 <li class="nav-item">
                     <?php if (isset($get_sess)) : ?>
                         <a class="nav-link" href="/Dashboard/logedHome">Home</a>
+                    <?php elseif (isset($admin_sess)) : ?>
+                        <a class="nav-link" href="/DashboardAdmin/logedHome">Home</a>
                     <?php else : ?>
                         <a class="nav-link" href="/">Home</a>
                     <?php endif; ?>
@@ -18,12 +20,16 @@
                 <li>
                     <?php if (isset($get_sess)) : ?>
                         <a class="nav-link" href="/Dashboard/logged">Marketplace</a>
+                    <?php elseif (isset($admin_sess)) : ?>
+                        <a class="nav-link" href="/DashboardAdmin/logged">Marketplace</a>
                     <?php else : ?>
                         <a class="nav-link" href="/profile/index">Marketplace</a>
                     <?php endif; ?>
                 </li>
                 <li>
-                    <a class="nav-link" href="/databasetest">Beta_database</a>
+                    <?php if (isset($admin_sess)) : ?>
+                        <a class="nav-link" href="/databasetest">Admin Dashboard</a>
+                    <?php endif; ?>
                 </li>
                 <li></li>
                 <li class="nav-item dropdown">
@@ -43,6 +49,11 @@
                     Logout
                 </a>
                 <a href=""> Hi,<?= $get_sess ?>!</a>
+            <?php elseif (isset($admin_sess)) : ?>
+                <a href="/login/logout">
+                    Logout
+                </a>
+                <a href=""> Hi,<?= $admin_sess ?>!</a>
             <?php else : ?>
                 <a href="/Login">
                     Login

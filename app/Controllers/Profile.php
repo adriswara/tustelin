@@ -131,6 +131,7 @@ class Profile extends BaseController
         $this->session = session();
 
         $data['get_sess'] = $this->session->get('username_pengguna');
+        $data['admin_sess'] = $this->session->get('username_admin');
         $this->currSlug = $slug;
         d($slug);
         d($this->currSlug);
@@ -195,7 +196,8 @@ class Profile extends BaseController
             'title' => 'Form Tambah Data Review',
             'validation' => \Config\Services::validation()
         ];
-        $data['get_sess'] = $this->session->get('username_admin');
+        $data['admin_sess'] = $this->session->get('username_admin');
+
         return view('databasetest/createReview', $data);
     }
     //ininih

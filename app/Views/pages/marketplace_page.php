@@ -245,7 +245,7 @@
                 </div>
 
                 <p class="button">
-                  <a href=<?= (isset($get_sess)) ? "/Profile/" . $k['slug'] : "/Login" ?>><button class="btn btn-primary">See Profile</button></a>
+                  <a href=<?= (isset($get_sess)) || (isset($admin_sess)) ? "/Profile/" . $k['slug'] : "/Login" ?>><button class="btn btn-primary">See Profile</button></a>
                 </p>
               </div>
             </div>
