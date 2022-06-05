@@ -127,7 +127,7 @@ class Profile extends BaseController
             'kriteria' => $kriteria,
             'profil' => $this->fotograferModel->getProfil($slug)
         ];
-
+        // dd(current_url());
         $this->session = session();
 
         $data['get_sess'] = $this->session->get('username_pengguna');
@@ -174,33 +174,25 @@ class Profile extends BaseController
             'id_fotografer' => $varIdFotografer['id_fotografer'],
             'id_pengguna' => $varIdPelanggan['id_pengguna'],
             'review' => $this->request->getVar('review'),
-            'rating' => 5
+            'rating' => 1
 
 
         ]);
         session()->setFlashdata('pesan', 'Input Review berhasil');
         //auto count rata rata dan riwayat
-        $avgRating = $this->reviewModel->avgReview($this->request->getVar('id_fotografer'));
-        $sumRating = $this->reviewModel->sumReview($this->request->getVar('id_fotografer'));
-        $this->avgRatingFotografer($this->request->getVar('id_fotografer'), $avgRating);
-        $this->sumRatingFotografer($this->request->getVar('id_fotografer'), $sumRating);
-        //
-        return redirect()->to('/databasetest');
+        $avgRating = $this->reviewModel->avgReview($varIdFotografer['id_fotografer']);
+        $sumRating = $this->reviewModel->sumReview($varIdFotografer['id_fotografer']);
+        $this->avgRatingFotografer($varIdFotografer['id_fotografer'], $avgRating);
+        $this->sumRatingFotografer($varIdFotografer['id_fotografer'], $sumRating);
+        d($avgRating);
+        d($sumRating);
+        d($varIdFotografer['id_fotografer']);
+        d($varIdPelanggan['id_pengguna']);
+        d($this->avgRatingFotografer($varIdFotografer['id_fotografer'], $avgRating));
+        d($this->sumRatingFotografer($varIdFotografer['id_fotografer'], $sumRating));
+        return redirect()->to('/Profile/' . $slug);
     }
 
-    //ini mungkin digabung
-    public function createReview()
-    {
-        $this->session = session();
-        $data = [
-            'title' => 'Form Tambah Data Review',
-            'validation' => \Config\Services::validation()
-        ];
-        $data['admin_sess'] = $this->session->get('username_admin');
-
-        return view('databasetest/createReview', $data);
-    }
-    //ininih
 
     public function avgRatingFotografer($id, $avgRating)
     {
