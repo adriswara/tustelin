@@ -180,8 +180,8 @@ class Profile extends BaseController
         session()->setFlashdata('pesan', 'Input Review berhasil');
         //auto count rata rata dan riwayat
         $avgRating = $this->reviewModel->avgReview($this->request->getVar('id_fotografer'));
-        $this->avgRatingFotografer($this->request->getVar('id_fotografer'), $avgRating);
         $sumRating = $this->reviewModel->sumReview($this->request->getVar('id_fotografer'));
+        $this->avgRatingFotografer($this->request->getVar('id_fotografer'), $avgRating);
         $this->sumRatingFotografer($this->request->getVar('id_fotografer'), $sumRating);
         //
         return redirect()->to('/databasetest');
