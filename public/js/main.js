@@ -40,8 +40,28 @@ function openNav() {
   cardListing.toggleClass("opened");
 }
 
+function galleryProfile() {
+  $(".gallery-slider").slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: true,
+    asNavFor: ".gallery-nav",
+  });
+
+  $(".gallery-nav").slick({
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    asNavFor: ".gallery-slider",
+    dots: true,
+    centerMode: true,
+    focusOnSelect: true,
+  });
+}
+
 $(document).ready(function () {
   stickyHeader();
   stickySidebar();
+  galleryProfile();
   filterSidebar();
 });
