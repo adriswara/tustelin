@@ -55,30 +55,28 @@
 
 
   <!-- Tentang Fotografer -->
-  <div class="container tentang-fotografer">
-    <h3>Tentang Fotografer</h3>
+  <div class="  tentang-fotografer">
+    <!-- <h3>Tentang Fotografer</h3> -->
+    <div class="introduction container-fluid">
+
+      <div class="introduction__image">
+        <img src="/displaypic/<?= $profil[0]['displaypic']; ?>" alt="">
+      </div>
+
+      <div class="introduction__desc">
+        <div class="desc">
+          <p><b>Biodata</b></p><br>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+      </div>
+    </div>
   </div>
 
 
-  <div class="introduction container">
-
-    <div class="introduction__image">
-      <img src="/displaypic/<?= $profil[0]['displaypic']; ?>" alt="">
-    </div>
-
-    <div class="introduction__desc">
-      <div class="desc">
-        <p><b>Biodata</b></p><br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </div>
-
-      <!-- <p class="">Harga dimulai dari
-        <b>Rp<?= $profil[0]['harga']; ?></b>
-      </p>
-      <p>Telah menyelesaikan <b><?= $profil[0]['jumlah_rating']; ?></b> pekerjaan</p>
-
+  <div class="info">
+    <div class="container d-flex info-wrapper ">
       <div class="daftar-kontak">
-        <span><b>Daftar Kontak:</b></span>
+        <span class="title">Daftar Kontak</span>
         <div>
           <i class="fa fa-phone" aria-hidden="true"></i>
           <span><?= $profil[0]['no_telfon']; ?></span>
@@ -91,46 +89,35 @@
           <i class="fa fa-instagram" aria-hidden="true"></i>
           <span><?= $profil[0]['akun_instagram']; ?></span>
         </div>
-      </div> -->
+      </div>
+      <div class="harga-pekerjaan">
+        <span class="title">Harga dan Pekerjaan</span>
+        <div>dimulai dari
+          <br>
+          <b class="harga">Rp<?= $profil[0]['harga']; ?></b>
+        </div>
+        <div>Telah menyelesaikan <b><?= $profil[0]['jumlah_rating']; ?></b> pekerjaan</div>
+      </div>
+      <div class="equipment">
+        <span class="title"> Camera Used</span>
+        <ul>
+          <li><?= $profil[0]['nama_alat']; ?></li>
+        </ul>
 
+      </div>
+      <div class="equipment">
+        <span class="title">Other Equipment</span>
+        <ul>
+          <li>Excell tripod</li>
+          <li>DJI Ronin S Gimbal</li>
+        </ul>
+      </div>
 
-      <!-- <a href="https://wa.me/<?= $profil[0]['no_telfon']; ?>" target="_blank">
-        <button class="btn btn-primary kontak" type="button">
-          Kontak Fotografer
-        </button>
-      </a> -->
-
-      <!-- <button class="btn btn-primary kontak" type="button" data-bs-toggle="modal" data-bs-target="#myModal2">
-        Kontak Fotografer
-      </button> -->
     </div>
   </div>
-  <div class="container d-flex">
-    <div class="daftar-kontak">
-      <span><b>Daftar Kontak:</b></span>
-      <div>
-        <i class="fa fa-phone" aria-hidden="true"></i>
-        <span><?= $profil[0]['no_telfon']; ?></span>
-      </div>
-      <div>
-        <i class="fa fa-envelope-o" aria-hidden="true"></i>
-        <span><?= $profil[0]['email']; ?></span>
-      </div>
-      <div>
-        <i class="fa fa-instagram" aria-hidden="true"></i>
-        <span><?= $profil[0]['akun_instagram']; ?></span>
-      </div>
-    </div>
-    <div class="harga-pekerjaan">
-      <div>Harga dimulai dari
-        <b>Rp<?= $profil[0]['harga']; ?></b>
-      </div>
-      <div>Telah menyelesaikan <b><?= $profil[0]['jumlah_rating']; ?></b> pekerjaan</div>
-    </div>
 
-  </div>
 
-  <div class="container">
+  <div class="text-center ">
     <a href="https://wa.me/<?= $profil[0]['no_telfon']; ?>" target="_blank">
       <button class="btn btn-primary kontak" type="button">
         Kontak Fotografer
@@ -194,14 +181,14 @@
   </div>
 
   <div class="container">
-    <div class="card" style="width: 300px">
+    <!-- <div class="card" style="width: 300px">
       <div>
         <img id="CardDi" class="card-img-top" src="/equipment.jpg" alt="Card image" style="width: 100%" />
         <div style="margin: -2rem; margin-left: 1rem; "></div>
       </div>
 
       <!-- Card Body -->
-      <div class="card-body" style="margin-top: 1rem">
+    <!-- <div class="card-body" style="margin-top: 1rem">
         <h4 class="card-title" style="margin-top: 1rem">
           Equipment List
         </h4>
@@ -214,7 +201,7 @@
           <button href="#" class="btn btn-primary">More</button>
         </p>
       </div>
-    </div>
+    </div> --> -->
 
     <h2>User Review</h2>
 
