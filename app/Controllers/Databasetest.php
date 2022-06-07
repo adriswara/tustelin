@@ -61,7 +61,7 @@ class DatabaseTest extends BaseController
 
         //$fotograferModel = new \App\Models\FotograferModel();
         $this->session = session();
-        $data['get_sess'] = $this->session->get('username_admin');
+        $data['admin_sess'] = $this->session->get('username_admin');
         d($data);
 
 
@@ -82,7 +82,7 @@ class DatabaseTest extends BaseController
         ];
 
 
-        $data['get_sess'] = $this->session->get('username_admin');
+        $data['admin_sess'] = $this->session->get('username_admin');
 
         return view('databasetest/createAdmin', $data);
     }
@@ -98,7 +98,7 @@ class DatabaseTest extends BaseController
         ];
 
 
-        $data['get_sess'] = $this->session->get('username_admin');
+        $data['admin_sess'] = $this->session->get('username_admin');
 
         return view('databasetest/createAlat', $data);
     }
@@ -114,7 +114,7 @@ class DatabaseTest extends BaseController
         ];
 
 
-        $data['get_sess'] = $this->session->get('username_admin');
+        $data['admin_sess'] = $this->session->get('username_admin');
 
         return view('databasetest/createKomersil', $data);
     }
@@ -130,7 +130,7 @@ class DatabaseTest extends BaseController
         ];
 
 
-        $data['get_sess'] = $this->session->get('username_admin');
+        $data['admin_sess'] = $this->session->get('username_admin');
 
         return view('databasetest/createFoto', $data);
     }
@@ -146,7 +146,7 @@ class DatabaseTest extends BaseController
         ];
 
 
-        $data['get_sess'] = $this->session->get('username_admin');
+        $data['admin_sess'] = $this->session->get('username_admin');
 
         return view('databasetest/createFotografer', $data);
     }
@@ -162,7 +162,7 @@ class DatabaseTest extends BaseController
         ];
 
 
-        $data['get_sess'] = $this->session->get('username_admin');
+        $data['admin_sess'] = $this->session->get('username_admin');
 
         return view('databasetest/createKota', $data);
     }
@@ -178,7 +178,7 @@ class DatabaseTest extends BaseController
         ];
 
 
-        $data['get_sess'] = $this->session->get('username_admin');
+        $data['admin_sess'] = $this->session->get('username_admin');
 
         return view('databasetest/createPengguna', $data);
     }
@@ -194,7 +194,7 @@ class DatabaseTest extends BaseController
         ];
 
 
-        $data['get_sess'] = $this->session->get('username_admin');
+        $data['admin_sess'] = $this->session->get('username_admin');
 
         return view('databasetest/createReview', $data);
     }
@@ -214,7 +214,7 @@ class DatabaseTest extends BaseController
 
 
 
-        $data['get_sess'] = $this->session->get('username_admin');
+        $data['admin_sess'] = $this->session->get('username_admin');
 
         d($data);
 
@@ -236,7 +236,7 @@ class DatabaseTest extends BaseController
 
 
 
-        $data['get_sess'] = $this->session->get('username_admin');
+        $data['admin_sess'] = $this->session->get('username_admin');
 
         d($data);
 
@@ -259,7 +259,7 @@ class DatabaseTest extends BaseController
 
 
 
-        $data['get_sess'] = $this->session->get('username_admin');
+        $data['admin_sess'] = $this->session->get('username_admin');
 
 
 
@@ -281,7 +281,7 @@ class DatabaseTest extends BaseController
 
 
 
-        $data['get_sess'] = $this->session->get('username_admin');
+        $data['admin_sess'] = $this->session->get('username_admin');
 
 
 
@@ -303,7 +303,7 @@ class DatabaseTest extends BaseController
 
 
 
-        $data['get_sess'] = $this->session->get('username_admin');
+        $data['admin_sess'] = $this->session->get('username_admin');
 
 
 
@@ -327,7 +327,7 @@ class DatabaseTest extends BaseController
 
 
 
-        $data['get_sess'] = $this->session->get('username_admin');
+        $data['admin_sess'] = $this->session->get('username_admin');
 
 
 
@@ -349,7 +349,7 @@ class DatabaseTest extends BaseController
 
 
 
-        $data['get_sess'] = $this->session->get('username_admin');
+        $data['admin_sess'] = $this->session->get('username_admin');
 
 
 

@@ -21,6 +21,7 @@ class DashboardAdmin extends Controller
         $this->fotograferModel = new FotograferModel();
         $this->alirankomersilModel = new AliranKomersilModel();
         $this->adminModel = new AdminModel();
+        $this->profile = new Profile();
     }
 
     public $globalVariable = 'I am callable';
@@ -34,7 +35,7 @@ class DashboardAdmin extends Controller
 
         $this->session = session();
         //  $namaLog = $session->get('username_pengguna');
-        $data['get_sess'] = $this->session->get('username_admin');
+        $data['admin_sess'] = $this->session->get('username_admin');
 
         //echo $namaLog;
         //$output = ob_get_contents();
@@ -42,7 +43,7 @@ class DashboardAdmin extends Controller
         // echo $output;
 
         //echo "Welcome back, "  ; //$session->get('username_pengguna');
-        //  $data['get_session'] = $this->$namaLog;
+        //  $data['admin_session'] = $this->$namaLog;
         $data['global'] = $this->globalVariable;
         $this->session->sess_expiration = '3600';
         //   $data = [
@@ -54,7 +55,8 @@ class DashboardAdmin extends Controller
     }
     public function logged()
     {
-        $arraytemp = $this->fotograferModel->joinkomersil()->getResult();
+        $kriteria = $this->profile->criteriaGetter();
+        $arraytemp = $this->fotograferModel->joinMarket()->getResult();
         $arrayresult = array();
         foreach ($arraytemp as $key) {
             $arrayresult[] = json_decode(json_encode($key), true);;
@@ -63,8 +65,13 @@ class DashboardAdmin extends Controller
         $data = [
 
             'title' => 'Daftar Fotografer',
-
             'fotografer' => $arrayresult,
+            'kriteria' => $kriteria,
+            'filter_aliran' => null,
+            'filter_kota' => null,
+            'filter_harga' => null,
+            'filter_rating' => null,
+            'filter_jmlRating' => null
 
         ];
 
@@ -72,7 +79,7 @@ class DashboardAdmin extends Controller
 
         $this->session = session();
 
-        $data['get_sess'] = $this->session->get('admin_pengguna');
+        $data['admin_sess'] = $this->session->get('username_admin');
 
         $data['global'] = $this->globalVariable;
 
@@ -99,7 +106,7 @@ class DashboardAdmin extends Controller
 
         $this->session = session();
 
-        $data['get_sess'] = $this->session->get('username_admin');
+        $data['admin_sess'] = $this->session->get('username_admin');
 
         d($data);
 

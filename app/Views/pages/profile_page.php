@@ -218,43 +218,118 @@
 
 
 
+    <?php if (isset($get_sess)) : ?>
+      <div class="containerChat darker">
 
-    <div class="containerChat darker">
+        <h4>Input Review</h4>
+        <div class="form-group">
+          <form action="/Profile/saveReview/<?= $profil[0]['slug']; ?>" method="post">
+            <?= csrf_field(); ?>
+            <!--  -->
+            <label for="review" class="form-label">Review :<?= $profil[0]['slug']; ?></label>
+            <input type="text" name="review" class="form-control" id="review" value="<?= old('review'); ?>">
+            <!--  -->
+            <div class="btn-group">
+              <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Small button
+              </button>
+              <div class="dropdown-menu">
+                <div class="radio">
+                  <?= $inputRating = null; ?>
 
-      <h4>Input Review</h4>
-      <div class="form-group">
-        <form action="/Profile/saveReview/<?= $profil[0]['slug']; ?>" method="post">
-          <?= csrf_field(); ?>
-          <!--  -->
-          <label for="review" class="form-label">Review :<?= $profil[0]['slug']; ?></label>
-          <input type="text" name="review" class="form-control" id="review" value="<?= old('review'); ?>">
-          <!--  -->
-          <div class="btn-group">
-            Rating
-            </button>
-            <div class="dropdown-menu" value="rating1">
-              <i class="fa fa-star" aria-hidden="true">1</i>
+                  <!--  -->
+                  <input <?= ($inputRating == 'inputRating1') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating1">
+                  <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 1</label>
+                </div>
+                <div class="radio">
+                  <?= $inputRating = null; ?>
+
+                  <!--  -->
+                  <input <?= ($inputRating == 'inputRating2') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating2">
+                  <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 2</label>
+                </div>
+                <div class="radio">
+                  <?= $inputRating = null; ?>
+
+                  <!--  -->
+                  <input <?= ($inputRating == 'inputRating3') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating3">
+                  <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 3</label>
+                </div>
+                <div class="radio">
+                  <?= $inputRating = null; ?>
+
+                  <!--  -->
+                  <input <?= ($inputRating == 'inputRating4') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating4">
+                  <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 4</label>
+                </div>
+                <div class="radio">
+                  <?= $inputRating = null; ?>
+
+                  <!--  -->
+                  <input <?= ($inputRating == 'inputRating5') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating5">
+                  <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 5</label>
+                </div>
+              </div>
+              <!-- <div class="dropdown-menu">
+                    2
+                  </div>
+                  <div class="dropdown-menu">
+                    3
+                  </div>
+                  <div class="dropdown-menu">
+                    4
+                  </div>
+                  <div class="dropdown-menu">
+                    5
+                  </div> -->
             </div>
-            <div class="dropdown-menu" value="rating2">
-              <i class="fa fa-star" aria-hidden="true">2</i>
-            </div>
-            <div class="dropdown-menu" value="rating3">
-              <i class="fa fa-star" aria-hidden="true">3</i>
-            </div>
-            <div class="dropdown-menu" value="rating4">
-              <i class="fa fa-star" aria-hidden="true">4</i>
-            </div>
-            <div class="dropdown-menu" value="rating5">
-              <i class="fa fa-star" aria-hidden="true">5</i>
-            </div> -->
             <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
+    <?php endif; ?>
+    <div class="col-md-2">
+      <!---->
+
+
+
+
+      <div class="containerChat darker">
+
+        <h4>Input Review</h4>
+        <div class="form-group">
+          <form action="/Profile/saveReview/<?= $profil[0]['slug']; ?>" method="post">
+            <?= csrf_field(); ?>
+            <!--  -->
+            <label for="review" class="form-label">Review :<?= $profil[0]['slug']; ?></label>
+            <input type="text" name="review" class="form-control" id="review" value="<?= old('review'); ?>">
+            <!--  -->
+            <div class="btn-group">
+              Rating
+              </button>
+              <div class="dropdown-menu" value="rating1">
+                <i class="fa fa-star" aria-hidden="true">1</i>
+              </div>
+              <div class="dropdown-menu" value="rating2">
+                <i class="fa fa-star" aria-hidden="true">2</i>
+              </div>
+              <div class="dropdown-menu" value="rating3">
+                <i class="fa fa-star" aria-hidden="true">3</i>
+              </div>
+              <div class="dropdown-menu" value="rating4">
+                <i class="fa fa-star" aria-hidden="true">4</i>
+              </div>
+              <div class="dropdown-menu" value="rating5">
+                <i class="fa fa-star" aria-hidden="true">5</i>
+              </div> -->
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+
     </div>
 
-
-
-  </div>
-
-  <?= $this->endSection(); ?>
+    <?= $this->endSection(); ?>
