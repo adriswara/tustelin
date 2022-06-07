@@ -93,7 +93,6 @@
       <div class="harga-pekerjaan">
         <span class="title">Harga dan Pekerjaan</span>
         <div>dimulai dari
-          <br>
           <b class="harga">Rp<?= $profil[0]['harga']; ?></b>
         </div>
         <div>Telah menyelesaikan <b><?= $profil[0]['jumlah_rating']; ?></b> pekerjaan</div>
