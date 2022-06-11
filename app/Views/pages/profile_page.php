@@ -131,51 +131,27 @@
   <div class="gallery">
     <h3>Sorotan Galeri Foto</h3>
 
+
+
+    <!-- gambar gede -->
     <div class="gallery-slider">
-      <div class="gallery-slider__sub">
-        <img src="https://source.unsplash.com/random" alt="">
-      </div>
-      <div class="gallery-slider__sub">
-        <img src="https://source.unsplash.com/random" alt="">
-      </div>
-      <div class="gallery-slider__sub">
-        <img src="https://source.unsplash.com/random" alt="">
-      </div>
-      <div class="gallery-slider__sub">
-        <img src="https://source.unsplash.com/random" alt="">
-      </div>
-      <div class="gallery-slider__sub">
-        <img src="https://source.unsplash.com/random" alt="">
-      </div>
-      <div class="gallery-slider__sub">
-        <img src="https://source.unsplash.com/random" alt="">
-      </div>
-      <div class="gallery-slider__sub">
-        <img src="https://source.unsplash.com/random" alt="">
-      </div>
+
+      <?php foreach ($profil as $l) : ?>
+        <div class="gallery-slider__sub">
+          <img src=" /file_foto/<?= $l['file_foto']; ?> " alt="">
+        </div>
+      <?php endforeach; ?>
+
+
     </div>
+    <!-- gambar kecil -->
     <div class="gallery-nav">
-      <div class="gallery-nav__sub">
-        <img src="https://source.unsplash.com/random" alt="">
-      </div>
-      <div class="gallery-nav__sub">
-        <img src="https://source.unsplash.com/random" alt="">
-      </div>
-      <div class="gallery-nav__sub">
-        <img src="https://source.unsplash.com/random" alt="">
-      </div>
-      <div class="gallery-nav__sub">
-        <img src="https://source.unsplash.com/random" alt="">
-      </div>
-      <div class="gallery-nav__sub">
-        <img src="https://source.unsplash.com/random" alt="">
-      </div>
-      <div class="gallery-nav__sub">
-        <img src="https://source.unsplash.com/random" alt="">
-      </div>
-      <div class="gallery-nav__sub">
-        <img src="https://source.unsplash.com/random" alt="">
-      </div>
+      <?php foreach ($profil as $l) : ?>
+        <div class="gallery-nav__sub">
+          <img src=" /file_foto/<?= $l['file_foto']; ?> " alt="">
+        </div>
+      <?php endforeach; ?>
+
     </div>
   </div>
 

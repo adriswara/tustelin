@@ -141,6 +141,7 @@ class Profile extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Fotografer' . $slug . 'tidak ditemukan');
         }
 
+
         return view('pages/profile_page', $data);
     }
     public function criteriaGetter()
