@@ -577,26 +577,39 @@ class DatabaseTest extends BaseController
         // dd($this->request->getVar());
 
         if (!$this->validate([
-            'file_foto' => [
-                'rules' => 'required|is_unique[foto.file_foto]',
+            'id_fotografer' => [
+                'rules'  => 'required',
                 'errors' => [
-                    'required' => '{field} nama harus diisi.',
-                    'is_unique' => '{field} nama sudah terdaftar'
+                    'required' => 'id is required.'
+
+                ]
+            ],
+            'file_foto' => [
+                'rules' => 'uploaded[file_foto]|max_size[file_foto,35840]|is_image[file_foto]|mime_in[file_foto,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'uploaded' => 'Pilih gambar display terlebih dahulu',
+                    'max_size' => 'Maksimal ukuran gambar adalah 35MB',
+                    'is_image' => 'File gambar yang anda pilih tidak valid',
+                    'mime_in' => 'File yang anda pilih bukan gambar'
                 ]
             ]
         ])) {
-            $validation = \Config\Services::validation();
-            return redirect()->to('databasetest/createFoto')->withInput()->with('validation', $validation);
+            // $validation = \Config\Services::validation();
+            // d($validation);
+            // return redirect()->to('databasetest/createFotografer')->withInput()->with('validation', $validation);
+            return redirect()->to('databasetest/createFoto')->withInput();
         }
 
+        $fileFoto = $this->request->getFile('file_foto');
+        // dd($fileFoto);
+        //$imgName = $fileFoto->getName();
+        $idFotografer = $this->request->getVar('id_fotografer');
+        $imgName = $idFotografer . '.' . $fileFoto->guessExtension();
+        $fileFoto->move('file_foto', $imgName); //move ke nama folder display pic di public
         $this->fotoModel->save([
-            'file_foto' => $this->request->getVar('file_foto'),
-            'id_fotografer' => $this->request->getVar('id_fotografer'),
             'judul' => $this->request->getVar('judul'),
-            // 'ulasan' => $this->request->getVar('ulasan'),
-            // 'jumlah_rating' => $this->request->getVar('jumlah_rating')
-            // 'rataRata_rating' => $this->request->getVar('rataRata_rating')
-
+            'id_fotografer' => $idFotografer,
+            'file_foto' => $imgName
 
         ]);
 
