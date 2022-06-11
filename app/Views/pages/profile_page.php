@@ -105,9 +105,19 @@
 
       </div>
       <div class="equipment">
+
+
+        <div class="gallery-slider__sub">
+
+        </div>
+
         <span class="title">Other Equipment</span>
         <ul>
-          <li>Excell tripod</li>
+          <?php foreach ($alatLain as $m) : ?>
+            <li><?= $m['nama_alat']; ?></li>
+          <?php endforeach; ?>
+
+
           <li>DJI Ronin S Gimbal</li>
         </ul>
       </div>

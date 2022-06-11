@@ -11,4 +11,10 @@ class FotoModel extends Model
     protected $allowedFields = ['id_milikAlat', 'id_fotografer', 'id_alat'
         /** , 'user_created_at' */
     ];
+    public function getKepemilikan($id = false)
+    {
+
+        return $this->table('kepemilikanalat')->select('id_milikAlat, id_fotografer,id_alat')->where(['id_milikAlat' => $id])->first();
+    }
+}
 }

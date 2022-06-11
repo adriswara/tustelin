@@ -125,7 +125,8 @@ class Profile extends BaseController
         $data = [
             'title' => 'Profil Fotografer',
             'kriteria' => $kriteria,
-            'profil' => $this->fotograferModel->getProfil($slug)
+            'profil' => $this->fotograferModel->getProfil($slug),
+            'alatLain' => $this->fotograferModel->getKepemilikan($slug)
         ];
         // dd(current_url());
         $this->session = session();
@@ -141,7 +142,7 @@ class Profile extends BaseController
             throw new \CodeIgniter\Exceptions\PageNotFoundException('Fotografer' . $slug . 'tidak ditemukan');
         }
 
-
+        // dd($data);
         return view('pages/profile_page', $data);
     }
     public function criteriaGetter()
