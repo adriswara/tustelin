@@ -198,7 +198,7 @@
                             <td><?= $j['id_fotografer']; ?></td>
                             <td><?= $j['judul']; ?></td>
                             <td><?= $j['file_foto']; ?></td>
-                            <td><button class="btn btn-warning">Edit</button></td>
+                            <td><a href="/DatabaseTest/editFoto/<?= $j['id_foto']; ?>" class=" btn btn-warning">Edit</a></td>
                             <td><a onclick="buttonConfirm()" href="/DatabaseTest/deleteFoto/<?= $j['id_foto']; ?>" class="btn btn-danger">Delete</button></td>
                         </tr>
                     <?php endforeach; ?>

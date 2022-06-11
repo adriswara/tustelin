@@ -243,6 +243,29 @@ class DatabaseTest extends BaseController
         return view('databasetest/editAlat', $data);
     }
 
+    public function editFoto($id = null)
+    {
+
+        $this->session = session();
+
+
+
+        $data = [
+            'title' => 'Form Ubah Data Foto',
+            'validation' => \Config\Services::validation(),
+            'foto' => $this->fotoModel->getFoto($id)
+        ];
+
+
+
+
+
+        $data['admin_sess'] = $this->session->get('username_admin');
+
+
+
+        return view('databasetest/editFoto', $data);
+    }
 
     public function editFotografer($id = null)
     {
@@ -359,7 +382,7 @@ class DatabaseTest extends BaseController
 
     public function saveFotografer()
     {
-        // dd($this->request->getVar());
+
 
         if (!$this->validate([
             'nama' => [
@@ -601,8 +624,7 @@ class DatabaseTest extends BaseController
         }
 
         $fileFoto = $this->request->getFile('file_foto');
-        // dd($fileFoto);
-        //$imgName = $fileFoto->getName();
+
         $idFotografer = $this->request->getVar('id_fotografer');
         $imgName = $idFotografer . '.' . $fileFoto->guessExtension();
         $fileFoto->move('file_foto', $imgName); //move ke nama folder display pic di public
@@ -683,18 +705,67 @@ class DatabaseTest extends BaseController
         return redirect()->to('databasetest/editAlat/' . $id);
     }
 
+    public function updateFoto($id)
+    {
+
+
+
+        if (!$this->validate([
+            'id_fotografer' => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => 'id is required.'
+
+                ]
+            ],
+            'file_foto' => [
+                'rules' => 'uploaded[file_foto]|max_size[file_foto,35840]|is_image[file_foto]|mime_in[file_foto,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'uploaded' => 'Pilih gambar display terlebih dahulu',
+                    'max_size' => 'Maksimal ukuran gambar adalah 35MB',
+                    'is_image' => 'File gambar yang anda pilih tidak valid',
+                    'mime_in' => 'File yang anda pilih bukan gambar'
+                ]
+            ]
+        ])) {
+            // $validation = \Config\Services::validation();
+            // d($validation);
+            // return redirect()->to('databasetest/createFotografer')->withInput()->with('validation', $validation);
+            return redirect()->to('databasetest/editFoto')->withInput();
+        }
+        $foto = $this->fotoModel->find($id);
+        unlink('file_foto/' . $foto['file_foto']);
+        $fileFoto = $this->request->getFile('file_foto');
+
+        $idFotografer = $this->request->getVar('id_fotografer');
+        //dd($this->request->getVar('olddisplaypic'));
+
+        if ($fileFoto->getError() == 4) {
+            $imgName = $this->request->getVar('oldfile_foto');
+        } else {
+            $imgName = $idFotografer . '.' . $fileFoto->guessExtension();
+            $fileFoto->move('file_foto', $imgName);
+            // unlink('displaypic/' . $this->request->getVar('olddisplaypic'));
+        }
+
+        $this->fotoModel->save([
+            'judul' => $this->request->getVar('judul'),
+            'id_fotografer' => $idFotografer,
+            'file_foto' => $imgName
+
+        ]);
+
+
+        session()->setFlashdata('pesan', 'Edit berhasil');
+
+        // return redirect()->to('/databasetest');
+        return redirect()->to('databasetest/editFoto/' . $id);
+    }
+
     public function updateFotografer($id)
     {
 
-        // dd(isset($this->request->getVar('slug')));
 
-        // $prevFotografer = $this->fotograferModel->getFotografer($this->request->getVar('slug'));
-
-        // if ($prevFotografer['nama'] == $this->request->getVar('nama')) {
-        //     $rule_nama = 'required';
-        // } else {
-        //     $rule_nama = 'required | is_unique[fotografer.nama]';
-        // }
 
         if (!$this->validate([
             'nama' => [
