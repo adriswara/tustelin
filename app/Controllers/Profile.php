@@ -160,13 +160,37 @@ class Profile extends BaseController
     }
 
     //form masukan
-    public function saveReview($slug = null)
+    public function saveReview($slug = null, $pilihanRating = null)
     {
+
+
+        if ($pilihanRating == null) {
+            $pilihanRating = $this->request->getVar('inputRating[]');
+        }
+
+        if (strcmp($pilihanRating, 'inputRating1') == 0) {
+            $pilihanRating = 1;
+            d('rating a masuk');
+        } elseif (strcmp($pilihanRating, 'inputRating2') == 0) {
+            $pilihanRating = 2;
+            d('filter b masuk');
+        } elseif (strcmp($pilihanRating, 'inputRating3') == 0) {
+            $pilihanRating = 3;
+            d('filter c masuk');
+        } elseif (strcmp($pilihanRating, 'inputRating4') == 0) {
+            $pilihanRating = 4;
+            d('filter d masuk');
+        } elseif (strcmp($pilihanRating, 'inputRating5') == 0) {
+            $pilihanRating = 5;
+            d('filter e masuk');
+        }
+
         $this->session = session();
         //butuh return method berdsasarkan slug
         //return select id where w=slug - slug
         $profilFotografer = $slug;
         $profilUser = $this->session->get('username_pengguna');
+
 
         $varIdFotografer = $this->fotograferModel->getidBySlug($profilFotografer);
         $varIdPelanggan = $this->userModel->getidbyUsername($profilUser);
@@ -174,7 +198,7 @@ class Profile extends BaseController
             'id_fotografer' => $varIdFotografer['id_fotografer'],
             'id_pengguna' => $varIdPelanggan['id_pengguna'],
             'review' => $this->request->getVar('review'),
-            'rating' => 1
+            'rating' => $pilihanRating
 
 
         ]);
