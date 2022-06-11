@@ -134,12 +134,10 @@ class Profile extends BaseController
         $data['get_sess'] = $this->session->get('username_pengguna');
         $data['admin_sess'] = $this->session->get('username_admin');
         $this->currSlug = $slug;
-        // d($slug);
-        // d($this->currSlug);
-        // untuk exception not found
+
 
         if (empty($data['profil'])) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException('Fotografer' . $slug . 'tidak ditemukan');
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Fotografer ' . $slug . ' tidak ditemukan atau profil tidak layak');
         }
 
         // dd($data);

@@ -113,12 +113,16 @@
 
         <span class="title">Other Equipment</span>
         <ul>
+          <?php if ($profil[0]['kepemilikan_studio']) : ?>
+            <li>Memiliki Studio</li>
+          <?php else : ?>
+            <li>Tidak Memiliki Studio</li>
+          <?php endif ?>
+        </ul>
+        <ul>
           <?php foreach ($alatLain as $m) : ?>
             <li><?= $m['nama_alat']; ?></li>
           <?php endforeach; ?>
-
-
-          <li>DJI Ronin S Gimbal</li>
         </ul>
       </div>
 

@@ -43,7 +43,7 @@ class FotograferModel extends Model
 
 
 
-        return $this->table('fotografer')->join('aliran_komersil as kategori', 'fotografer.id_komersil = kategori.id_komersil', 'inner')->join('alat as equipment', 'fotografer.id_alat = equipment.id_alat', 'inner')->join('review as masukan', 'fotografer.id_fotografer = masukan.id_fotografer', 'left')->join('pelanggan as user', 'user.id_pengguna = masukan.id_pengguna', 'left')->join('foto as hasilFoto', 'hasilFoto.id_fotografer = fotografer.id_fotografer', 'inner')->join('kepemilikanalat as alatlain', 'alatlain.id_fotografer = fotografer.id_fotografer', 'inner')->where(['slug' => $slug])->get()->getResultArray();
+        return $this->table('fotografer')->join('aliran_komersil as kategori', 'fotografer.id_komersil = kategori.id_komersil', 'inner')->join('alat as equipment', 'fotografer.id_alat = equipment.id_alat', 'inner')->join('review as masukan', 'fotografer.id_fotografer = masukan.id_fotografer', 'left')->join('pelanggan as user', 'user.id_pengguna = masukan.id_pengguna', 'left')->join('foto as hasilFoto', 'hasilFoto.id_fotografer = fotografer.id_fotografer', 'inner')->where(['slug' => $slug])->get()->getResultArray();
     }
     // -- QUERRY BUAT NAMPILIN DI SEARCH --//
     public function search($keyword)
