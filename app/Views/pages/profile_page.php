@@ -107,9 +107,7 @@
       <div class="equipment">
 
 
-        <div class="gallery-slider__sub">
 
-        </div>
 
         <span class="title">Other Equipment</span>
         <ul>
