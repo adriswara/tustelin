@@ -7,18 +7,18 @@
     <div class="row justify-content-md-center" style="margin-bottom: 0rem  ">
 
         <div class="col-6">
-            <h1>Admin Sign In</h1>
+            <h1>Fotografer Sign In</h1>
             <?php if (session()->getFlashdata('msg')) : ?>
                 <div class="alert alert-danger"><?= session()->getFlashdata('msg') ?></div>
             <?php endif; ?>
-            <form action="/loginAdmin/auth" method="post">
+            <form action="/loginFotografer/auth" method="post">
                 <div class="mb-3">
-                    <label for="InputForEmail" class="form-label">Admin Email address</label>
-                    <input type="email" name="email_admin" class="form-control" id="InputForEmail" value="<?= set_value('email_admin') ?>">
+                    <label for="InputForEmail" class="form-label">Fotografer Email address</label>
+                    <input type="email" name="email_fotografer" class="form-control" id="InputForEmail" value="<?= set_value('email_fotografer') ?>">
                 </div>
                 <div class="mb-3">
-                    <label for="InputForPassword" class="form-label">Admin Password</label>
-                    <input type="password" name="password_admin" class="form-control" id="InputForPassword">
+                    <label for="InputForPassword" class="form-label">Fotografer Password</label>
+                    <input type="password" name="password_fotografer" class="form-control" id="InputForPassword">
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary">Login</button>

@@ -12,7 +12,7 @@ use CodeIgniter\Controller;
 
 
 
-class DashboardAdmin extends Controller
+class DashboardFotografer extends Controller
 {
 
     protected $fotograferModel;
@@ -27,15 +27,18 @@ class DashboardAdmin extends Controller
     public $globalVariable = 'I am callable';
 
     private $session = null;
+
     public function index()
     {
+        $this->session = session();
         $data = [
-            'title' => 'Logged'
+            'title' => 'Logged',
+            'fotografer' => $this->fotograferModel->getLoginProfile($this->session->get('username_fotografer'))
         ];
 
-        $this->session = session();
+
         //  $namaLog = $session->get('username_pengguna');
-        $data['admin_sess'] = $this->session->get('username_admin');
+        $data['fotografer_sess'] = $this->session->get('username_fotografer');
 
         //echo $namaLog;
         //$output = ob_get_contents();
@@ -51,7 +54,7 @@ class DashboardAdmin extends Controller
         //     'title' => 'Loggedin',
         //   'namaLoged' => $namaLog
         // ];
-        echo view('logintest/dashboardAdmin', $data);
+        echo view('logintest/dashboardFotografer', $data);
     }
     public function logged()
     {
@@ -79,7 +82,7 @@ class DashboardAdmin extends Controller
 
         $this->session = session();
 
-        $data['admin_sess'] = $this->session->get('username_admin');
+        $data['fotografer_sess'] = $this->session->get('username_fotografer');
 
         $data['global'] = $this->globalVariable;
 
@@ -106,7 +109,7 @@ class DashboardAdmin extends Controller
 
         $this->session = session();
 
-        $data['admin_sess'] = $this->session->get('username_admin');
+        $data['fotografer_sess'] = $this->session->get('username_fotografer');
 
 
 

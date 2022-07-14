@@ -21,11 +21,11 @@
 
         <!-- Modal body -->
         <div class="modal-body">
-          <label for="email"><b>Nomor Telefon</b></label>
+          <label for="telephone"><b>Nomor Telefon</b></label>
           <p><?= $profil[0]['no_telfon']; ?></p>
-          <label for="email"><b>Email</b> </label>
-          <p><?= $profil[0]['email']; ?></p>
-          <label for="psw"><b>Instagram</b></label>
+          <label for="email_fotografer"><b>Email</b> </label>
+          <p><?= $profil[0]['email_fotografer']; ?></p>
+          <label for="instagram"><b>Instagram</b></label>
           <p><?= $profil[0]['akun_instagram']; ?></p>
           <label for="psw-repeat"><b>Nomor Rekening</b></label>
           <p><?= $profil[0]['no_rekening']; ?></p>
@@ -83,7 +83,7 @@
         </div>
         <div>
           <i class="fa fa-envelope-o" aria-hidden="true"></i>
-          <span><?= $profil[0]['email']; ?></span>
+          <span><?= $profil[0]['email_fotografer']; ?></span>
         </div>
         <div>
           <i class="fa fa-instagram" aria-hidden="true"></i>
@@ -129,122 +129,145 @@
 
 
   <div class="text-center ">
-    <a href="https://wa.me/<?= $profil[0]['no_telfon']; ?>" target="_blank">
-      <button class="btn btn-primary kontak" type="button">
-        Kontak Fotografer
-      </button>
-    </a>
 
-  </div>
-
-  <!--end of Tentang Fotografer-->
-
-  <!-- Gallery -->
-  <div class="gallery">
-    <h3>Sorotan Galeri Foto</h3>
-
-
-
-    <!-- gambar gede -->
-    <div class="gallery-slider">
-
-      <?php foreach ($profil as $l) : ?>
-        <div class="gallery-slider__sub">
-          <img src=" /file_foto/<?= $l['file_foto']; ?> " alt="">
-        </div>
-      <?php endforeach; ?>
+    <?php if (isset($fotografer_sess)) : ?>
+      <div class="text-center">
+        <a class="btn btn-warning" href="DatabaseTest/editFotografer/<?= $profil[0]['id_fotografer']; ?>">
+          Edit Profil
+        </a>
+      </div>
+    <?php elseif (isset($get_sess)) : ?>
+      <div class="text-center ">
+        <a href="https://wa.me/<?= $profil[0]['no_telfon']; ?>" target="_blank">
+          <button class="btn btn-primary kontak" type="button">
+            Kontak Fotografer
+          </button>
+        </a>
+      </div>
+    <?php endif; ?>
 
 
-    </div>
-    <!-- gambar kecil -->
-    <div class="gallery-nav">
-      <?php foreach ($profil as $l) : ?>
-        <div class="gallery-nav__sub">
-          <img src=" /file_foto/<?= $l['file_foto']; ?> " alt="">
-        </div>
-      <?php endforeach; ?>
 
-    </div>
-  </div>
 
-  <div class="container mt-5">
 
-    <h3>User Review</h3>
 
-    <?php foreach ($profil as $k) : ?>
+    <!--end of Tentang Fotografer-->
 
-      <div class="containerChat">
-        <div class="d-flex">
-          <img src="/img_avatar1.png" alt="Avatar" />
-          <div>
-            <h4><?= $k['username_pengguna']; ?></h4>
-            <div class="time-right"><?= $k['waktu_kirim']; ?> </div>
+    <!-- Gallery -->
+    <div class="gallery">
+      <h3>Sorotan Galeri Foto</h3>
+
+
+
+      <!-- gambar gede -->
+      <div class="gallery-slider">
+
+        <?php foreach ($fotoGallery as $l) : ?>
+          <div class="gallery-slider__sub">
+            <img src=" /file_foto/<?= $l['file_foto']; ?> " alt="">
+
           </div>
-          <span class=""><i class="fa fa-star" aria-hidden="true"></i> <?= $k['rating']; ?></span>
-        </div>
-
-        <p><?= $k['review']; ?></p>
+        <?php endforeach; ?>
 
 
       </div>
+      <!-- gambar kecil -->
+      <div class="gallery-nav">
+        <?php foreach ($fotoGallery as $l) : ?>
+          <div class="gallery-nav__sub">
+            <img src=" /file_foto/<?= $l['file_foto']; ?> " alt="">
+          </div>
+        <?php endforeach; ?>
 
-    <?php endforeach; ?>
+      </div>
 
+    </div>
 
+    <?php if (isset($fotografer_sess)) : ?>
+      <a class="btn btn-warning" href="/Profile/editGallery/<?= $profil[0]['slug']; ?>">
+        Edit Gallery
+      </a>
+    <?php endif; ?>
 
-    <?php if (isset($get_sess)) : ?>
-      <div class="containerChat darker">
+    <div class="text-center ">
+      <div class="container mt-5">
 
-        <h4>Input Review</h4>
-        <div class="form-group">
-          <form action="/Profile/saveReview/<?= $profil[0]['slug']; ?>" method="post">
-            <?= csrf_field(); ?>
-            <!--  -->
-            <label for="review" class="form-label">Review :<?= $profil[0]['slug']; ?></label>
-            <input type="text" name="review" class="form-control" id="review" value="<?= old('review'); ?>">
-            <!--  -->
-            <div class="btn-group">
-              <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Small button
-              </button>
-              <div class="dropdown-menu">
-                <div class="radio">
-                  <?= $inputRating = null; ?>
+        <h3>User Review</h3>
 
-                  <!--  -->
-                  <input <?= ($inputRating == 'inputRating1') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating1">
-                  <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 1</label>
-                </div>
-                <div class="radio">
-                  <?= $inputRating = null; ?>
+        <?php foreach ($profil as $k) : ?>
 
-                  <!--  -->
-                  <input <?= ($inputRating == 'inputRating2') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating2">
-                  <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 2</label>
-                </div>
-                <div class="radio">
-                  <?= $inputRating = null; ?>
-
-                  <!--  -->
-                  <input <?= ($inputRating == 'inputRating3') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating3">
-                  <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 3</label>
-                </div>
-                <div class="radio">
-                  <?= $inputRating = null; ?>
-
-                  <!--  -->
-                  <input <?= ($inputRating == 'inputRating4') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating4">
-                  <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 4</label>
-                </div>
-                <div class="radio">
-                  <?= $inputRating = null; ?>
-
-                  <!--  -->
-                  <input <?= ($inputRating == 'inputRating5') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating5">
-                  <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 5</label>
-                </div>
+          <div class="containerChat">
+            <div class="d-flex">
+              <img src="/img_avatar1.png" alt="Avatar" />
+              <div>
+                <h4><?= $k['username_pengguna']; ?></h4>
+                <div class="time-right"><?= $k['waktu_kirim']; ?> </div>
               </div>
-              <!-- <div class="dropdown-menu">
+              <span class=""><i class="fa fa-star" aria-hidden="true"></i> <?= $k['rating']; ?></span>
+            </div>
+
+            <p><?= $k['review']; ?></p>
+
+
+          </div>
+
+        <?php endforeach; ?>
+
+
+
+        <?php if (isset($get_sess)) : ?>
+          <div class="containerChat darker">
+
+            <h4>Input Review</h4>
+            <div class="form-group">
+              <form action="/Profile/saveReview/<?= $profil[0]['slug']; ?>" method="post">
+                <?= csrf_field(); ?>
+                <!--  -->
+                <label for="review" class="form-label">Review :<?= $profil[0]['slug']; ?></label>
+                <input type="text" name="review" class="form-control" id="review" value="<?= old('review'); ?>">
+                <!--  -->
+                <div class="btn-group">
+                  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Small button
+                  </button>
+                  <div class="dropdown-menu">
+                    <div class="radio">
+                      <?= $inputRating = null; ?>
+
+                      <!--  -->
+                      <input <?= ($inputRating == 'inputRating1') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating1">
+                      <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 1</label>
+                    </div>
+                    <div class="radio">
+                      <?= $inputRating = null; ?>
+
+                      <!--  -->
+                      <input <?= ($inputRating == 'inputRating2') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating2">
+                      <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 2</label>
+                    </div>
+                    <div class="radio">
+                      <?= $inputRating = null; ?>
+
+                      <!--  -->
+                      <input <?= ($inputRating == 'inputRating3') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating3">
+                      <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 3</label>
+                    </div>
+                    <div class="radio">
+                      <?= $inputRating = null; ?>
+
+                      <!--  -->
+                      <input <?= ($inputRating == 'inputRating4') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating4">
+                      <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 4</label>
+                    </div>
+                    <div class="radio">
+                      <?= $inputRating = null; ?>
+
+                      <!--  -->
+                      <input <?= ($inputRating == 'inputRating5') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating5">
+                      <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 5</label>
+                    </div>
+                  </div>
+                  <!-- <div class="dropdown-menu">
                     2
                   </div>
                   <div class="dropdown-menu">
@@ -256,22 +279,22 @@
                   <div class="dropdown-menu">
                     5
                   </div> -->
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+          </div>
+        <?php endif; ?>
+        <div class="col-md-2">
+          <!---->
+
+
+
+
+
+
+
+
         </div>
-      </div>
-    <?php endif; ?>
-    <div class="col-md-2">
-      <!---->
 
-
-
-
-
-
-
-
-    </div>
-
-    <?= $this->endSection(); ?>
+        <?= $this->endSection(); ?>

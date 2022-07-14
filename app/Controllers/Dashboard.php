@@ -90,7 +90,7 @@ class Dashboard extends Controller
             $fotografer = $this->fotograferModel;
         }
 
-        d($data, $this->session->sess_expiration);
+        // d($data, $this->session->sess_expiration);
 
         return view('pages/marketplace_page', $data);
 

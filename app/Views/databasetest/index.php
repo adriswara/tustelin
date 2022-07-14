@@ -1,7 +1,7 @@
 <?= $this->extend('layout/page_layout'); ?>
 
 <?= $this->section('pageContent'); ?>
-<h1 class="bg-light"> INI INDEX PHP YANG JADI TABEL BETA</h1>
+<h1 class="bg-light"> Dashboard Admin</h1>
 <div class="container bg-light">
     <div class="row">
         <div class="col">
@@ -23,6 +23,7 @@
                         <th scope="col">Nama</th>
                         <th scope="col">Instagram</th>
                         <th scope="col">Rata-rata rating</th>
+                        <th scope="col">NIK KTP</th>
                         <th><a href="/DatabaseTest/createFotografer" class="btn btn-primary ">Add</a></th>
                     </tr>
                 </thead>
@@ -34,6 +35,7 @@
                             <td><?= $k['nama']; ?></td>
                             <td><?= $k['akun_instagram']; ?></td>
                             <td><?= $k['rataRata_rating']; ?></td>
+                            <td><?= $k['ktp']; ?></td>
                             <td><a class="btn btn-warning" href="DatabaseTest/editFotografer/<?= $k['id_fotografer']; ?>">Edit</a></td>
                             <td><a onclick="buttonConfirm()" href="/DatabaseTest/deleteFotografer/<?= $k['id_fotografer']; ?>" class="btn btn-danger">Delete</button></td>
                         </tr>

@@ -13,6 +13,8 @@
                         <a class="nav-link" href="/Dashboard/logedHome">Home</a>
                     <?php elseif (isset($admin_sess)) : ?>
                         <a class="nav-link" href="/DashboardAdmin/logedHome">Home</a>
+                    <?php elseif (isset($fotografer_sess)) : ?>
+                        <a class="nav-link" href="/DashboardFotografer/logedHome"></a>
                     <?php else : ?>
                         <a class="nav-link" href="/">Home</a>
                     <?php endif; ?>
@@ -22,6 +24,8 @@
                         <a class="nav-link" href="/Dashboard/logged">Marketplace</a>
                     <?php elseif (isset($admin_sess)) : ?>
                         <a class="nav-link" href="/DashboardAdmin/logged">Marketplace</a>
+                    <?php elseif (isset($fotografer_sess)) : ?>
+                        <a class="nav-link" href="/DashboardFotografer/logged">Marketplace</a>
                     <?php else : ?>
                         <a class="nav-link" href="/profile/index">Marketplace</a>
                     <?php endif; ?>
@@ -54,6 +58,11 @@
                     Logout
                 </a>
                 <a href=""> Hi,<?= $admin_sess ?>!</a>
+            <?php elseif (isset($fotografer_sess)) : ?>
+                <a href="/login/logout">
+                    Logout
+                </a>
+                <a href=""> Hi,<?= $fotografer_sess ?>!</a>
             <?php else : ?>
                 <a href="/Login">
                     Login

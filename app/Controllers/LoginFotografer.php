@@ -4,27 +4,28 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\AdminModel;
+use App\Models\FotograferModel;
 use CodeIgniter\CLI\Console;
 
-class LoginAdmin extends Controller
+class LoginFotografer extends Controller
 {
     public function index()
     {
         $data = [
-            'title' => 'Login Admin'
+            'title' => 'Login Fotografer'
         ];
 
         helper(['form']);
-        echo view('logintest/loginAdmin', $data);
+        echo view('logintest/loginFotografer', $data);
     }
 
     public function auth()
     {
         $session = session();
-        $model = new AdminModel();
-        $email = $this->request->getVar('email_admin');
-        $password = $this->request->getVar('password_admin');
-        $data = $model->where('email_admin', $email)->first();
+        $model = new FotograferModel();
+        $email = $this->request->getVar('email_fotografer');
+        $password = $this->request->getVar('password_fotografer');
+        $data = $model->where('email_fotografer', $email)->first();
         // d($data);
         function debug_to_console($data)
         {
@@ -38,21 +39,21 @@ class LoginAdmin extends Controller
 
 
         if ($data) {
-            $pass = $data['password_admin'];
+            $pass = $data['sandi_fotografer'];
 
             // $verify_pass = password_verify($password, $pass);
             // debug_to_console($verify_pass);
             // debug_to_console($pass);
             if ($pass == $password) {
                 $ses_data = [
-                    'id_admin'       => $data['id_admin'],
-                    'username_admin'     => $data['username_admin'],
-                    'email_admin'    => $data['email_admin'],
+                    'id_fotografer'       => $data['id_fotografer'],
+                    'username_fotografer'     => $data['username_fotografer'],
+                    'email_fotografer'    => $data['email_fotografer'],
                     'logged_in'     => TRUE
                 ];
                 $session->set($ses_data);
                 // d($data);
-                return redirect()->to('/dashboardAdmin');
+                return redirect()->to('/DashboardFotografer');
             } else {
                 // d($data);
                 $session->setFlashdata('msg', 'Wrong Password');
@@ -62,16 +63,16 @@ class LoginAdmin extends Controller
         } else {
             // d($data);
             $session->setFlashdata('msg', 'Email not Found');
-            return redirect()->to('/loginAdmin');
+            return redirect()->to('/loginFotografer');
         }
     }
 
 
 
-    public function logoutAdmin()
+    public function logoutFotografer()
     {
         $session = session();
         $session->destroy();
-        return redirect()->to('/loginAdmin');
+        return redirect()->to('/loginFotografer');
     }
 }

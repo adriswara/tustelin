@@ -62,7 +62,7 @@ class DatabaseTest extends BaseController
         //$fotograferModel = new \App\Models\FotograferModel();
         $this->session = session();
         $data['admin_sess'] = $this->session->get('username_admin');
-        d($data);
+        // d($data);
 
 
 
@@ -418,7 +418,15 @@ class DatabaseTest extends BaseController
             'nama' => $this->request->getVar('nama'),
             'slug' => $slug,
             'displaypic' => $imgName,
-            'akun_instagram' => $this->request->getVar('akun_instagram')
+            'akun_instagram' => $this->request->getVar('akun_instagram'),
+            'ktp' => $this->request->getVar('ktp'),
+            'id_komersil' => $this->request->getVar('id_komersil'),
+            'id_alat' => $this->request->getVar('id_alat'),
+            'id_kota' => $this->request->getVar('id_kota'),
+            'no_telfon' => $this->request->getVar('no_telfon'),
+            'alamat' => $this->request->getVar('alamat'),
+            'harga' => $this->request->getVar('harga'),
+            'email' => $this->request->getVar('email'),
         ]);
 
 
@@ -597,7 +605,7 @@ class DatabaseTest extends BaseController
 
     public function saveFoto()
     {
-        // dd($this->request->getVar());
+
 
         if (!$this->validate([
             'id_fotografer' => [
@@ -617,16 +625,14 @@ class DatabaseTest extends BaseController
                 ]
             ]
         ])) {
-            // $validation = \Config\Services::validation();
-            // d($validation);
-            // return redirect()->to('databasetest/createFotografer')->withInput()->with('validation', $validation);
+
             return redirect()->to('databasetest/createFoto')->withInput();
         }
 
         $fileFoto = $this->request->getFile('file_foto');
-
+        $signatureFoto = $this->request->getFile('judul');
         $idFotografer = $this->request->getVar('id_fotografer');
-        $imgName = $idFotografer . '.' . $fileFoto->guessExtension();
+        $imgName = $idFotografer . $signatureFoto . '.' . $fileFoto->guessExtension();
         $fileFoto->move('file_foto', $imgName); //move ke nama folder display pic di public
         $this->fotoModel->save([
             'judul' => $this->request->getVar('judul'),
@@ -743,12 +749,14 @@ class DatabaseTest extends BaseController
         if ($fileFoto->getError() == 4) {
             $imgName = $this->request->getVar('oldfile_foto');
         } else {
-            $imgName = $idFotografer . '.' . $fileFoto->guessExtension();
+            $signatureFoto = $this->request->getVar('judul');
+            $imgName = $idFotografer . $signatureFoto . '.' . $fileFoto->guessExtension();
             $fileFoto->move('file_foto', $imgName);
             // unlink('displaypic/' . $this->request->getVar('olddisplaypic'));
         }
 
         $this->fotoModel->save([
+            'id_foto' => $id,
             'judul' => $this->request->getVar('judul'),
             'id_fotografer' => $idFotografer,
             'file_foto' => $imgName
@@ -809,7 +817,9 @@ class DatabaseTest extends BaseController
             'nama' => $this->request->getVar('nama'),
             'slug' => $slug,
             'displaypic' => $imgName,
-            'akun_instagram' => $this->request->getVar('akun_instagram')
+            'akun_instagram' => $this->request->getVar('akun_instagram'),
+            'ktp' => $this->request->getVar('ktp'),
+
         ]);
 
 
