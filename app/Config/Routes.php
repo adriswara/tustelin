@@ -34,6 +34,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 
 $routes->get('/Profile/createFoto', 'Profile::createFoto/$1');
+// $routes->get('/Profile/editProfile', 'Profile::editProfile/$1');
 $routes->get('/Profile/(:segment)', 'Profile::profileSegment/$1');
 $routes->get('/Profile/(:segment)', 'Profile::saveReview/$1');
 $routes->get('/databasetest/editFotografer/(:segment)', 'Databasetest::editFotografer/$1');

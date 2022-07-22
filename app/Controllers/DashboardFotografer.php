@@ -6,8 +6,7 @@ namespace App\Controllers;
 use App\Models\AliranKomersilModel;
 use App\Models\FotograferModel;
 use App\Models\AdminModel;
-
-
+use App\Models\PemesananModel;
 use CodeIgniter\Controller;
 
 
@@ -22,6 +21,7 @@ class DashboardFotografer extends Controller
         $this->alirankomersilModel = new AliranKomersilModel();
         $this->adminModel = new AdminModel();
         $this->profile = new Profile();
+        $this->pemesananModel = new PemesananModel();
     }
 
     public $globalVariable = 'I am callable';
@@ -33,7 +33,8 @@ class DashboardFotografer extends Controller
         $this->session = session();
         $data = [
             'title' => 'Logged',
-            'fotografer' => $this->fotograferModel->getLoginProfile($this->session->get('username_fotografer'))
+            'fotografer' => $this->fotograferModel->getLoginProfile($this->session->get('username_fotografer')),
+            'listPesan' => $this->pemesananModel->getPemesananByName($this->session->get('username_fotografer'))
         ];
 
 

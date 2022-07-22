@@ -1,12 +1,41 @@
 <?= $this->extend('layout/page_layout'); ?>
 
 <?= $this->section('pageContent'); ?>
-<h1 class="bg-light"> Edit Gallery</h1>
+<h1 class="bg-light"> Edit Profile</h1>
 <div class="container bg-light">
     <div class="row">
         <div class="col">
-            <h1 class="bg-light">Tabel Foto</h1>
+            <h1 class="bg-light">Edit Deskripsi</h1>
 
+            <table class="table  text-dark bg-light ">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Display</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Instagram</th>
+                        <th scope="col">Rata-rata rating</th>
+                        <th scope="col">NIK KTP</th>
+                        <th><a href="/DatabaseTest/createFotografer" class="btn btn-primary ">Add</a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($profileEdit as $j) : ?>
+                        <tr>
+                            <th scope="row"><?= $j['id_fotografer']; ?></th>
+                            <td><img src="/displaypic/<?= $j['displaypic']; ?>" alt="" width="100"></td>
+                            <td><?= $j['nama']; ?></td>
+                            <td><?= $j['akun_instagram']; ?></td>
+                            <td><?= $j['rataRata_rating']; ?></td>
+                            <td><?= $j['ktp']; ?></td>
+                            <td><a href="/Profile/editProfile/<?= $j['id_fotografer']; ?>" class=" btn btn-warning">Edit </a></td>
+
+                            <td><a onclick="buttonConfirm()" href="/DatabaseTest/deleteFotografer/<?= $j['id_fotografer']; ?>" class="btn btn-danger">Delete</button></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+            <h1 class="bg-light">Edit Foto</h1>
             <table class="table text-dark bg-light">
                 <thead>
                     <tr>

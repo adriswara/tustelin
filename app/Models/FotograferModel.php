@@ -31,6 +31,11 @@ class FotograferModel extends Model
 
         return $this->table('fotografer')->select('id_fotografer,slug, nama, displaypic, harga, akun_instagram,email_fotografer,no_telfon,no_rekening')->where(['id_fotografer' => $id])->first();
     }
+
+    public function getOnly($slug = false)
+    {
+        return $this->table('fotografer')->where(['slug' => $slug])->get()->getResultArray();
+    }
     public function getKepemilikan($slug = false)
     {
         return  $this->table('fotografer')->join('kepemilikanalat as alatlain', 'alatlain.id_fotografer = fotografer.id_fotografer', 'inner')->join('alat as equipment', 'alatlain.id_alat = equipment.id_alat', 'inner')->where(['slug' => $slug])->get()->getResultArray();

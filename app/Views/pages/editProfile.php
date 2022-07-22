@@ -6,7 +6,7 @@
         <div class="row-8">
             <h2 class="">Form Edit Data </h2>
 
-            <form action="/Databasetest/updateFotografer/<?= $fotografer['id_fotografer']; ?>" method="post" enctype="multipart/form-data">
+            <form action="/Profile/updateProfile/<?= $fotografer['id_fotografer']; ?>" method="post" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
                 <input type="hidden" name="id_fotografer" id="<?= $fotografer['id_fotografer']; ?>">
                 <input type="hidden" name="olddisplaypic" id="<?= $fotografer['displaypic']; ?>">

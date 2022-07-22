@@ -10,6 +10,7 @@ use App\Models\UserModel;
 use App\Models\AdminModel;
 use App\Models\FotoModel;
 use App\Models\AlatModel;
+use App\Models\PemesananModel;
 
 class Profile extends BaseController
 {
@@ -25,6 +26,7 @@ class Profile extends BaseController
         $this->adminModel = new AdminModel();
         $this->fotoModel = new FotoModel();
         $this->alatModel = new AlatModel();
+        $this->pemesananModel = new PemesananModel();
     }
 
 
@@ -255,11 +257,83 @@ class Profile extends BaseController
         ]);
     }
 
-    public function editProfil()
+    public function editProfile($id = null)
     {
+        $this->session = session();
+
+        // $id = $this->fotograferModel->getidBySlug($slug);
+
+        $data = [
+            'title' => 'Form Ubah Data Fotografer',
+            'validation' => \Config\Services::validation(),
+            'fotografer' => $this->fotograferModel->getFotografer($id)
+        ];
+
+
+
+        $data['fotografer_sess'] = $this->session->get('username_fotografer');
+
+
+
+
+        return view('pages/editProfile', $data);
     }
-    public function updateProfil()
+    public function updateProfile($slug = null)
     {
+        $id = $this->fotograferModel->getidBySlug($slug);
+
+        if (!$this->validate([
+            'nama' => [
+                'rules' => 'required|is_unique[fotografer.nama]',
+                'errors' => [
+                    'required' => '{field} nama harus diisi.',
+                    'is_unique' => '{field} nama sudah terdaftar'
+                ]
+            ],
+            'displaypic' => [
+                'rules' => 'uploaded[displaypic]|max_size[displaypic,35840]|is_image[displaypic]|mime_in[displaypic,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'uploaded' => 'Pilih gambar display terlebih dahulu',
+                    'max_size' => 'Maksimal ukuran gambar adalah 35MB',
+                    'is_image' => 'File gambar yang anda pilih tidak valid',
+                    'mime_in' => 'File yang anda pilih bukan gambar'
+                ]
+            ]
+        ])) {
+            // $validation = \Config\Services::validation();
+            // return redirect()->to('databasetest/editFotografer/' . $id)->withInput()->with('validation', $validation);
+            return redirect()->to('profile/editProfile/' . $id)->withInput();
+        }
+        $fotografer = $this->fotograferModel->find($id);
+        unlink('displaypic/' . $fotografer['displaypic']);
+        $fileDisplaypic = $this->request->getFile('displaypic');
+        $slug = url_title($this->request->getVar('nama'), '-', true);
+
+        //dd($this->request->getVar('olddisplaypic'));
+
+        if ($fileDisplaypic->getError() == 4) {
+            $imgName = $this->request->getVar('olddisplaypic');
+        } else {
+            $imgName = $slug . '.' . $fileDisplaypic->guessExtension();
+            $fileDisplaypic->move('displaypic', $imgName);
+            // unlink('displaypic/' . $this->request->getVar('olddisplaypic'));
+        }
+
+        $this->fotograferModel->save([
+            'id_fotografer' => $id,
+            'nama' => $this->request->getVar('nama'),
+            'slug' => $slug,
+            'displaypic' => $imgName,
+            'akun_instagram' => $this->request->getVar('akun_instagram'),
+            'ktp' => $this->request->getVar('ktp'),
+
+        ]);
+
+
+        session()->setFlashdata('pesan', 'Edit berhasil');
+
+        // return redirect()->to('/databasetest');
+        return redirect()->to('profile/editProfile/' . $id);
     }
 
     public function createFoto($id = null, $slug = null)
@@ -332,6 +406,8 @@ class Profile extends BaseController
     public function editGallery($slug = null)
     {
 
+
+
         $this->session = session();
 
 
@@ -341,7 +417,8 @@ class Profile extends BaseController
             'fotografer' => $this->fotograferModel->getFotografer($slug),
             'profil' => $this->fotograferModel->getProfil($slug),
             'alatLain' => $this->fotograferModel->getKepemilikan($slug),
-            'fotoGallery' => $this->fotograferModel->getFotoByProfile($slug)
+            'fotoGallery' => $this->fotograferModel->getFotoByProfile($slug),
+            'profileEdit' => $this->fotograferModel->getOnly($slug)
         ];
 
 
@@ -457,5 +534,82 @@ class Profile extends BaseController
         $this->fotoModel->where('id_foto', $id)->delete();
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/DashboardFotografer');
+    }
+    public function pesan($slug = null, $id = null)
+    {
+
+        $this->session = session();
+
+        $data['get_sess'] = $this->session->get('username_pengguna');
+
+        $data = [
+            'title' => 'Form Tambah Data Foto',
+            'validation' => \Config\Services::validation(),
+            'fotografer' => $this->fotograferModel->getFotografer($slug),
+            'profil' => $this->fotograferModel->getProfil($slug),
+            'pengguna' => $this->userModel->getidbyUsername($data['get_sess']),
+            'pemesanan' => $this->pemesananModel->getPemesanan($id)
+        ];
+
+
+
+
+
+        return view('pages/pemesanan', $data);
+    }
+
+
+    public function savePesanan()
+    {
+        // dd($this->request->getVar());
+
+        if (!$this->validate([
+            'jumlah_hari' => [
+                'rules' => 'required|is_unique[pemesanan.jumlah_hari]',
+                'errors' => [
+                    'required' => '{field} nama harus diisi.',
+                    'is_unique' => '{field} nama sudah terdaftar'
+                ]
+            ]
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('Profil/savePesanan')->withInput()->with('validation', $validation);
+        }
+
+        //  dd($this->request->getVar('jumlah_hari'));
+
+
+        $this->pemesananModel->save([
+            'jumlah_hari' => $this->request->getVar('jumlah_hari'),
+            'keterangan' => $this->request->getVar('keterangan'),
+            'id_fotografer' => $this->request->getVar('id_fotografer'),
+            'id_pengguna' => $this->request->getVar('id_pengguna')
+        ]);
+
+
+        session()->setFlashdata('pesan', 'Input berhasil');
+
+        return redirect()->to('/dashboard');
+    }
+
+    public function lihatPesan($slug = null, $id = null)
+    {
+
+        $this->session = session();
+
+        $data['get_sess'] = $this->session->get('username_pengguna');
+        $data['fotografer_sess'] = $this->session->get('username_fotografer');
+
+        $data = [
+            'title' => 'Form Tambah Data Foto',
+            'validation' => \Config\Services::validation(),
+            'fotografer' => $this->fotograferModel->getFotografer($slug),
+            'profil' => $this->fotograferModel->getProfil($slug),
+            'pengguna' => $this->userModel->getidbyUsername($data['get_sess']),
+            'pemesanan' => $this->pemesananModel->getPemesanan($id),
+            'listPesan' => $this->pemesananModel->getPemesananByName($data['fotografer_sess'])
+        ];
+
+        return view('pages/lihatPesan', $data);
     }
 }

@@ -62,6 +62,9 @@
                 <a href="/login/logout">
                     Logout
                 </a>
+                <a href="/Profile/lihatPesan/<?= $fotografer_sess; ?>">
+                    Pesan
+                </a>
                 <a href=""> Hi,<?= $fotografer_sess ?>!</a>
             <?php else : ?>
                 <a href="/Login">

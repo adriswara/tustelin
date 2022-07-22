@@ -130,15 +130,15 @@
 
   <div class="text-center ">
 
+    <td><a class="btn btn-warning" href="DatabaseTest/editPengguna/<?= $profil[0]['id_pengguna']; ?>">Edit</a></td>
+
     <?php if (isset($fotografer_sess)) : ?>
-      <div class="text-center">
-        <a class="btn btn-warning" href="DatabaseTest/editFotografer/<?= $profil[0]['id_fotografer']; ?>">
-          Edit Profil
-        </a>
-      </div>
+      <a class="btn btn-warning" href="/Profile/editGallery/<?= $profil[0]['slug']; ?>">
+        Edit Profile
+      </a>
     <?php elseif (isset($get_sess)) : ?>
       <div class="text-center ">
-        <a href="https://wa.me/<?= $profil[0]['no_telfon']; ?>" target="_blank">
+        <a href="/Profile/pesan/<?= $profil[0]['slug']; ?>" target="_blank">
           <button class="btn btn-primary kontak" type="button">
             Kontak Fotografer
           </button>
