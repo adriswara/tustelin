@@ -8,6 +8,7 @@ use App\Models\FotograferModel;
 use App\Models\FotoModel;
 use App\Models\AliranKomersilModel;
 use App\Models\KotaModel;
+use App\Models\PemesananModel;
 use App\Models\UserModel;
 use App\Models\ReviewModel;
 
@@ -21,6 +22,7 @@ class DatabaseTest extends BaseController
     protected $kotaModel;
     protected $userModel;
     protected $reviewModel;
+    protected $pemesananModel;
     protected $avgRating;
     protected $sumRating;
 
@@ -34,6 +36,7 @@ class DatabaseTest extends BaseController
         $this->kotaModel = new KotaModel();
         $this->userModel = new UserModel();
         $this->reviewModel = new ReviewModel();
+        $this->pemesananModel = new PemesananModel();
     }
     public function index()
     {
@@ -378,6 +381,28 @@ class DatabaseTest extends BaseController
 
         return view('databasetest/editReview', $data);
     }
+    public function editReviewTransaksi($id = null)
+    {
+
+        $this->session = session();
+
+
+
+        $data = [
+            'title' => 'Form Ubah Data Fotografer',
+            'validation' => \Config\Services::validation(),
+            'review' => $this->pemesananModel->getReview($id)
+        ];
+
+
+
+        $data['get_sess'] = $this->session->get('username_pengguna');
+
+
+
+        return view('pages/editReview', $data);
+    }
+
 
 
     public function saveFotografer()
@@ -926,18 +951,6 @@ class DatabaseTest extends BaseController
     {
 
 
-        // if (!$this->validate([
-        //     'username_pengguna' => [
-        //         'rules' => 'required|is_unique[pelanggan.username_pengguna]',
-        //         'errors' => [
-        //             'required' => '{field} nama harus diisi.',
-        //             'is_unique' => '{field} nama sudah terdaftar'
-        //         ]
-        //     ]
-        // ])) {
-        //     $validation = \Config\Services::validation();
-        //     return redirect()->to('databasetest/editPengguna/' . $id)->withInput()->with('validation', $validation);
-        // }
 
 
         $this->reviewModel->save([
@@ -961,6 +974,21 @@ class DatabaseTest extends BaseController
         return redirect()->to('databasetest/editReview/' . $id);
     }
 
+    public function updateReviewTransaksi($id)
+    {
+        $this->pemesananModel->save([
+            'id_pemesanan' => $id,
+            'ulasan' => $this->request->getVar('ulasan'),
+            'rating' => $this->request->getVar('rating'),
+
+        ]);
+        session()->setFlashdata('pesan', 'Edit berhasil');
+        $sumRating = $this->pemesananModel->sumReview($this->request->getVar('id_fotografer'));
+        $avgRating = $this->pemesananModel->avgReview($this->request->getVar('id_fotografer'));
+        $this->avgRatingFotografer($this->request->getVar('id_fotografer'), $avgRating);
+        $this->sumRatingFotografer($this->request->getVar('id_fotografer'), $sumRating);
+        return redirect()->to('profile/lihatpesanpelanggan/' . $id);
+    }
 
     // buat input save ke db fotografer
     public function avgRatingFotografer($id, $avgRating)

@@ -6,8 +6,7 @@ namespace App\Controllers;
 use App\Models\AliranKomersilModel;
 use App\Models\FotograferModel;
 use App\Controllers\Profile;
-
-
+use App\Models\UserModel;
 use CodeIgniter\Controller;
 
 
@@ -21,6 +20,7 @@ class Dashboard extends Controller
         $this->fotograferModel = new FotograferModel();
         $this->alirankomersilModel = new AliranKomersilModel();
         $this->profile = new Profile();
+        $this->userModel = new UserModel();
     }
 
     public $globalVariable = 'I am callable';
@@ -28,11 +28,13 @@ class Dashboard extends Controller
     private $session = null;
     public function index()
     {
+        $this->session = session();
+        $data['get_sess'] = $this->session->get('username_pengguna');
         $data = [
-            'title' => 'Logged'
+            'title' => 'Logged',
+            'pelanggan' => $this->userModel->getidByUsername($data['get_sess'])
         ];
 
-        $this->session = session();
         //  $namaLog = $session->get('username_pengguna');
         $data['get_sess'] = $this->session->get('username_pengguna');
 

@@ -52,6 +52,10 @@
                 <a href="/login/logout">
                     Logout
                 </a>
+                <a href="/Profile/lihatPesanPelanggan/<?= $get_sess; ?>">
+                    Pesan
+                </a>
+
                 <a href=""> Hi,<?= $get_sess ?>!</a>
             <?php elseif (isset($admin_sess)) : ?>
                 <a href="/login/logout">
@@ -62,6 +66,7 @@
                 <a href="/login/logout">
                     Logout
                 </a>
+
                 <a href="/Profile/lihatPesan/<?= $fotografer_sess; ?>">
                     Pesan
                 </a>
@@ -74,7 +79,6 @@
                     Sign Up
                 </a>
             <?php endif; ?>
-
         </div>
     </div>
 </nav>

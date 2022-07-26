@@ -29,7 +29,7 @@ class FotograferModel extends Model
             return $this->joinMarket();
         }
 
-        return $this->table('fotografer')->select('id_fotografer,slug, nama, displaypic, harga, akun_instagram,email_fotografer,no_telfon,no_rekening')->where(['id_fotografer' => $id])->first();
+        return $this->table('fotografer')->select('id_fotografer,slug, nama, displaypic, harga, akun_instagram,email_fotografer,no_telfon,no_rekening,alamat,deskripsi,sandi_fotografer,username_fotografer')->where(['id_fotografer' => $id])->first();
     }
 
     public function getOnly($slug = false)

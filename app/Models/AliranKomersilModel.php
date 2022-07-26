@@ -18,6 +18,12 @@ class AliranKomersilModel extends Model
         return $this->table('aliran_komersil')->select('id_komersil, nama_aliran')->where(['id_komersil' => $id])->first();
     }
 
+    public function findAliran()
+    {
+        return $this->table('aliran_komersil')->get()->getResultArray();
+    }
+
+
 
 
     public function join()

@@ -132,15 +132,19 @@ class Profile extends BaseController
         $kriteria = $this->criteriaGetter();
         $profil = $this->fotograferModel->getProfil($slug);
 
+        // dd($this->fotograferModel->getidBySlug($slug)["id_fotografer"]);
+
+
         $data = [
             'title' => 'Profil Fotografer',
             'kriteria' => $kriteria,
             'profil' => $this->fotograferModel->getProfil($slug),
             'alatLain' => $this->fotograferModel->getKepemilikan($slug),
-            'fotoGallery' => $this->fotograferModel->getFotoByProfile($slug)
+            'fotoGallery' => $this->fotograferModel->getFotoByProfile($slug),
+            'review' => $this->pemesananModel->getPemesananBySlug($slug)
         ];
+
         // dd($data);
-        // dd(current_url());
         $this->session = session();
 
         $data['get_sess'] = $this->session->get('username_pengguna');
@@ -597,19 +601,159 @@ class Profile extends BaseController
 
         $this->session = session();
 
-        $data['get_sess'] = $this->session->get('username_pengguna');
+
         $data['fotografer_sess'] = $this->session->get('username_fotografer');
 
         $data = [
-            'title' => 'Form Tambah Data Foto',
+            'title' => 'Pemesanan',
             'validation' => \Config\Services::validation(),
             'fotografer' => $this->fotograferModel->getFotografer($slug),
             'profil' => $this->fotograferModel->getProfil($slug),
-            'pengguna' => $this->userModel->getidbyUsername($data['get_sess']),
             'pemesanan' => $this->pemesananModel->getPemesanan($id),
             'listPesan' => $this->pemesananModel->getPemesananByName($data['fotografer_sess'])
         ];
 
+        $data['fotografer_sess'] = $this->session->get('username_fotografer');
+
+
         return view('pages/lihatPesan', $data);
+    }
+
+    public function lihatPesanPelanggan($slug = null, $id = null)
+    {
+
+        $this->session = session();
+
+
+        $data['get_sess'] = $this->session->get('username_pengguna');
+
+        $data = [
+            'title' => 'Pemesanan',
+            'validation' => \Config\Services::validation(),
+            'fotografer' => $this->fotograferModel->getFotografer($slug),
+            'pesanan' => $this->pemesananModel->findall(),
+            'profil' => $this->fotograferModel->getProfil($slug),
+            'pemesanan' => $this->pemesananModel->getPemesanan($id),
+            'listPesan' => $this->pemesananModel->getPemesananByPelanggan($data['get_sess']),
+        ];
+        $data['get_sess'] = $this->session->get('username_pengguna');
+        d($data['listPesan']);
+        // d($data['get_sess']);
+        return view('pages/lihatPesanPelanggan', $data);
+    }
+
+    public function updatePesanan($id_pemesanan = null)
+    {
+        $this->session = session();
+
+
+        $data['fotografer_sess'] = $this->session->get('username_fotografer');
+
+        $slug = $this->fotograferModel->getSlugByName($data['get_sess']);
+
+        $data = [
+            'title' => 'Pemesanan',
+            'validation' => \Config\Services::validation(),
+            'fotografer' => $this->fotograferModel->getFotografer($slug),
+            'profil' => $this->fotograferModel->getProfil($slug),
+            'pengguna' => $this->userModel->getidbyUsername($data['get_sess']),
+            'listPesan' => $this->pemesananModel->getPemesananByName($data['fotografer_sess'])
+        ];
+
+        $data['fotografer_sess'] = $this->session->get('username_fotografer');
+
+        $varPesanan = 0;
+        $this->pemesananModel->save([
+            'id_pemesanan' => $id_pemesanan,
+            'status_pemesanan' => $varPesanan,
+        ]);
+
+
+        session()->setFlashdata('pesan', 'Edit berhasil');
+
+        // return redirect()->to('/databasetest');
+        return view('pages/lihatPesan', $data);
+    }
+    public function approvePesanan($id_pemesanan = null)
+    {
+        $this->session = session();
+
+
+        $data['fotografer_sess'] = $this->session->get('username_fotografer');
+
+        //  $slug = $this->fotograferModel->getSlugByName($data['fotografer_sess']);
+        $slug = null;
+
+        $data = [
+            'title' => 'Pemesanan',
+            'validation' => \Config\Services::validation(),
+            'fotografer' => $this->fotograferModel->getFotografer($slug),
+            'profil' => $this->fotograferModel->getProfil($slug),
+            'listPesan' => $this->pemesananModel->getPemesananByName($data['fotografer_sess'])
+        ];
+
+        $data['fotografer_sess'] = $this->session->get('username_fotografer');
+
+        $varPesanan = 1;
+        $this->pemesananModel->save([
+            'id_pemesanan' => $id_pemesanan,
+            'status_pemesanan' => $varPesanan,
+        ]);
+
+
+        session()->setFlashdata('pesan', 'Edit berhasil');
+
+        // return redirect()->to('/databasetest');
+        return view('pages/lihatPesan', $data);
+    }
+    public function selesaiPemesanan($id_pemesanan = null)
+    {
+        $this->session = session();
+
+
+        $data['fotografer_sess'] = $this->session->get('username_fotografer');
+
+        $slug = $this->fotograferModel->getSlugByName($data['get_sess']);
+
+        $data = [
+            'title' => 'Pemesanan',
+            'validation' => \Config\Services::validation(),
+            'fotografer' => $this->fotograferModel->getFotografer($slug),
+            'profil' => $this->fotograferModel->getProfil($slug),
+            'pengguna' => $this->userModel->getidbyUsername($data['get_sess']),
+            'listPesan' => $this->pemesananModel->getPemesananByName($data['fotografer_sess'])
+        ];
+        $varPesanan = 2;
+        $this->pemesananModel->save([
+            'id_pemesanan' => $id_pemesanan,
+            'status_pemesanan' => $varPesanan,
+        ]);
+
+
+        session()->setFlashdata('pesan', 'Edit berhasil');
+
+        // return redirect()->to('/databasetest');
+        return view('pages/lihatPesan', $data);
+    }
+    public function editReviewTransaksi($id = null)
+    {
+
+        $this->session = session();
+
+
+
+        $data = [
+            'title' => 'Form Ubah Data Fotografer',
+            'validation' => \Config\Services::validation(),
+            'review' => $this->pemesananModel->getPemesanan($id)
+        ];
+
+        d($data['review']);
+
+        $data['get_sess'] = $this->session->get('username_pengguna');
+
+
+
+        return view('pages/editReview', $data);
     }
 }

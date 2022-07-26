@@ -130,13 +130,9 @@
 
   <div class="text-center ">
 
-    <td><a class="btn btn-warning" href="DatabaseTest/editPengguna/<?= $profil[0]['id_pengguna']; ?>">Edit</a></td>
 
-    <?php if (isset($fotografer_sess)) : ?>
-      <a class="btn btn-warning" href="/Profile/editGallery/<?= $profil[0]['slug']; ?>">
-        Edit Profile
-      </a>
-    <?php elseif (isset($get_sess)) : ?>
+
+    <?php if (isset($get_sess)) : ?>
       <div class="text-center ">
         <a href="/Profile/pesan/<?= $profil[0]['slug']; ?>" target="_blank">
           <button class="btn btn-primary kontak" type="button">
@@ -185,7 +181,7 @@
 
     <?php if (isset($fotografer_sess)) : ?>
       <a class="btn btn-warning" href="/Profile/editGallery/<?= $profil[0]['slug']; ?>">
-        Edit Gallery
+        Edit Profil
       </a>
     <?php endif; ?>
 
@@ -194,23 +190,23 @@
 
         <h3>User Review</h3>
 
-        <?php foreach ($profil as $k) : ?>
-
-          <div class="containerChat">
-            <div class="d-flex">
-              <img src="/img_avatar1.png" alt="Avatar" />
-              <div>
-                <h4><?= $k['username_pengguna']; ?></h4>
-                <div class="time-right"><?= $k['waktu_kirim']; ?> </div>
+        <?php foreach ($review as $k) : ?>
+          <?php if ($k['rating'] > 0) : ?>
+            <div class="containerChat">
+              <div class="d-flex">
+                <img src="/img_avatar1.png" alt="Avatar" />
+                <div>
+                  <h4><?= $k['username_pengguna']; ?></h4>
+                  <div class="time-right"><?= $k['waktu_pesan']; ?> </div>
+                </div>
+                <span class=""><i class="fa fa-star" aria-hidden="true"></i> <?= $k['rating']; ?></span>
               </div>
-              <span class=""><i class="fa fa-star" aria-hidden="true"></i> <?= $k['rating']; ?></span>
+
+              <p><?= $k['ulasan']; ?></p>
+
+
             </div>
-
-            <p><?= $k['review']; ?></p>
-
-
-          </div>
-
+          <?php endif; ?>
         <?php endforeach; ?>
 
 
@@ -218,56 +214,53 @@
         <?php if (isset($get_sess)) : ?>
           <div class="containerChat darker">
 
-            <h4>Input Review</h4>
+
             <div class="form-group">
-              <form action="/Profile/saveReview/<?= $profil[0]['slug']; ?>" method="post">
-                <?= csrf_field(); ?>
-                <!--  -->
-                <label for="review" class="form-label">Review :<?= $profil[0]['slug']; ?></label>
-                <input type="text" name="review" class="form-control" id="review" value="<?= old('review'); ?>">
-                <!--  -->
-                <div class="btn-group">
-                  <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Small button
-                  </button>
-                  <div class="dropdown-menu">
-                    <div class="radio">
-                      <?= $inputRating = null; ?>
 
-                      <!--  -->
-                      <input <?= ($inputRating == 'inputRating1') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating1">
-                      <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 1</label>
-                    </div>
-                    <div class="radio">
-                      <?= $inputRating = null; ?>
+              <?= csrf_field(); ?>
+              <!--  -->
 
-                      <!--  -->
-                      <input <?= ($inputRating == 'inputRating2') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating2">
-                      <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 2</label>
-                    </div>
-                    <div class="radio">
-                      <?= $inputRating = null; ?>
+              <!--  -->
+              <div class="btn-group">
 
-                      <!--  -->
-                      <input <?= ($inputRating == 'inputRating3') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating3">
-                      <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 3</label>
-                    </div>
-                    <div class="radio">
-                      <?= $inputRating = null; ?>
+                <div class="dropdown-menu">
+                  <div class="radio">
+                    <?= $inputRating = null; ?>
 
-                      <!--  -->
-                      <input <?= ($inputRating == 'inputRating4') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating4">
-                      <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 4</label>
-                    </div>
-                    <div class="radio">
-                      <?= $inputRating = null; ?>
-
-                      <!--  -->
-                      <input <?= ($inputRating == 'inputRating5') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating5">
-                      <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 5</label>
-                    </div>
+                    <!--  -->
+                    <input <?= ($inputRating == 'inputRating1') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating1">
+                    <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 1</label>
                   </div>
-                  <!-- <div class="dropdown-menu">
+                  <div class="radio">
+                    <?= $inputRating = null; ?>
+
+                    <!--  -->
+                    <input <?= ($inputRating == 'inputRating2') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating2">
+                    <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 2</label>
+                  </div>
+                  <div class="radio">
+                    <?= $inputRating = null; ?>
+
+                    <!--  -->
+                    <input <?= ($inputRating == 'inputRating3') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating3">
+                    <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 3</label>
+                  </div>
+                  <div class="radio">
+                    <?= $inputRating = null; ?>
+
+                    <!--  -->
+                    <input <?= ($inputRating == 'inputRating4') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating4">
+                    <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 4</label>
+                  </div>
+                  <div class="radio">
+                    <?= $inputRating = null; ?>
+
+                    <!--  -->
+                    <input <?= ($inputRating == 'inputRating5') ? "checked" : "" ?> type="radio" id="inputRating" name="inputRating" value="inputRating5">
+                    <label for="inputRating"><i class="fa fa-star" aria-hidden="true"></i> 5</label>
+                  </div>
+                </div>
+                <!-- <div class="dropdown-menu">
                     2
                   </div>
                   <div class="dropdown-menu">
@@ -279,9 +272,8 @@
                   <div class="dropdown-menu">
                     5
                   </div> -->
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </form>
+              </div>
+
             </div>
           </div>
         <?php endif; ?>

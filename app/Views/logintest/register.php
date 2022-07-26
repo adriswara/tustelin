@@ -9,7 +9,7 @@
     <div class="row justify-content-md-center">
 
         <div class="col-6">
-            <h1>Sign Up</h1>
+            <h1>Daftar Pengguna</h1>
             <?php if (isset($validation)) : ?>
                 <div class="alert alert-danger"><?= $validation->listErrors() ?></div>
             <?php endif; ?>
@@ -31,6 +31,12 @@
                     <input type="password" name="confpassword" class="form-control" id="InputForConfPassword">
                 </div>
                 <button type="submit" class="btn btn-primary">Register</button>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h5><a href="/RegisterFotografer"><i>Register Fotografer</i></a></h5>
             </form>
         </div>
 

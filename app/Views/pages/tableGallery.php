@@ -16,7 +16,7 @@
                         <th scope="col">Instagram</th>
                         <th scope="col">Rata-rata rating</th>
                         <th scope="col">NIK KTP</th>
-                        <th><a href="/DatabaseTest/createFotografer" class="btn btn-primary ">Add</a></th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -30,7 +30,7 @@
                             <td><?= $j['ktp']; ?></td>
                             <td><a href="/Profile/editProfile/<?= $j['id_fotografer']; ?>" class=" btn btn-warning">Edit </a></td>
 
-                            <td><a onclick="buttonConfirm()" href="/DatabaseTest/deleteFotografer/<?= $j['id_fotografer']; ?>" class="btn btn-danger">Delete</button></td>
+
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

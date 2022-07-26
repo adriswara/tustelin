@@ -78,7 +78,6 @@
             <h2 class="beefup__head ">Aliran</h2>
             <div class="beefup__body">
               <?php foreach ($kriteria['aliran'] as $index => $j) : ?>
-
                 <div class="checkbox">
                   <?php if (is_array($filter_aliran)) : ?>
                     <input <?= (in_array($j['nama_aliran'], $filter_aliran)) ? "checked" : "" ?> onChange="this.form.submit()" type="checkbox" id="filter_aliran" name="filter_aliran[]" value="<?= $j['nama_aliran']; ?>">
@@ -87,9 +86,7 @@
                     <input onChange="this.form.submit()" type="checkbox" id="filter_aliran" name="filter_aliran[]" value="<?= $j['nama_aliran']; ?>">
                     <label for="filter_aliran"> <?= $j['nama_aliran']; ?></label>
                   <?php endif; ?>
-
                 </div>
-
               <?php endforeach; ?>
               <!-- </form> -->
             </div>
@@ -101,7 +98,6 @@
             <div class="beefup__body">
               <!-- <form action="/Profile/market_filter" method="post"> -->
               <?php foreach ($kriteria['kota'] as $index => $j) : ?>
-
                 <div class="checkbox">
                   <?php if (is_array($filter_kota)) : ?>
                     <input <?= (in_array($j['nama_kota'], $filter_kota)) ? "checked" : "" ?> onChange="this.form.submit()" type="checkbox" id="filter_kota" name="filter_kota[]" value="<?= $j['nama_kota']; ?>">
@@ -109,10 +105,8 @@
                   <?php else : ?>
                     <input onChange="this.form.submit()" type="checkbox" id="filter_kota" name="filter_kota[]" value="<?= $j['nama_kota']; ?>">
                     <label for="filter_kota"> <?= $j['nama_kota']; ?></label>
-
                   <?php endif; ?>
                 </div>
-
               <?php endforeach; ?>
             </div>
           </article>
